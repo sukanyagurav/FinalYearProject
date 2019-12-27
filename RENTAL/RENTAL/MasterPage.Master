@@ -1,0 +1,54 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="RENTAL.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="title" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="MasterPage.css" rel="stylesheet" />
+    <style type="text/css">
+        .auto-style1 {
+            height: 106px;
+        }
+    </style>
+</head>
+<body>
+   
+    <form id="form1" runat="server" class="auto-style1">
+       <div class="wrapper">
+            <div class="menu">
+                <ul>
+                   <li><a href="Packages.aspx">Packages</a></li>
+                   <li><a href="Home Furniture.aspx">Home Furniture</a></li>
+                   <li><a href="Office Furniture.aspx">Office Furniture</a></li>
+                   <li><a href="Applliance.aspx">Appliance</a></li>
+                </ul>
+               </div>
+           </div>
+          <br />
+            <br />
+        <br />
+           <div class="wrapper2">   
+   
+         <asp:TextBox ID="textbox" runat="server" CssClass="wrapper3" Placeholder="Search for product.... " Height="40px" Width="500px" AutoPostBack="True"></asp:TextBox>
+        <asp:Button ID="Button2" runat="server" Text="Search" CssClass="wrapper1" Height="40px" Width="150px"/>
+         <asp:DropDownList ID="DropDownList1" runat="server" Height="40px" Width="150px">
+                   <asp:ListItem>Choose your city</asp:ListItem>    
+           </asp:DropDownList>
+               
+               <asp:Button ID="Button1" runat="server" Text="Log In" Height="40px" Width="150px"/>
+               
+              
+               
+           </div>
+     
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        
+    </form>
+    </body>
+</html>
