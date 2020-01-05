@@ -13,7 +13,7 @@ namespace RENTAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -31,8 +31,20 @@ namespace RENTAL
                 SqlCommand cmdpass = new SqlCommand(checkpassword, con);
                 string password = cmdpass.ExecuteScalar().ToString().Replace(" ","");
                 if (password == txtpassword.Text)
-                {
-                    Response.Write("Password is correct");
+                {   //session created;
+                    Session["useremail"] = email.Text;
+                    HttpCookie returnCookie = Request.Cookies["returnUrl"];
+                    if ((returnCookie == null) || string.IsNullOrEmpty(returnCookie.Value))
+                    {
+                        Response.Redirect("Default.aspx");
+                    }
+                    else
+                    {
+                        HttpCookie deleteCookie = new HttpCookie("returnUrl");
+                        deleteCookie.Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies.Add(deleteCookie);
+                        Response.Redirect(returnCookie.Value);
+                    }
                 }
                 else
                 {

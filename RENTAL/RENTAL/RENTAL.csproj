@@ -106,7 +106,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="Appliances.aspx" />
+    <Content Include="Appliance1.aspx" />
+    <Content Include="Appliance\Air Conditoner 1 Ton.jpg" />
+    <Content Include="Appliance\Air Cooler 35 L.jpg" />
+    <Content Include="Appliance\Air Cooler 70 L.jpg" />
+    <Content Include="Appliance\Double Door Fridge %28240 Litre%29.jpg" />
+    <Content Include="Appliance\Front Load Washing Machine.jpg" />
+    <Content Include="Appliance\Induction Cooktop.jpg" />
+    <Content Include="Appliance\Kent Maxx Water Purifier.jpg" />
+    <Content Include="Appliance\Kent Pride Plus Water Purifier.jpg" />
+    <Content Include="Appliance\LED TV - 32.jpg" />
+    <Content Include="Appliance\Semi Automatic Washing Machine.jpg" />
+    <Content Include="Appliance\Single Door Fridge %28170 Litre%29.jpg" />
+    <Content Include="Appliance\Smart LED TV - 55.jpg" />
+    <Content Include="Appliance\Solo Microwave 20L.jpg" />
+    <Content Include="Appliance\Voltas Inverter Air Conditioner 1 Ton.jpg" />
+    <Content Include="Bed.aspx" />
+    <Content Include="bedroom\alexa-queen-bed-1_%282%29.jpg" />
+    <Content Include="bedroom\bedroom_storage_essentials.jpg" />
+    <Content Include="bedroom\belle_single_bed.jpg" />
+    <Content Include="bedroom\Eria_Single_Seater_Sofa.jpg" />
+    <Content Include="bedroom\Erica_L_Shaped_Sofa.jpg" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -114,6 +134,16 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="demo.css" />
+    <Content Include="Dining room.aspx" />
+    <Content Include="diningroom\Caramel 4-Seater Coffee Table %28Blue%29.jpg" />
+    <Content Include="diningroom\Moonshine Bar Unit.jpg" />
+    <Content Include="diningroom\Poise 2-Seater Dining Set.jpg" />
+    <Content Include="diningroom\Poise 4-Seater Dining Set.jpg" />
+    <Content Include="diningroom\Poise 6-Seater Dining Set.jpg" />
+    <Content Include="images\iconfalse.png" />
+    <Content Include="images\icontrue.png" />
+    <Content Include="usericon.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -126,7 +156,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Home.aspx" />
-    <Content Include="HomFurniture.aspx" />
+    <Content Include="HomeFurniture.aspx" />
     <Content Include="image\1.jpg" />
     <Content Include="image\2.jpg" />
     <Content Include="image\3.jpg" />
@@ -146,9 +176,39 @@
     <Content Include="Imag\package.JPG" />
     <Content Include="Imag\storage.JPG" />
     <Content Include="Imag\study.JPG" />
+    <Content Include="index.html" />
+    <Content Include="js\jquery-2.1.3.min.js" />
+    <Content Include="Living room.aspx" />
+    <Content Include="livingroom\Barney Recliner.jpg" />
+    <Content Include="livingroom\Brooklyn L-Shaped Sofa %28Blue%29.jpg" />
+    <Content Include="livingroom\Caramel 4-Seater Coffee Table.jpg" />
+    <Content Include="livingroom\Garfield 1-Seater Sofa.jpg" />
+    <Content Include="livingroom\Moonstone 3-Seater Sofa.jpg" />
     <Content Include="MasterPage.css" />
     <Content Include="MasterPage.Master" />
+    <Content Include="OfficeFurniture\Emily Executive Chair - Set of 2.jpg" />
+    <Content Include="OfficeFurniture\Joena Executive Chair - Set of 2.jpg" />
+    <Content Include="OfficeFurniture\Modern Linear Workstation.jpg" />
+    <Content Include="OfficeFurniture\Trendy Office Chair - Set of 2.jpg" />
+    <Content Include="OfficeFurniture\Cubicle A back to back Workstation 4 seater with Chair.jpg" />
+    <Content Include="storage\Belle Chest of Drawer.jpg" />
+    <Content Include="storage\Hutch 2-Door Wardrobe.jpg" />
+    <Content Include="storage\Magnum 1-Door Wardrobe.jpg" />
+    <Content Include="storage\Magnum 3-Door Wardrobe.jpg" />
+    <Content Include="storage\Magnum Chest of Drawers.jpg" />
+    <Content Include="storage\Belle Wardrobe.jpg" />
+    <Content Include="Study room.aspx" />
+    <Content Include="studyroom\Alexa Study Set.jpg" />
+    <Content Include="studyroom\Miller Office Chair.jpg" />
+    <Content Include="studyroom\Poise Study Table.jpg" />
+    <Content Include="studyroom\Rowling Bookshelf %28S%29.jpg" />
+    <Content Include="studyroom\Rowling Bookshelf Divider.jpg" />
     <Content Include="WebForm1.aspx" />
+    <Content Include="storage1.aspx" />
+    <Content Include="WebForm2.aspx" />
+    <Content Include="WebForm4.aspx" />
+    <Content Include="WebForm5.aspx" />
+    <Content Include="wishlist.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Login.aspx" />
     <Content Include="Office Furniture.aspx" />
@@ -189,12 +249,12 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Appliances.aspx.cs">
-      <DependentUpon>Appliances.aspx</DependentUpon>
+    <Compile Include="Appliance1.aspx.cs">
+      <DependentUpon>Appliance1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Appliances.aspx.designer.cs">
-      <DependentUpon>Appliances.aspx</DependentUpon>
+    <Compile Include="Appliance1.aspx.designer.cs">
+      <DependentUpon>Appliance1.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -205,6 +265,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Bed.aspx.cs">
+      <DependentUpon>Bed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bed.aspx.designer.cs">
+      <DependentUpon>Bed.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -219,6 +286,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dining room.aspx.cs">
+      <DependentUpon>Dining room.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dining room.aspx.designer.cs">
+      <DependentUpon>Dining room.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,12 +303,19 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="HomFurniture.aspx.cs">
-      <DependentUpon>HomFurniture.aspx</DependentUpon>
+    <Compile Include="HomeFurniture.aspx.cs">
+      <DependentUpon>HomeFurniture.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="HomFurniture.aspx.designer.cs">
-      <DependentUpon>HomFurniture.aspx</DependentUpon>
+    <Compile Include="HomeFurniture.aspx.designer.cs">
+      <DependentUpon>HomeFurniture.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Living room.aspx.cs">
+      <DependentUpon>Living room.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Living room.aspx.designer.cs">
+      <DependentUpon>Living room.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -286,6 +367,13 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="Study room.aspx.cs">
+      <DependentUpon>Study room.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Study room.aspx.designer.cs">
+      <DependentUpon>Study room.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -300,10 +388,44 @@
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="storage1.aspx.cs">
+      <DependentUpon>storage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="storage1.aspx.designer.cs">
+      <DependentUpon>storage1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm4.aspx.cs">
+      <DependentUpon>WebForm4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm4.aspx.designer.cs">
+      <DependentUpon>WebForm4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm5.aspx.cs">
+      <DependentUpon>WebForm5.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm5.aspx.designer.cs">
+      <DependentUpon>WebForm5.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wishlist.aspx.cs">
+      <DependentUpon>wishlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wishlist.aspx.designer.cs">
+      <DependentUpon>wishlist.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="NewFolder2\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

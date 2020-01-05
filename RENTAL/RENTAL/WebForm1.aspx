@@ -25,53 +25,20 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <p>
-       
-     <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">LinkButton</asp:LinkButton>
-        &nbsp;&nbsp;&nbsp; <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">LinkButton</asp:LinkButton>
-        &nbsp;&nbsp;&nbsp; <asp:LinkButton ID="LinkButton3" runat="server">LinkButton</asp:LinkButton>
-         &nbsp;&nbsp;&nbsp;<asp:LinkButton ID="LinkButton4" runat="server" OnClick="LinkButton4_Click">LinkButton</asp:LinkButton>
-    </p>
-    <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
-    <asp:DataList ID="DataList1" runat="server" CssClass="auto-style8" DataSourceID="SqlDataSource1" RepeatColumns="2" RepeatDirection="Horizontal">
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1">
         <ItemTemplate>
-            <table class="auto-style2">
-                <tr>
-                    <td class="auto-style6">Product id
-                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>'></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label4" runat="server" Text='<%# Eval("name") %>'></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style4">
-                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("primage") %>' />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style7">
-                        <asp:Label ID="Label5" runat="server" Text='<%# Eval("price") %>'></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style5">
-                        <asp:ImageButton ID="ImageButton1" runat="server" Height="296px" ImageUrl="~/Imag/5.jpg" Width="213px" />
-                    </td>
-                </tr>
-            </table>
+            <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("PImage") %>' />
+            <br />
             <br />
         </ItemTemplate>
-    </asp:DataList>
-<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:demoConnectionString %>" SelectCommand="SELECT * FROM [Product]"></asp:SqlDataSource>
-
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:demoConnectionString %>" SelectCommand="SELECT * FROM [Product] WHERE ([category] = @category)">
-        <SelectParameters>
-            <asp:QueryStringParameter Name="category" QueryStringField="cat" Type="String" />
-        </SelectParameters>
-    </asp:SqlDataSource>
-
-
+</asp:DataList>
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:FURNITUREConnectionString2 %>" SelectCommand="SELECT [PName], [PPrice], [PImage] FROM [Products]"></asp:SqlDataSource>
 </asp:Content>

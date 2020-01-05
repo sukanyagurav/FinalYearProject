@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="RENTAL.Home" %>
+﻿
+
+<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="RENTAL.Home" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
     <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -8,6 +10,7 @@
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
     <br />
     <br />
     <br />
@@ -16,6 +19,7 @@
         .carousel-inner > .item {
    height: 500px;
 }
+
      .catwrapper{
          width:auto;
          margin-top:120px;
@@ -91,25 +95,25 @@
     <br /><!--categories-->
  <div class="catwrapper" style="box-sizing:border-box;margin:0; padding :0;">
     <div class="item item_1">
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Home Furniture.aspx">
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="Home Furniture.aspx">
             <img src="Imag/package.JPG"  height="100" width="100" /><br />
            <h3>Package</h3>
        </asp:HyperLink>
     </div>
      <div class="item item_2">
-         <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Home Furniture.aspx">
+         <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="HomeFurniture.aspx">
             <img src="Imag/HomeFurniture.JPG"  height="100" width="100" /><br />
             <h3>Home Furniture</h3>
       </asp:HyperLink>
     </div>
      <div class="item item_3">
-         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Home Furniture.aspx">
+         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="Office Furniture.aspx">
             <img src="Imag/OfficeFurniture.JPG"  height="100" width="100" />&nbsp;&nbsp;
               <h3>Office Furniture</h3>
         </asp:HyperLink>
     </div>
      <div class="item item_4">
-         <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Home Furniture.aspx">
+         <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="Home F.aspx">
             <img src="Imag/Appliance.JPG"  height="100" width="100" /><br />
             <h3>Appliance</h3>
       </asp:HyperLink>

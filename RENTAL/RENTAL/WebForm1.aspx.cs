@@ -15,7 +15,7 @@ namespace RENTAL
 
             {
                 DataList1.DataSourceID = null;
-                DataList1.DataSource = SqlDataSource2;
+                DataList1.DataSource = SqlDataSource1;
                 DataList1.DataBind();
             }
 
@@ -35,7 +35,9 @@ namespace RENTAL
 
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("WebForm1.aspx?cat=studyroom");
+            Response.Redirect("WebForm1.aspx?cat=studyroom" +
+                "" +
+                "");
         }
     }
 }
