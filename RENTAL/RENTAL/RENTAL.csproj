@@ -44,13 +44,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=19.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\NEHA\Documents\ASP.NET AJAX Control Toolkit\Bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>C:\Users\NEHA\Downloads\255. Generate Invoice PDF in Shopping Website\New Folder\New Folder\Generate Invoice PDF in Shopping Website\itextsharp-dll-core\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -106,6 +124,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Activation.aspx" />
+    <Content Include="Addproduct.aspx" />
+    <Content Include="AddtoCart.aspx" />
+    <Content Include="Adminaddproducts.aspx" />
+    <Content Include="AdminLogin.aspx" />
+    <Content Include="cart.aspx" />
     <Content Include="Appliance1.aspx" />
     <Content Include="Appliance\Air Conditoner 1 Ton.jpg" />
     <Content Include="Appliance\Air Cooler 35 L.jpg" />
@@ -133,6 +157,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="css\bootstrap-grid.css" />
+    <Content Include="css\bootstrap-grid.min.css" />
+    <Content Include="css\bootstrap-reboot.css" />
+    <Content Include="css\bootstrap-reboot.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
     <Content Include="Default.aspx" />
     <Content Include="demo.css" />
     <Content Include="Dining room.aspx" />
@@ -141,8 +171,41 @@
     <Content Include="diningroom\Poise 2-Seater Dining Set.jpg" />
     <Content Include="diningroom\Poise 4-Seater Dining Set.jpg" />
     <Content Include="diningroom\Poise 6-Seater Dining Set.jpg" />
+    <Content Include="forgotpassword.aspx" />
+    <Content Include="images\addproducts.jpg" />
+    <Content Include="images\addtocart.jpg" />
+    <Content Include="images\adminuser.jpg" />
+    <Content Include="images\FilledStar.gif" />
+    <Content Include="images\generaluser.png" />
+    <Content Include="images\soldout.jpg" />
+    <Content Include="images\Star.gif" />
+    <Content Include="images\usericon.png" />
     <Content Include="images\iconfalse.png" />
     <Content Include="images\icontrue.png" />
+    <Content Include="images\WaitingStar.gif" />
+    <Content Include="itextsharp.dll" />
+    <Content Include="js\bootstrap.bundle.js" />
+    <Content Include="js\bootstrap.bundle.min.js" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\jquery.elevateZoom-3.0.8.min.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="PlaceOrder.aspx" />
+    <Content Include="PlaceOrderSuccessfully.aspx" />
+    <Content Include="registration.aspx" />
+    <Content Include="Remove user.aspx" />
+    <Content Include="resetpassword.aspx" />
+    <Content Include="StyleSheet2.css" />
     <Content Include="usericon.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -203,12 +266,45 @@
     <Content Include="studyroom\Poise Study Table.jpg" />
     <Content Include="studyroom\Rowling Bookshelf %28S%29.jpg" />
     <Content Include="studyroom\Rowling Bookshelf Divider.jpg" />
+    <Content Include="viewdetailsaspx.aspx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="storage1.aspx" />
+    <Content Include="Stockreport.aspx" />
     <Content Include="WebForm2.aspx" />
     <Content Include="WebForm4.aspx" />
     <Content Include="WebForm5.aspx" />
+    <Content Include="WebForm6.aspx" />
+    <Content Include="WebForm7.aspx" />
+    <Content Include="WebForm8.aspx" />
     <Content Include="wishlist.aspx" />
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
+    <Content Include="css\bootstrap-grid.css.map" />
+    <Content Include="css\bootstrap-grid.min.css.map" />
+    <Content Include="css\bootstrap-reboot.css.map" />
+    <Content Include="css\bootstrap-reboot.min.css.map" />
+    <Content Include="css\bootstrap.css.map" />
+    <Content Include="css\bootstrap.min.css.map" />
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
+    <Content Include="js\bootstrap.bundle.js.map" />
+    <Content Include="js\bootstrap.bundle.min.js.map" />
+    <Content Include="js\bootstrap.js.map" />
+    <Content Include="js\bootstrap.min.js.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Login.aspx" />
     <Content Include="Office Furniture.aspx" />
@@ -249,6 +345,48 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activation.aspx.cs">
+      <DependentUpon>Activation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Activation.aspx.designer.cs">
+      <DependentUpon>Activation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Addproduct.aspx.cs">
+      <DependentUpon>Addproduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Addproduct.aspx.designer.cs">
+      <DependentUpon>Addproduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddtoCart.aspx.cs">
+      <DependentUpon>AddtoCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddtoCart.aspx.designer.cs">
+      <DependentUpon>AddtoCart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adminaddproducts.aspx.cs">
+      <DependentUpon>Adminaddproducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adminaddproducts.aspx.designer.cs">
+      <DependentUpon>Adminaddproducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cart.aspx.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cart.aspx.designer.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Appliance1.aspx.cs">
       <DependentUpon>Appliance1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -279,6 +417,23 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport3.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport3.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -292,6 +447,13 @@
     </Compile>
     <Compile Include="Dining room.aspx.designer.cs">
       <DependentUpon>Dining room.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="forgotpassword.aspx.cs">
+      <DependentUpon>forgotpassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="forgotpassword.aspx.designer.cs">
+      <DependentUpon>forgotpassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -331,6 +493,21 @@
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Office Furniture.aspx.cs">
       <DependentUpon>Office Furniture.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -338,6 +515,7 @@
     <Compile Include="Office Furniture.aspx.designer.cs">
       <DependentUpon>Office Furniture.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Orders.cs" />
     <Compile Include="Packages.aspx.cs">
       <DependentUpon>Packages.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -345,7 +523,42 @@
     <Compile Include="Packages.aspx.designer.cs">
       <DependentUpon>Packages.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PlaceOrder.aspx.cs">
+      <DependentUpon>PlaceOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlaceOrder.aspx.designer.cs">
+      <DependentUpon>PlaceOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlaceOrderSuccessfully.aspx.cs">
+      <DependentUpon>PlaceOrderSuccessfully.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlaceOrderSuccessfully.aspx.designer.cs">
+      <DependentUpon>PlaceOrderSuccessfully.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="registration.aspx.cs">
+      <DependentUpon>registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="registration.aspx.designer.cs">
+      <DependentUpon>registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Remove user.aspx.cs">
+      <DependentUpon>Remove user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Remove user.aspx.designer.cs">
+      <DependentUpon>Remove user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="resetpassword.aspx.cs">
+      <DependentUpon>resetpassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="resetpassword.aspx.designer.cs">
+      <DependentUpon>resetpassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SIGNUP.aspx.cs">
       <DependentUpon>SIGNUP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -367,12 +580,25 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="stockdetails.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>stockdetails.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Study room.aspx.cs">
       <DependentUpon>Study room.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Study room.aspx.designer.cs">
       <DependentUpon>Study room.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewdetailsaspx.aspx.cs">
+      <DependentUpon>viewdetailsaspx.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewdetailsaspx.aspx.designer.cs">
+      <DependentUpon>viewdetailsaspx.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -395,6 +621,13 @@
     <Compile Include="storage1.aspx.designer.cs">
       <DependentUpon>storage1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Stockreport.aspx.cs">
+      <DependentUpon>Stockreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stockreport.aspx.designer.cs">
+      <DependentUpon>Stockreport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForm2.aspx.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -416,6 +649,27 @@
     <Compile Include="WebForm5.aspx.designer.cs">
       <DependentUpon>WebForm5.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebForm6.aspx.cs">
+      <DependentUpon>WebForm6.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm6.aspx.designer.cs">
+      <DependentUpon>WebForm6.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm7.aspx.cs">
+      <DependentUpon>WebForm7.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm7.aspx.designer.cs">
+      <DependentUpon>WebForm7.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm8.aspx.cs">
+      <DependentUpon>WebForm8.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm8.aspx.designer.cs">
+      <DependentUpon>WebForm8.aspx</DependentUpon>
+    </Compile>
     <Compile Include="wishlist.aspx.cs">
       <DependentUpon>wishlist.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -426,6 +680,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -437,6 +692,23 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport3.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="stockdetails.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>stockdetails.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

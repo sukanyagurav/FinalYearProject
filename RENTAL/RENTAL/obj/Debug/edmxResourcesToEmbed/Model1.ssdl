@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FURNITUREModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FURNITURE.dbo.deno' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="deno">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductRef">
+    <Key>
+      <PropertyRef Name="RefId" />
+    </Key>
+    <Property Name="RefId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PId" Type="int" Nullable="false" />
+    <Property Name="CityId" Type="int" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="PId" />
+    </Key>
+    <Property Name="PId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="PPrice" Type="float" Nullable="false" />
+    <Property Name="PQty" Type="int" Nullable="false" />
+    <Property Name="PKeyword" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="PCategory" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="PImage" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="RefundableDeposit" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="signup1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mobile_no" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FURNITURE.dbo.wishlist' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="wishlist">
+    <Key>
+      <PropertyRef Name="useremail" />
+      <PropertyRef Name="PId" />
+    </Key>
+    <Property Name="useremail" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="PId" Type="int" Nullable="false" />
+  </EntityType>
+  <Function Name="GetProductDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CityName" Type="varchar" Mode="In" />
+    <Parameter Name="PCategory" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="FURNITUREModelStoreContainer">
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductRef" EntityType="Self.ProductRef" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="signup1" EntityType="Self.signup1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="deno" EntityType="Self.deno" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[deno].[id] AS [id]
+FROM [dbo].[deno] AS [deno]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="wishlist" EntityType="Self.wishlist" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[wishlist].[useremail] AS [useremail], 
+[wishlist].[PId] AS [PId]
+FROM [dbo].[wishlist] AS [wishlist]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

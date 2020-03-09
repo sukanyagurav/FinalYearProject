@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FURNITUREModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductRef">
+    <Key>
+      <PropertyRef Name="RefId" />
+    </Key>
+    <Property Name="RefId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PId" Type="Int32" Nullable="false" />
+    <Property Name="CityId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="PId" />
+    </Key>
+    <Property Name="PId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PPrice" Type="Double" Nullable="false" />
+    <Property Name="PQty" Type="Int32" Nullable="false" />
+    <Property Name="PKeyword" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RefundableDeposit" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="signup1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mobile_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="deno">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="wishlist">
+    <Key>
+      <PropertyRef Name="useremail" />
+      <PropertyRef Name="PId" />
+    </Key>
+    <Property Name="useremail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="FURNITUREEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cities" EntityType="Self.City" />
+    <EntitySet Name="ProductRefs" EntityType="Self.ProductRef" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="signup1" EntityType="Self.signup1" />
+    <EntitySet Name="denoes" EntityType="Self.deno" />
+    <EntitySet Name="wishlists" EntityType="Self.wishlist" />
+    <FunctionImport Name="GetProductDetails" ReturnType="Collection(FURNITUREModel.GetProductDetails_Result)">
+      <Parameter Name="CityName" Mode="In" Type="String" />
+      <Parameter Name="PCategory" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetProductDetails_Result">
+    <Property Type="Int32" Name="PId" Nullable="false" />
+    <Property Type="String" Name="PName" Nullable="false" MaxLength="500" />
+    <Property Type="Double" Name="PPrice" Nullable="false" />
+    <Property Type="Int32" Name="PQty" Nullable="false" />
+    <Property Type="String" Name="PKeyword" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="PCategory" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="PImage" Nullable="false" MaxLength="500" />
+    <Property Type="Double" Name="RefundableDeposit" Nullable="false" />
+    <Property Type="Int32" Name="RefId" Nullable="false" />
+    <Property Type="Int32" Name="PId1" Nullable="false" />
+    <Property Type="Int32" Name="CityId" Nullable="true" />
+    <Property Type="Int32" Name="CityId1" Nullable="false" />
+    <Property Type="String" Name="CityName" Nullable="false" MaxLength="500" />
+  </ComplexType>
+</Schema>

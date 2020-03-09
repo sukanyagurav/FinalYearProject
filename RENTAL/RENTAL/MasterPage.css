@@ -1,8 +1,4 @@
-﻿*{
-    margin:0;
-    padding:0;
-    font-family:sans-serif;
-}
+﻿
 .wrapper {
     width: 100%;
     height:15vh;
@@ -38,6 +34,7 @@
     color:white;
     text-align:justify;
 }
+
 body {
     padding:0;
     margin:0;
@@ -100,24 +97,24 @@ body {
     font-weight: bold;
 }
 /*datalist*/
-.datalist{
-    width:240px;
-    height:auto;
-    display:inline-block;
-    font-size:14px;
-    font-family:Open Sans;
-    margin:55px;
-    float:right;
-
-   
-    }
-.imagecss{
-    width:300px;
-    height:auto;
-    display:inline-block;
-    border:1px solid #ffbb77;
-    position:relative;
-    overflow:hidden;
+.datalist {
+    width: 240px;
+    height: auto;
+    display: inline-block;
+    font-size: 14px;
+    font-family: Open Sans;
+    margin: 55px;
+    float: right;
+    /*box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+*/
+}
+.imagecss {
+    width: 300px;
+    height: auto;
+    display: inline-block;
+    border: 1px solid #ffbb77;
+    position: relative;
+    overflow: hidden;
 }
 
 .imagecss img{
@@ -163,6 +160,7 @@ body {
     font-weight: normal;
     color: #ff7800;
 }
+
 .nameprice h3{
 margin :0;
 padding-bottom:5px;
@@ -170,139 +168,45 @@ font-size:16px;
 color:#303030;
 
 }
-/* view the product*/
-.product-view {
-    position: absolute;
-    width: 800px;
-    height: 500px;
-    padding: 25px;
-    border: 1px solid #ff7800;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    -moz-transform: translate(-50%,-50%);
-    z-index:100;
-    border-radius:4px;
-    box-shadow:0 5px 25px rgba(0,0,0,0.3);
-    display:none;
-    background-color:yellow;
-}
-.close-btn {
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 5px 10px 0;
-    font-size: 20px;
-    color: #929292;
-    transform: scaleY(0.8);
-}
-.product-big-image{
-    width:45%;
-    height:auto;
-    display:inline-block;
-    float:left;
+ .datalist3{
+     float:right;
+ }
+.user_section {
+    margin-left: 50px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0px 0px 0px 0px;
     
-}
-.product-big-image img{
-    width:100%;
-    border:3px solid #333;
-}
-.product-big-desc {
-    width: 48%;
-    height: auto;
-    display: inline-block;
-    float:right;
-    padding-left:20px;
-}
-  .product-big-desc h2{
-      margin:0;
-      font-weight:lighter;
-      padding-bottom:10px;
-  }
-  .buybutton{
-      width:180px;
-      height:auto;
-      border-radius:50px;
-      background-color:#ff7800;
-      color:#ffffff;
-      padding:10px;
-      font-size:18px;
-      border:none;
-      font-weight:bold;
-  }
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height:100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
 
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
 }
+.user_section image{
+    width:30px;
+    padding-top:5px;
+}
+    .user_section label{
+        width: 30px;
+        padding-top: 5px;
+        color:white;
+    }
 
-/* The Close Button */
-.close {
-    color: #aaaaaa;
+
+.button {
+    width: 85px;
+    height: 33px;
+    font: bold 17px segoe ui;
     float: right;
-    font-size: 28px;
-    font-weight: bold;
 }
 
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    /*inner login */
-    .form-box{
-        width:800px;
-        height:600px;
-        position:relative;
-        margin:6% auto;
-        background:#fff;
-        padding:5px;
-             
-    }
-    .button-box{
-        width:220px;
-        margin:35px auto;
-        position:relative;
-        box-shadow:0 0 20px 9px #ff61241f;
-        border-radius:30px;
 
-    }
-    .toggle-btn{
-        padding:10px 30px;
-        cursor:pointer;
-        background:transparent;
-        border:0;
-        outline:none;
-        position:relative;
-    }
-    #btn{
-        top:0;
-        left:0;
-        position:absolute;
-        width:110px;
-        height:100%;
-        background:linear-gradient(to right,#ff105f,#ffad06);
-        border-radius:30px;
-        transition:.5s;
-    }
- 
+
+
+
+.modal {
+    text-align: center;
+}
+
+.modalBackground {
+    background-color: Black;
+    filter: alpha(opacity=40);
+    opacity: 0.4;
+}

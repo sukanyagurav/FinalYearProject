@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
+using System.Web;
+using System.Web.UI;
 namespace RENTAL
 {
 
@@ -20,7 +17,7 @@ namespace RENTAL
             {
                 
                 //check if the session exists and select the correct value in the dropdownlist
-                if (Session["CityName"] != null)
+                if (Session["CityName"]!= null)
                 {
                     ddl.SelectedValue = Session["CityName"].ToString();
                     // ddl.Items.FindByValue(Session["CityName"].ToString()).Selected = true;
@@ -32,23 +29,34 @@ namespace RENTAL
                     //set the session with the default city
                     Session["CityName"] = ddl.SelectedValue;
                 }
+                
+
+               
             }
-            //user session checking
-            if (Session["useremail"] != null)
+           if (Session["useremail"] == null)
             {
-                Label3.Text = "Hello, " + Session["useremail"].ToString();
-                Button1.Visible = false;
-                Button3.Visible = true;
+                Image1.Visible = false;
+                Label1.Visible = false;
+               // Response.Redirect("Home.aspx");
             }
-            else
-            {
-                Label3.Visible = false;
-                Button1.Visible = true;
-                Button3.Visible = false;
+           else
+                {
+                Image1.Visible = true;
+                Label1.Visible = true;
+                string str= ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+                SqlConnection con = new SqlConnection(str);
+                    SqlDataAdapter sda = new SqlDataAdapter("Select * from Users where Email= '" + Session["useremail"].ToString() + "' ", con);
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+                Label1.Text = dt.Rows[0]["Username"].ToString();
+               // Image2.ImageUrl = "images/usericon.png";
+                Image1.ImageUrl = "images/usericon.png";
+                // Label2.Text = dt.Rows[0]["First_Name"].ToString() + " " + dt.Rows[0]["Last_Name"].ToString();
+                //Label3.Text = dt.Rows[0]["Email_id"].ToString();
 
             }
 
-        }
+            }
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -63,40 +71,38 @@ namespace RENTAL
         }
 
         protected void Button2_Click(object sender, EventArgs e)
-        {/*
-            string str = search.Text;
-            string s1 = str.ToLower();
-            
-
-
-            string op = "";
-            SqlDataReader dr;
-            string con1 = ConfigurationManager.ConnectionStrings["search"].ConnectionString;
-            SqlConnection con2 = new SqlConnection(con1);
-            con2.Open();
-            string query = "select top 1 PCategory from Products where PKeyword like '%'"+s1+"'%'";
-            SqlCommand cmd = new SqlCommand(query, con2);
-            dr= cmd.ExecuteReader();
-            
-            while (dr.Read())
-            {
-                op = op + dr.GetValue(5);
-            }
-            Response.Write(op);
-            con2.Close();*/
+        {
         }
 
-        protected void Button1_click(object sender, EventArgs e)
+      protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Cookies.Add(new HttpCookie("returnUrl", Request.Url.PathAndQuery));
             Response.Redirect("Login.aspx");
         }
 
-        protected void logout(object sender, EventArgs e)
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
-          // Session.Clear();
-            Session.Abandon();
+            Response.Redirect("wishlist.aspx");
         }
+
+
+
+
+
+
+
+
+
+        /*   protected void Logout_Click(object sender, EventArgs e)
+           {
+               Session.RemoveAll();
+               //Session.Clear();
+              // Session.Abandon();
+           }
+           */
+
+
+
 
         //public string GetCurrentPageName()
         //{
