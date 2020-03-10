@@ -16,15 +16,40 @@ namespace RENTAL
 
         DataTable dt1 = new DataTable();
         string constr = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
-        static String rating;
+        //static String rating;
+        static string city;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
+            city = "Mumbai";
             if (!IsPostBack)
             {//rating
                 DataTable dt1 = this.GetData("SELECT ISNULL(AVG(Rating), 0) AverageRating, COUNT(Rating) RatingCount FROM tblrating");
                 Rating1.CurrentRating = Convert.ToInt32(dt1.Rows[0]["AverageRating"]);
                 lbresult.Text = string.Format("{0} Users have rated. Average Rating {1}", dt1.Rows[0]["RatingCount"], dt1.Rows[0]["AverageRating"]);
+                
+                
+            }
+            else
+            {
+                bool checkBoxEnabled = false;
+                for (int i = 0; i < CheckBoxList1.Items.Count; i++)
+                {
+                    if (CheckBoxList1.Items[i].Selected)
+                    {
+                        checkBoxEnabled = true;
+                        break;
+                    }
+                }
+                if (checkBoxEnabled)
+                {
+                    checked_changed(sender, e);
+                }
+                else
+                {
+                    DataList1.Visible = true;
+                    DataList1.DataBind();
+                }
             }
 
             if (Session["useremail1"] == null)
@@ -57,6 +82,7 @@ namespace RENTAL
             }
 
         }
+        
         //rating
         private DataTable GetData(string query)
         {
@@ -103,8 +129,6 @@ namespace RENTAL
         protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
         {
 
-
-
             if (e.CommandName == "id")
             {
                 string str = price.Text;
@@ -126,40 +150,73 @@ namespace RENTAL
             if (ImageButton2.CommandName == "addtocart")
             {
 
-                ImageButton2.PostBackUrl = ("AddtoCart.aspx?id=" + e.CommandArgument.ToString() + "&price=" + Session["price"]);
+               Response.Redirect("AddtoCart.aspx?id=" + e.CommandArgument.ToString() + "&price=" + Session["price"]);
 
 
             }
 
             // Label lb = e.Item.FindControl("Label4") as Label;
             
-        }
+         }
 
         protected void ShowPopup(object sender, EventArgs e)
             {
             //code for modal pop up
                 Button btn = (Button)sender;
-                string info = btn.CommandArgument;
+                string prodctId = btn.CommandArgument;
             
 
-            Session["getdata"] = info;
+            Session["productId"] = prodctId;
            // Session["getdata"] = e.CommandArgument.ToString();
             String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
             SqlConnection con = new SqlConnection(mycon);
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Products where PId='" + Session["getdata"] + "'", con);
+            SqlCommand cmd = new SqlCommand("select * from Products where PId='" + prodctId + "'", con);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             sda.Fill(ds);
             namep.Text = ds.Tables[0].Rows[0]["PName"].ToString();
             price.Text = ds.Tables[0].Rows[0]["PPrice"].ToString();
            pimage.ImageUrl = ds.Tables[0].Rows[0]["PImage"].ToString();
+            
             //pimage.ImageUrl = ds.Tables[0].Rows[0]["PImage"].ToString();
            // Label1.Text = Label1.Text;
             Session["getdata"] = ds;
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+            Session["price"] = price.Text;
+            int productQuan=0;
+            int psold=0;
+
+            String myquery = "select * from ProductRef where PId='" + prodctId + "'";
+            cmd = new SqlCommand();
+            cmd.CommandText = myquery;
+            cmd.Connection = con;
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            ds = new DataSet();
+            da.Fill(ds);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+
+                productQuan = Convert.ToInt32(ds.Tables[0].Rows[0]["PQuantity"].ToString());
+
+                psold = Convert.ToInt16(ds.Tables[0].Rows[0]["SoldOut"].ToString());
 
             }
+            if (productQuan == psold)
+            {
+                Label15.Text = "Sorry for the inconvience.The product you requested is Out of Stock.";
+                ImageButton2.Enabled = false;
+            }
+            else
+            {
+                Label15.Visible = false;
+                ImageButton2.Enabled = true;
+
+            }
+
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+            
+        }
         protected void OnSelectedIndexChanged(object sender, EventArgs e)
         {
            
@@ -220,6 +277,12 @@ namespace RENTAL
         //checkchanged datalist
         protected void checked_changed(object sender, EventArgs e)
         {
+            
+            DropDownList drp = (DropDownList)this.Master.FindControl("ddl");
+            if (drp.SelectedValue != null)
+            {
+                city = drp.SelectedValue.ToString();
+            }            
             string chkbox = "";
             for (int i = 0; i < CheckBoxList1.Items.Count; i++)
             {
@@ -239,8 +302,21 @@ namespace RENTAL
 
                     String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
                     SqlConnection con = new SqlConnection(mycon);
-                    string query = "select * from Products where PCategory in(" + Label2.Text + ")";
-                    SqlCommand cmd = new SqlCommand(query, con);
+                    SqlCommand cmd = new SqlCommand();
+                   // if (drp.SelectedIndex != 0)
+                    //{
+                        //city = drp.SelectedValue.ToString();
+                    //}
+                    string cityNameQuery = "select CityId from City where CityName='" + city + "'";
+                    cmd.CommandText = cityNameQuery;
+                    cmd.Connection = con;
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+                    int cityId = Convert.ToInt32(ds.Tables[0].Rows[0]["CityId"]);
+
+                    string query = "select * from Products p, ProductRef r where p.PCategory in (" + Label2.Text + ") and p.PId=r.PId and r.CityId='"+cityId+"'";
+                    cmd = new SqlCommand(query, con);
                     con.Open();
                     SqlDataAdapter sda = new SqlDataAdapter(cmd);
 
@@ -260,6 +336,7 @@ namespace RENTAL
                else if (chkbox=="")
                 {
                     DataList1.Visible = true;
+                    DataList1.DataBind();
                     DataList2.Visible = false;
                 }
 
@@ -286,39 +363,96 @@ namespace RENTAL
 
         protected void DataList1_ItemDataBound(object sender, DataListItemEventArgs e)
         {
-            //Label lb = e.Item.FindControl("Label6") as Label;
+            DropDownList drp = (DropDownList)this.Master.FindControl("ddl");
+            if (drp.SelectedValue != null)
+            {
+                city = drp.SelectedValue.ToString();
+            }
             ImageButton btn = e.Item.FindControl("ImageButton1") as ImageButton;
             Label lb1 = e.Item.FindControl("id") as Label;
             
             String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
-            String myquery = "select * from Products where PId='" + lb1.Text + "'";
             SqlConnection con = new SqlConnection(mycon);
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = myquery;
+
+      
+            string cityNameQuery = "select CityId from City where CityName='" + city + "'";
+            cmd.CommandText = cityNameQuery;
             cmd.Connection = con;
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);
-            int stockdata=0 ;
-            int soldout=0;
+            int cityId = Convert.ToInt32(ds.Tables[0].Rows[0]["CityId"]);
+
+
+
+            String myquery = "select * from ProductRef where PId='" + lb1.Text + "' and CityId='" + cityId + "'";
+
+            cmd.CommandText = myquery;
+            da = new SqlDataAdapter(cmd);
+            ds = new DataSet();
+
+            da.Fill(ds);
+
+
+
+
+            int stockdata = 0;
+            int soldout = 0;
             if (ds.Tables[0].Rows.Count > 0)
             {
-                stockdata=Convert.ToInt32(ds.Tables[0].Rows[0]["PQty"]);
-                soldout = Convert.ToInt32(ds.Tables[0].Rows[0]["soldout"]);
+                stockdata = Convert.ToInt32(ds.Tables[0].Rows[0]["PQuantity"]);
+                soldout = Convert.ToInt32(ds.Tables[0].Rows[0]["SoldOut"]);
             }
             con.Close();
 
             if (stockdata == soldout)
             {
                 //lb.Text = "Out of Stock";
-               btn.Visible= true;
-               btn.ImageUrl = "images/soldout.jpg";
-
+                btn.Visible = true;
+                btn.ImageUrl = "images/soldout.jpg";
             }
         }
 
-        
+        protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+        {
+
+            string s = Session["productId"].ToString();
+            string selectedval;
+            if (ddl.SelectedValue != null)
+            {
+                selectedval = ddl.SelectedValue.ToString();
+            }
+            else
+            {
+                selectedval = "24";
+            }
+
+               
+                
+            HttpCookie c = new HttpCookie("selection");
+                c.Value = selectedval;
+                Response.Cookies.Add(c);
+            //quantity
+            string pquantity;
+            if (DropDownList1.SelectedValue != null)
+            {
+                pquantity = DropDownList1.SelectedValue.ToString();
+            }
+            else
+            {
+                pquantity = "1";
+            }
+                
+                HttpCookie c1 = new HttpCookie("quantity");
+            c1.Value = pquantity;
+                Response.Cookies.Add(c1);
+
+           
+
+            
+            Response.Redirect("AddtoCart.aspx?id="+s+"&price="+Session["price"]);
+              }
     }
 
 }

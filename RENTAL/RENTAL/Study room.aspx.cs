@@ -11,8 +11,11 @@ namespace RENTAL
 {
     public partial class Study_room : System.Web.UI.Page
     {
+        static string city;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            city = "Mumbai";
             //crating session for addtocart
             DataTable dt = new DataTable();
             dt = (DataTable)Session["buyitems"];
@@ -25,6 +28,58 @@ namespace RENTAL
             {
                 Label3.Text = "0";
 
+            }
+        }
+        protected void DataList1_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            DropDownList drp = (DropDownList)this.Master.FindControl("ddl");
+            if (drp.SelectedValue != null)
+            {
+                city = drp.SelectedValue.ToString();
+            }
+            ImageButton btn = e.Item.FindControl("ImageButton1") as ImageButton;
+            Label lb1 = e.Item.FindControl("id") as Label;
+
+            String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+            SqlConnection con = new SqlConnection(mycon);
+            SqlCommand cmd = new SqlCommand();
+
+
+            string cityNameQuery = "select CityId from City where CityName='" + city + "'";
+            cmd.CommandText = cityNameQuery;
+            cmd.Connection = con;
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            int cityId = Convert.ToInt32(ds.Tables[0].Rows[0]["CityId"]);
+
+
+
+            String myquery = "select * from ProductRef where PId='" + lb1.Text + "' and CityId='" + cityId + "'";
+
+            cmd.CommandText = myquery;
+            da = new SqlDataAdapter(cmd);
+            ds = new DataSet();
+
+            da.Fill(ds);
+
+
+
+
+            int stockdata = 0;
+            int soldout = 0;
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                stockdata = Convert.ToInt32(ds.Tables[0].Rows[0]["PQuantity"]);
+                soldout = Convert.ToInt32(ds.Tables[0].Rows[0]["SoldOut"]);
+            }
+            con.Close();
+
+            if (stockdata == soldout)
+            {
+                //lb.Text = "Out of Stock";
+                btn.Visible = true;
+                btn.ImageUrl = "images/soldout.jpg";
             }
         }
         protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
@@ -142,8 +197,81 @@ namespace RENTAL
             Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
         }
+        //checkchanged datalist
+        protected void checked_changed(object sender, EventArgs e)
+        {
 
-       
+            DropDownList drp = (DropDownList)this.Master.FindControl("ddl");
+            if (drp.SelectedValue != null)
+            {
+                city = drp.SelectedValue.ToString();
+            }
+            string chkbox = "";
+            for (int i = 0; i < CheckBoxList1.Items.Count; i++)
+            {
+                if (CheckBoxList1.Items[i].Selected)
+                {
+                    if (chkbox == "")
+                    {
+                        chkbox = "'" + CheckBoxList1.Items[i].Text + "'";
+
+                    }
+                    else
+                    {
+                        chkbox += "," + "'" + CheckBoxList1.Items[i].Text + "'";
+                    }
+                    Label2.Visible = true;
+                    Label2.Text = chkbox;
+
+                    String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+                    SqlConnection con = new SqlConnection(mycon);
+                    SqlCommand cmd = new SqlCommand();
+                    // if (drp.SelectedIndex != 0)
+                    //{
+                    //city = drp.SelectedValue.ToString();
+                    //}
+                    string cityNameQuery = "select CityId from City where CityName='" + city + "'";
+                    cmd.CommandText = cityNameQuery;
+                    cmd.Connection = con;
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+                    int cityId = Convert.ToInt32(ds.Tables[0].Rows[0]["CityId"]);
+
+                    string query = "select * from Products p, ProductRef r where p.PCategory in (" + Label2.Text + ") and p.PId=r.PId and r.CityId='" + cityId + "'";
+                    cmd = new SqlCommand(query, con);
+                    con.Open();
+                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+                    DataList1.Visible = false;
+                    DataList2.Visible = true;
+                    DataList2.DataSource = dt;
+                    DataList2.DataBind();
+                    //  DataList1.DataSource = dt;
+                    //DataList1.DataBind();
+
+                    con.Close();
+
+                }
+
+                else if (chkbox == "")
+                {
+                    DataList1.Visible = true;
+                    DataList1.DataBind();
+                    DataList2.Visible = false;
+                }
+
+            }
+
+
+        }
+
+
+
+
+
 
     }
 }

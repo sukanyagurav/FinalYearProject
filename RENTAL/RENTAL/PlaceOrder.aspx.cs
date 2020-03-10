@@ -11,7 +11,8 @@ namespace RENTAL
 {
     public partial class PlaceOrder : System.Web.UI.Page
     {
-       
+        static Boolean orderconfirm;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -211,9 +212,140 @@ namespace RENTAL
                 s.Close();
 
             }
-             saveaddress();
+            DataTable dt1;
+            dt1 = (DataTable)Session["Buyitems"];
+            int PId;
+            int quantity;
+
+            if (Session["useremail"] != null)
+            {
+                foreach (DataRow row in dt1.Rows)
+                {
+                    PId = Convert.ToInt16(row["PId"].ToString());
+                    quantity = Convert.ToInt16(row["quantity1"].ToString());
+                    checkavailability(PId, quantity);
+                    if (orderconfirm == false)
+                    {
+                        break;
+                    }
+
+
+                }
+                if (orderconfirm == true)
+                {
+                    foreach (DataRow row in dt1.Rows)
+                    {
+                        PId = Convert.ToInt16(row["PId"].ToString());
+                        quantity = Convert.ToInt16(row["quantity1"].ToString());
+                        //Response.Write(PId);
+                        updatestock(PId, quantity);
+                    }
+                
+                }
+
+            }
+            else
+            {
+               
+            }
+            saveaddress();
                Response.Redirect("PlaceOrderSuccessfully.aspx?orderid="+Label3.Text.ToString());
         }
+
+        private void checkavailability(int PId, int numbersold)
+        {
+            // check the availability
+            int productQuan = 0;
+            int psold = 0;
+            String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+            String myquery = "select * from ProductRef where PId='" + PId + "'";
+            SqlConnection con = new SqlConnection(mycon);
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = myquery;
+            cmd.Connection = con;
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+
+                productQuan = Convert.ToInt32(ds.Tables[0].Rows[0]["PQuantity"].ToString());
+
+                psold = Convert.ToInt16(ds.Tables[0].Rows[0]["SoldOut"].ToString());
+
+            }
+            con.Close();
+
+            if (productQuan != psold && psold >= numbersold)
+            {
+                orderconfirm = true;
+            }
+            else
+            {
+                orderconfirm = false;
+                if (psold < numbersold)
+                {
+                    Label15.Text = "Sorry for the inconvience.Requested quantity is unavailable.Please update the quantity for selected item.";
+                }
+                else
+                {
+                    Label15.Text = " Sorry for the inconvience.The product you requested is Out of Stock.";
+                }
+            }
+        }
+        private void updatestock(int PId, int numbersold)
+        {//update the stock
+            int pquantity = 0;
+            int psold = 0;
+            String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+
+            String myquery = "select * from ProductRef where PId='" + PId + "'";
+            SqlConnection con = new SqlConnection(mycon);
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = myquery;
+            cmd.Connection = con;
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+
+                pquantity = Convert.ToInt16(ds.Tables[0].Rows[0]["PQuantity"].ToString());
+                psold = Convert.ToInt16(ds.Tables[0].Rows[0]["SoldOut"].ToString());
+
+            }
+            con.Close();
+            String mycon1 = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+            int newsold;
+            if (pquantity != psold && psold >= numbersold)
+            {
+                newsold = psold + numbersold;
+                String updatedata = "update Products set SoldOut='" + newsold + "'where PId='" + PId + "'";
+                SqlConnection con1 = new SqlConnection(mycon1);
+                con1.Open();
+                SqlCommand cmd1 = new SqlCommand();
+                cmd1.CommandText = updatedata;
+                cmd1.Connection = con1;
+                cmd1.ExecuteNonQuery();
+
+            }
+            else
+            {
+                if (psold < numbersold)
+                {
+                    Label15.Text = "Sorry for the inconvience.Requested quantity is unavailable.Please update the quantity for selected item.";
+                }
+                else
+                {
+                    Label15.Text = " Sorry for the inconvience.The product you requested is Out of Stock.";
+                }
+            }
+
+        }
+
+
 
 
     }

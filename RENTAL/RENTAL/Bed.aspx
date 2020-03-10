@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Bed.aspx.cs" Inherits="RENTAL.Bed" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Bed.aspx.cs" Inherits="RENTAL.Bed"  EnableEventValidation="false" ValidateRequest="false"%>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
     </asp:Content>
@@ -22,7 +22,7 @@
 
     <asp:LinkButton ID="LinkButton2" runat="server">View Cart</asp:LinkButton>
    
-    <div class="row">
+<div class="row">
       <div class="col-sm-4">
           <!--checkbox sort details division-->
           <h3>Sort By</h3>
@@ -34,19 +34,43 @@
           
           <!--close checkbox sort details division-->
       </div>
-<div class="col-sm-8">
-   
- <div class="datalist3">
-  <!--datalist 1-->
- <asp:DataList ID="DataList1" runat="server" DataKeyField="PId" DataSourceID="SqlDataSource1" RepeatColumns="3" RepeatDirection="Horizontal" CssClass="datalistinfo" OnItemCommand="DataList1_ItemCommand" Font-Bold="True" OnItemDataBound="DataList1_ItemDataBound">
-    <ItemTemplate>
-     
-    <div class="datalist">
+      <div class="col-sm-8">
+        
+          <asp:DataList ID="DataList1" runat="server" DataKeyField="PId" DataSourceID="SqlDataSource3" RepeatColumns="3" RepeatDirection="Horizontal" CssClass="datalistinfo" OnItemCommand="DataList1_ItemCommand" Font-Bold="True" OnItemDataBound="DataList1_ItemDataBound">
+              <ItemTemplate>
+         <div class="datalist">
    
            <div class="imagecss">
                     <asp:Label ID="id" runat="server" Text='<%# Eval("PId") %>' Visible="false" ></asp:Label>
               
-                <asp:Image ID ="image1" runat="server" ImageUrl ='<%# Eval("PImage") %>'   />
+                   <asp:Image ID ="image1" runat="server" ImageUrl ='<%# Eval("PImage") %>'    />
+              
+                   <asp:Button ID="btnShowPopup" runat="server" Text="Quickview" OnClick="ShowPopup" CommandName="id" CommandArgument='<%# Eval("PId") %>'  CssClass="quickview" />
+
+              
+            </div>
+                
+            <div class="nameprice">
+                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("PName") %>' CssClass="name" />
+                 <br />
+                <h3>Price :<span><asp:Label ID="Label5" runat="server" Text='<%# Eval("PPrice") %>' Cssclass="price"/></span>/Mon</h3>
+             </div> 
+  
+        <asp:ImageButton ID="ImageButton1" runat="server" Visible="false" />
+        </div>
+               
+</ItemTemplate>
+</asp:DataList>
+              
+              
+          <asp:DataList ID="DataList2" runat="server" RepeatColumns="3" RepeatDirection="Horizontal" CssClass="datalistinfo" OnItemCommand="DataList1_ItemCommand" Font-Bold="True" OnItemDataBound="DataList1_ItemDataBound">
+                <ItemTemplate>
+               <div class="datalist">
+   
+           <div class="imagecss">
+                    <asp:Label ID="id" runat="server" Text='<%# Eval("PId") %>' Visible="false" ></asp:Label>
+              
+                     <asp:Image ID ="image1" runat="server" ImageUrl ='<%# Eval("PImage") %>'    />
               
                    <asp:Button ID="btnShowPopup" runat="server" Text="Quickview" OnClick="ShowPopup"  CommandName="id" CommandArgument='<%# Eval("PId") %>'  CssClass="quickview" />
 
@@ -54,43 +78,22 @@
             </div>
                 
             <div class="nameprice">
-                    <asp:Label ID="PNameLabel" runat="server" Text='<%# Eval("PName") %>' CssClass="name" />
+                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("PName") %>' CssClass="name" />
                  <br />
-                <h3>Price :<span><asp:Label ID="PPriceLabel" runat="server" Text='<%# Eval("PPrice") %>' Cssclass="price"/></span>/Mon</h3>
+                <h3>Price :<span><asp:Label ID="Label5" runat="server" Text='<%# Eval("PPrice") %>' Cssclass="price"/></span>/Mon</h3>
              </div> 
   
         <asp:ImageButton ID="ImageButton1" runat="server" Visible="false" />
-
-         
         </div>
-        
-     </ItemTemplate>
-    </asp:DataList>
-        <!--close datalist 1-->
- </div>
-    <!--start the datalist 2 for checkbox-->
- <asp:DataList ID="DataList2" runat="server" Visible="false" RepeatColumns="3" RepeatDirection="Horizontal" CssClass="datalistinfo" OnItemCommand="DataList1_ItemCommand" Font-Bold="True" OnItemDataBound="DataList1_ItemDataBound">
-   <ItemTemplate>
-   <asp:Label ID="id" runat="server" Text='<%# Eval("PId") %>' Visible="false" ></asp:Label>
-         
-   <div class="datalist">
-           <div class="imagecss">
-                <asp:Image ID ="image1" runat="server" ImageUrl ='<%# Eval("PImage") %>'   />
-              
-                   <asp:Button ID="btnShowPopup" runat="server" Text="Quickview" OnClick="ShowPopup"  CommandName="id" CommandArgument='<%# Eval("PId") %>'  CssClass="quickview" />
-            </div>
-            
-            <div class="nameprice">
-                    <asp:Label ID="PNameLabel" runat="server" Text='<%# Eval("PName") %>' CssClass="name" />
-                     <br />
-                    <h3>Price :<span><asp:Label ID="PPriceLabel" runat="server" Text='<%# Eval("PPrice") %>' Cssclass="price"/></span>/Mon</h3>
-           </div>    
+</ItemTemplate>
+          </asp:DataList>
+         </div>
     </div>
 
-</ItemTemplate>
-</asp:DataList>
-       <!--end the datalist 2 for checkbox-->
-    
+
+
+
+        
 
  <!-- Modal Popup -->
 
@@ -114,11 +117,14 @@
                         <asp:Image ID="pimage" runat="server" Width="800px" Height="500px" class="imagezoom" />
                         </div>                                           
                     </div>
-  <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                  <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                      <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                          <ContentTemplate>
+
                  <div class="col-md-6 product_content">
                        <h2>
+                           <asp:Label ID="id" runat="server" Text='<%# Eval("PId") %>' Visible="false" ></asp:Label>
+              
                       <asp:Label ID="namep" runat="server" ></asp:Label>
                       </h2>  
                    
@@ -144,8 +150,7 @@
                                     <asp:ListItem Text="3" Value="3"></asp:ListItem>
                                     <asp:ListItem Text="4" Value="4"></asp:ListItem>
                                    </asp:DropDownList><br />
-                              <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/images/addtocart.jpg"  CommandArgument='<%# Eval("PId") %>' CommandName="addtocart" Width="165px" Height="37px" />
-                            
+                              
                             </div>      
                     </div>
                      </ContentTemplate>
@@ -154,7 +159,8 @@
                      </Triggers>
                      </asp:UpdatePanel>
                 </div> 
-                
+                <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/images/addtocart.jpg"  Width="165px" Height="37px" OnClick="ImageButton2_Click"  />
+                <asp:Label ID="Label15" runat="server" Text="Label"></asp:Label>        
                 <asp:Rating ID="Rating1" runat="server" ValidationGroup="pop" StarCssClass="Star" WaitingStarCssClass="WaitingStar" EmptyStarCssClass="Star" FilledStarCssClass="FilledStar">
 
                 </asp:Rating>
@@ -164,7 +170,7 @@
         <br />
         <asp:TextBox runat="server" ID="txtreview" TextMode="MultiLine"></asp:TextBox>
         <br />
-        <asp:Button runat="server" Text="Submit Review" ID="btnsubmit" OnClick="btnsubmit_Click" CommandArgument='<%# Eval("PId") %>' CommandName="ratingproduct" ValidationGroup="pop" />
+        <asp:Button runat="server" Text="Submit Review" ID="btnsubmit" CommandArgument='<%# Eval("PId") %>' CommandName="ratingproduct" ValidationGroup="pop" />
 
                 <asp:Label ID="Label1" runat="server"></asp:Label>
 </div>    
@@ -173,9 +179,7 @@
 
 
             
-      </div>
-  </div>
-
+     
 
  <style type="text/css">
         .Star {
@@ -212,11 +216,13 @@
 </script> 
    
     
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:FURNITUREConnectionString4 %>" SelectCommand="GetProductDetails" SelectCommandType="StoredProcedure">
-        <SelectParameters>
-            <asp:SessionParameter Name="CityName" SessionField="CityName" Type="String" />
-            <asp:Parameter DefaultValue="bedroom" Name="PCategory" Type="String" />
-        </SelectParameters>
-    </asp:SqlDataSource> 
 
+
+    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString1 %>" SelectCommand="GetProductDetails" SelectCommandType="StoredProcedure">
+                  <SelectParameters>
+                      <asp:SessionParameter Name="CityName" SessionField="CityName" Type="String" />
+                      <asp:Parameter DefaultValue="bedroom" Name="PCategory" Type="String" />
+                  </SelectParameters>
+              </asp:SqlDataSource>
+          
 </asp:Content>

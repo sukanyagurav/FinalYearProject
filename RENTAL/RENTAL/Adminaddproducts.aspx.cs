@@ -134,11 +134,32 @@ namespace RENTAL
 
             if (imagesaved == true)
             {
-                string query = "insert into Products(PName,PPrice,PQty,PKeyword,PCategory,PImage,RefundableDeposit) values('" + TextBox1.Text + "','" + TextBox3.Text + "','" + TextBox2.Text + "','" + TextBox5.Text + "','" + ddl.SelectedValue.ToLower().ToString() + "','" + imagelink + "','" + TextBox4.Text + "') ";
+                string query = "insert into Products1(PName,PPrice,PKeyword,PCategory,PImage,RefundableDeposit) values('" + TextBox1.Text + "','" + TextBox3.Text + "','" + TextBox5.Text + "','" + ddl.SelectedValue.ToLower().ToString() + "','" + imagelink + "','" + TextBox4.Text + "') ";
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = query;
                 cmd.Connection = con;
                 cmd.ExecuteNonQuery();
+
+                string pidQuery = "select PId from Products1 where PName='"+TextBox1.Text+"'";
+                cmd.CommandText = pidQuery;
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                sda.Fill(ds);
+                int pId = Convert.ToInt32(ds.Tables[0].Rows[0]["PId"]);
+
+                string cityNameQuery = "select CityId from City where CityName='" + DropDownList1.SelectedValue.ToString()+ "'";
+                cmd.CommandText = cityNameQuery;
+                sda = new SqlDataAdapter(cmd);
+                ds = new DataSet();
+                sda.Fill(ds);
+                int cityId = Convert.ToInt32(ds.Tables[0].Rows[0]["CityId"]);
+
+                string query1 = "insert into ProductRef1(PId,CityId,PQty,SoldOut) values('" +pId + "','" + cityId + "','" + TextBox2.Text + "','" + 0 + "') ";
+                SqlCommand cmd1 = new SqlCommand();
+                cmd1.CommandText = query1;
+                cmd1.Connection = con;
+                cmd1.ExecuteNonQuery();
+
                 Label1.Text = "Product Has Been Successfully Saved";
             }
         }

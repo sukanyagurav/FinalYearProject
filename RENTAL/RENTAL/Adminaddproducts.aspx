@@ -99,7 +99,7 @@
                                       </div>
                                 </div>
                            </div>
-                           <div class="col-md-6">
+                           <div class="col-md-3">
                                <label>Product Category</label>
                                 <div class="form-group">
                                     <div class="input-group">
@@ -112,6 +112,19 @@
                                                 <asp:ListItem>OfficeFurniture</asp:ListItem>
                                                    <asp:ListItem>Appliance</asp:ListItem>
                                           </asp:DropDownList>
+
+                                    </div>
+                                    </div>
+
+                           </div>
+                           <div class="col-md-3">
+                               <label>Chooose City</label>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="CityName" DataValueField="CityName"></asp:DropDownList>
+
+                                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString1 %>" SelectCommand="SELECT [CityName] FROM [City]"></asp:SqlDataSource>
+
                                     </div>
                                     </div>
 
@@ -130,7 +143,7 @@
                             </div>
                         </div>
                </div>
-               <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+               <asp:Label ID="Label1" runat="server"></asp:Label>
            </div>
             <div class="col-md-8">
                 <div class="card">

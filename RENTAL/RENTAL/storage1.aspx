@@ -13,7 +13,6 @@
     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AddtoCart.aspx">Show cart</asp:HyperLink>
   
     
-    
  <div class="row">
       <div class="col-sm-4">
           <!--checkbox sort details division-->
@@ -26,65 +25,63 @@
           
           <!--close checkbox sort details division-->
       </div>
-     <div class="col-sm-8">
-   
- <div class="datalist3">
-  <!--datalist 1-->
-
-   
-    <asp:DataList ID="DataList1" runat="server" DataKeyField="PId" DataSourceID="SqlDataSource1" RepeatColumns="3" OnItemDataBound="DataList1_ItemDataBound" RepeatDirection="Horizontal" OnItemCommand="DataList1_ItemCommand" >
-        <ItemTemplate>
-          
+      <div class="col-sm-8">
+        
+          <asp:DataList ID="DataList1" runat="server" DataKeyField="PId" DataSourceID="SqlDataSource3" RepeatColumns="3" RepeatDirection="Horizontal" CssClass="datalistinfo" OnItemCommand="DataList1_ItemCommand" Font-Bold="True" OnItemDataBound="DataList1_ItemDataBound">
+              <ItemTemplate>
          <div class="datalist">
-            <div class="imagecss">
-            
- <asp:Label ID="id" runat="server" Text='<%# Eval("PId") %>' Visible="false" ></asp:Label>
-                    
-            <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("PImage") %>' />
-              
-                    <asp:Button ID="btnShowPopup" runat="server" Text="Quickview" OnClick="ShowPopup"  CommandName="id" CommandArgument='<%# Eval("PId") %>'  CssClass="quickview" />
-
-                </div>
-
-                <br />
-               <div class="nameprice">
-            <asp:Label ID="PNameLabel" runat="server" Text='<%# Eval("PName") %>' CssClass="name"/>
-            <br />
-           
-           <h3>Price:</h3> <asp:Label ID="PPriceLabel" runat="server" Text='<%# Eval("PPrice") %>'  CssClass="price"/><span>/Mon</span>
-           </div>
-       </div>   
-           <asp:ImageButton ID="ImageButton1" runat="server" Visible="false" />
-
-         
-        </ItemTemplate>
-    </asp:DataList>
-</div>   
-</div>
-       <!--start the datalist 2 for checkbox-->
- <asp:DataList ID="DataList2" runat="server" Visible="false" RepeatColumns="3" OnItemDataBound="DataList1_ItemDataBound" RepeatDirection="Horizontal" CssClass="datalistinfo" OnItemCommand="DataList1_ItemCommand" Font-Bold="True">
-   <ItemTemplate>
-   <asp:Label ID="id" runat="server" Text='<%# Eval("PId") %>' Visible="false" ></asp:Label>
-         
-   <div class="datalist">
+   
            <div class="imagecss">
-                <asp:Image ID ="image1" runat="server" ImageUrl ='<%# Eval("PImage") %>'   />
+                    <asp:Label ID="id" runat="server" Text='<%# Eval("PId") %>' Visible="false" ></asp:Label>
+              
+                   <asp:Image ID ="image1" runat="server" ImageUrl ='<%# Eval("PImage") %>'    />
               
                    <asp:Button ID="btnShowPopup" runat="server" Text="Quickview" OnClick="ShowPopup"  CommandName="id" CommandArgument='<%# Eval("PId") %>'  CssClass="quickview" />
-            </div>
-            
-            <div class="nameprice">
-                    <asp:Label ID="PNameLabel" runat="server" Text='<%# Eval("PName") %>' CssClass="name" />
-                     <br />
-                    <h3>Price :<span><asp:Label ID="PPriceLabel" runat="server" Text='<%# Eval("PPrice") %>' Cssclass="price"/></span>/Mon</h3>
-           </div>    
-    </div>
 
+              
+            </div>
+                
+            <div class="nameprice">
+                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("PName") %>' CssClass="name" />
+                 <br />
+                <h3>Price :<span><asp:Label ID="Label5" runat="server" Text='<%# Eval("PPrice") %>' Cssclass="price"/></span>/Mon</h3>
+             </div> 
+  
+        <asp:ImageButton ID="ImageButton1" runat="server" Visible="false" />
+        </div>
+               
 </ItemTemplate>
 </asp:DataList>
-       <!--end the datalist 2 for checkbox-->
-    
+              
+              
+          <asp:DataList ID="DataList2" runat="server" RepeatColumns="3" RepeatDirection="Horizontal" CssClass="datalistinfo" OnItemCommand="DataList1_ItemCommand" Font-Bold="True" OnItemDataBound="DataList1_ItemDataBound">
+                <ItemTemplate>
+               <div class="datalist">
+   
+           <div class="imagecss">
+                    <asp:Label ID="id" runat="server" Text='<%# Eval("PId") %>' Visible="false" ></asp:Label>
+              
+                     <asp:Image ID ="image1" runat="server" ImageUrl ='<%# Eval("PImage") %>'    />
+              
+                   <asp:Button ID="btnShowPopup" runat="server" Text="Quickview" OnClick="ShowPopup"  CommandName="id" CommandArgument='<%# Eval("PId") %>'  CssClass="quickview" />
 
+              
+            </div>
+                
+            <div class="nameprice">
+                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("PName") %>' CssClass="name" />
+                 <br />
+                <h3>Price :<span><asp:Label ID="Label5" runat="server" Text='<%# Eval("PPrice") %>' Cssclass="price"/></span>/Mon</h3>
+             </div> 
+  
+        <asp:ImageButton ID="ImageButton1" runat="server" Visible="false" />
+        </div>
+</ItemTemplate>
+          </asp:DataList>
+         </div>
+    </div>
+   
+ 
 
 
        <!-- Modal Popup -->
@@ -174,15 +171,14 @@
 
    
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:FURNITUREConnectionString4 %>" SelectCommand="GetProductDetails" SelectCommandType="StoredProcedure">
-        <SelectParameters>
-            <asp:SessionParameter DefaultValue="mumbai" Name="CityName" SessionField="CityName" Type="String" />
-            <asp:Parameter DefaultValue="storage" Name="PCategory" Type="String" />
-        </SelectParameters>
-    </asp:SqlDataSource>
-   
-
-
+  
+    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString1 %>" SelectCommand="GetProductDetails" SelectCommandType="StoredProcedure">
+                  <SelectParameters>
+                      <asp:SessionParameter Name="CityName" SessionField="CityName" Type="String" />
+                      <asp:Parameter DefaultValue="storage" Name="PCategory" Type="String" />
+                  </SelectParameters>
+              </asp:SqlDataSource>
+          
    
 
 </asp:Content>

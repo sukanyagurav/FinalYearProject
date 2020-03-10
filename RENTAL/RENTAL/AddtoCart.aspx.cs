@@ -43,7 +43,7 @@ namespace RENTAL
                 dt.Columns.Add("totalprice");
                 dt.Columns.Add("PImage");
                 dt.Columns.Add("quantity1");
-                
+              
                 if (Request.QueryString["id"] != null)
                 {
                     if (Session["Buyitems"] == null)
@@ -51,12 +51,12 @@ namespace RENTAL
 
                         dr = dt.NewRow();
                         String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
-                        SqlConnection scon = new SqlConnection(mycon);
-                        String myquery = "select * from Products where PId=" + Request.QueryString["id"];
-
+                                   SqlConnection scon = new SqlConnection(mycon);
+                                  String myquery = "select * from Products where PId='" + Request.QueryString["id"] + "'";
+                        
                         SqlCommand cmd = new SqlCommand(myquery, scon);
-                        //cmd.CommandText = myquery;
-                        //cmd.Connection = scon;
+                        cmd.CommandText = myquery;
+                        cmd.Connection = scon;
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = cmd;
                         DataSet ds = new DataSet();
@@ -98,6 +98,7 @@ namespace RENTAL
                         String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
                         SqlConnection scon = new SqlConnection(mycon);
                         String myquery = "select * from Products where PId=" + Request.QueryString["id"];
+
                         SqlCommand cmd = new SqlCommand();
                         cmd.CommandText = myquery;
                         cmd.Connection = scon;
@@ -105,6 +106,8 @@ namespace RENTAL
                         da.SelectCommand = cmd;
                         DataSet ds = new DataSet();
                         da.Fill(ds);
+
+                        
                         dr["sno"] = sr + 1;
 
                         dr["PId"] = ds.Tables[0].Rows[0]["PId"].ToString();
@@ -151,7 +154,7 @@ namespace RENTAL
                 Label2.Text = GridView1.Rows.Count.ToString();
 
             }
-
+          
 
         }
 
@@ -374,17 +377,9 @@ namespace RENTAL
                         break;
                     }
 
-
                 }
                 if (orderconfirm == true)
                 {
-                    foreach (DataRow row in dt1.Rows)
-                    {
-                        PId = Convert.ToInt16(row["PId"].ToString());
-                        quantity = Convert.ToInt16(row["quantity1"].ToString());
-                        //Response.Write(PId);
-                        updatestock(PId, quantity);
-                    }
                     Response.Redirect("PlaceOrder.aspx");
                 }
 
@@ -420,10 +415,10 @@ namespace RENTAL
         private void checkavailability(int PId, int numbersold)
         {
             // check the availability
-            int pavailable = 0;
+            int productQuan = 0;
             int psold = 0;
             String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
-            String myquery = "select * from Products where PId='" + PId + "'";
+            String myquery = "select * from ProductRef where PId='" + PId + "'";
             SqlConnection con = new SqlConnection(mycon);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = myquery;
@@ -435,71 +430,32 @@ namespace RENTAL
             if (ds.Tables[0].Rows.Count > 0)
             {
 
-                pavailable = Convert.ToInt32(ds.Tables[0].Rows[0]["available"].ToString());
+                productQuan = Convert.ToInt32(ds.Tables[0].Rows[0]["PQuantity"].ToString());
 
-                psold = Convert.ToInt16(ds.Tables[0].Rows[0]["soldout"].ToString());
+                psold = Convert.ToInt16(ds.Tables[0].Rows[0]["SoldOut"].ToString());
 
             }
             con.Close();
 
-            if (pavailable >= numbersold)
+            if (productQuan != psold && (productQuan-psold)>=numbersold)
             {
                 orderconfirm = true;
             }
             else
             {
                 orderconfirm = false;
-                Label15.Text = " Quantity " + pavailable + " only Available. Order Could Not Be Placed";
-            }
+                if (productQuan == psold)
+                {
+                    Label15.Text = " Sorry for the inconvience.The product you requested is Out of Stock.";
+                    
+                }
+                else
+                {
+                   Label15.Text = "Sorry for the inconvience.Requested quantity is unavailable.Please update the quantity for selected item.";
+                }
+             }
         }
-        private void updatestock(int PId, int numbersold)
-        {
-            //update the stock
-            int pavailable = 0;
-            int psold = 0;
-            String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
-
-            String myquery = "select * from Products where PId='" + PId + "'";
-            SqlConnection con = new SqlConnection(mycon);
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = myquery;
-            cmd.Connection = con;
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-
-                pavailable = Convert.ToInt16(ds.Tables[0].Rows[0]["available"].ToString());
-                psold = Convert.ToInt16(ds.Tables[0].Rows[0]["soldout"].ToString());
-
-            }
-            con.Close();
-            String mycon1 = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
-            int newavailable;
-            int newsold;
-            if (pavailable >= numbersold)
-            {
-                newavailable = pavailable - numbersold;
-                newsold = psold + numbersold;
-                String updatedata = "update Products set available='" + newavailable + "', soldout='" + newsold + "'where PId='" + PId + "'";
-                SqlConnection con1 = new SqlConnection(mycon1);
-                con1.Open();
-                SqlCommand cmd1 = new SqlCommand();
-                cmd1.CommandText = updatedata;
-                cmd1.Connection = con1;
-                cmd1.ExecuteNonQuery();
-
-            }
-            else
-            {
-                Label15.Text = " Quantity " + pavailable + " only Available. Order Could Not Be Placed";
-
-            }
-
-
-        }
+       
 
     }
 }

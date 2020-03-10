@@ -55,4 +55,9 @@
     <br />
     <asp:Button ID="Button1" runat="server" Text="Check Out" OnClick="Button1_Click" />
 
+    <br />
+    <asp:Label ID="Label15" runat="server" Text="Label"></asp:Label>
+    <br />
+    <br />
+
 </asp:Content>
