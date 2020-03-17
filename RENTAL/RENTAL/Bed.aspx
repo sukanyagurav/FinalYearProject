@@ -54,7 +54,7 @@
                     <asp:Label ID="Label4" runat="server" Text='<%# Eval("PName") %>' CssClass="name" />
                  <br />
                 <h3>Price :<span><asp:Label ID="Label5" runat="server" Text='<%# Eval("PPrice") %>' Cssclass="price"/></span>/Mon</h3>
-             </div> 
+            </div> 
   
         <asp:ImageButton ID="ImageButton1" runat="server" Visible="false" />
         </div>
@@ -150,29 +150,37 @@
                                     <asp:ListItem Text="3" Value="3"></asp:ListItem>
                                     <asp:ListItem Text="4" Value="4"></asp:ListItem>
                                    </asp:DropDownList><br />
-                              
-                            </div>      
-                    </div>
+                               <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/images/addtocart.jpg"  Width="165px" Height="37px" OnClick="ImageButton2_Click"  />
+             <asp:Label ID="Label15" runat="server"></asp:Label>        
+                           <asp:Rating ID="Rating1" runat="server" StarCssClass="Star" WaitingStarCssClass="WaitingStar" EmptyStarCssClass="Star" FilledStarCssClass="FilledStar">
+
+                </asp:Rating>
+              
+            <asp:Label ID="lbresult" runat="server" Text=""></asp:Label>
+      <br />         
+                                       
+                                </div>      
+            
+                            </div>
                      </ContentTemplate>
                      <Triggers>
                      <asp:AsyncPostbackTrigger ControlId="ddl" EventName="SelectedIndexChanged" />
-                     </Triggers>
+                     
+  
+                         </Triggers>
                      </asp:UpdatePanel>
-                </div> 
-                <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/images/addtocart.jpg"  Width="165px" Height="37px" OnClick="ImageButton2_Click"  />
-                <asp:Label ID="Label15" runat="server" Text="Label"></asp:Label>        
-                <asp:Rating ID="Rating1" runat="server" ValidationGroup="pop" StarCssClass="Star" WaitingStarCssClass="WaitingStar" EmptyStarCssClass="Star" FilledStarCssClass="FilledStar">
-
-                </asp:Rating>
-
-       
-            <asp:Label ID="lbresult" runat="server" Text=""></asp:Label>
+               </div> 
         <br />
+                   <asp:Label ID="lbwishlist" runat="server" Text="Label"></asp:Label>
+                
+                <asp:ImageButton ID="wishlist" runat="server" Height="100px" Width="100px" OnClick="Wishlist_Click" ValidationGroup="pop" CausesValidation="False" />
+<br />      
         <asp:TextBox runat="server" ID="txtreview" TextMode="MultiLine"></asp:TextBox>
         <br />
-        <asp:Button runat="server" Text="Submit Review" ID="btnsubmit" CommandArgument='<%# Eval("PId") %>' CommandName="ratingproduct" ValidationGroup="pop" />
-
-                <asp:Label ID="Label1" runat="server"></asp:Label>
+        <asp:Button runat="server" Text="Submit Review" ID="btnsubmit" OnClick="btnsubmit_Click" ValidationGroup="pop" CausesValidation="False" />
+                <asp:Label ID="Label1" runat="server" ></asp:Label>      
+             
+                         
 </div>    
     </div>
  </div>

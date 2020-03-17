@@ -16,6 +16,17 @@ namespace RENTAL
         static string imagelink;
         protected void Page_Load(object sender, EventArgs e)
         {
+            SqlConnection con = new SqlConnection(strcon);
+            SqlCommand cmd = new SqlCommand();
+            string str = "select p.PId,p.PName,p.PPrice,p.PCategory,p.RefundableDeposit,c.CityName,r.PQuantity,r.SoldOut from Products p,City c, ProductRef r where c.CityId = r.CityId and p.PId = r.PId order by 1";
+            cmd.CommandText = str;
+            cmd.Connection= con;
+            SqlDataAdapter sda = new SqlDataAdapter();
+            sda.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
             
         }
 
@@ -314,6 +325,32 @@ namespace RENTAL
                 cmd.ExecuteNonQuery();
                 Label1.Text = "Product Has Been Successfully Updated";
             }
+        }
+
+        protected void btnsearch_Click(object sender, EventArgs e)
+        {
+            string mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString();
+            SqlConnection con = new SqlConnection(mycon);
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            string query = "select Distinct p.PId,p.PName,p.PPrice,p.PCategory,p.RefundableDeposit,c.CityName,r.PQuantity,r.SoldOut from Products p,City c,ProductRef r where p.PName like('%"+txtsearch.Text+ "%') or  c.CityName like('%" + txtsearch.Text + "%') or p.PCategory like('%" + txtsearch.Text + "%')";
+            cmd.CommandText = query;
+            cmd.Connection = con;
+            SqlDataAdapter sda = new SqlDataAdapter();
+            sda.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+
+        }
+
+        
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            GridView1.DataBind();
         }
     }
 }

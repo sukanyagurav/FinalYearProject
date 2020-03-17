@@ -105,7 +105,7 @@ namespace RENTAL
                           "Thanks for showing interest and registring in" +
                           " Please <a href='" + ActivationUrl + "'>click here to activate</a>  your account and enjoy our services. \nThanks!";
                     msg.IsBodyHtml = true;
-                    smtp.Credentials = new NetworkCredential("sgurav2067@gmail.com", "w@yw@rd@2067");
+                    smtp.Credentials = new NetworkCredential("sgurav2067@gmail.com", "riverd@le$2067");
                     smtp.Port = 587;
                     smtp.Host = "smtp.gmail.com";
                     smtp.EnableSsl = true;

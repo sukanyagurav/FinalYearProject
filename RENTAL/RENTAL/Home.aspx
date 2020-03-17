@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="RENTAL.Home" %>
+﻿    `   <%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="RENTAL.Home" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -120,5 +120,47 @@
 
 
 </div>
+    <hr />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card">
+                <asp:Image ID="Image1" runat="server" ImageUrl="image/study.jpg" />
+                <div class="card-body">
+                    <div class="card-title">HAVE EVERYTHING, WITHOUT BUYING</div>
+                    <p class="card-text">
+
+                       Bed or sofa? It’s not a choice anymore. With our wallet-friendly packages, you can have that perfect home at a fraction of the cost and effort.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+             <div class="card">
+                <asp:Image ID="Image2" runat="server" ImageUrl="~/bedroom/belle_single_bed.jpg" />
+                <div class="card-body">
+                    <div class="card-title">CHANGE, AS YOUR NEEDS EVOLVE</div>
+                    <p class="card-text">
+
+                      
+Upgrade as you evolve. Relocate for free. Pause your subscription at will. Things you can never do if you buy furniture.     </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+             <div class="card">
+                <asp:Image ID="Image3" runat="server" ImageUrl="~/bedroom/belle_single_bed.jpg" />
+                <div class="card-body">
+                    <div class="card-title">HAVE EVERYTHING, WITHOUT BUYING</div>
+                    <p class="card-text">
+
+                       Bed or sofa? It’s not a choice anymore. With our wallet-friendly packages, you can have that perfect home at a fraction of the cost and effort.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </asp:Content>
 

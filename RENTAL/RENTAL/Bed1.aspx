@@ -14,6 +14,7 @@
 <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css'
     media="screen" />
     <hr />
+    <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
 
     <asp:Label ID="Label7" runat="server" Text="Label"></asp:Label>
     <asp:Label ID="Label3" runat="server" Font-Bold="True"></asp:Label>  

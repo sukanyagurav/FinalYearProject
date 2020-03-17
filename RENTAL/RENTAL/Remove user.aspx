@@ -113,7 +113,7 @@
                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString1 %>" SelectCommand="SELECT * FROM [Users]"></asp:SqlDataSource>
                             <div class="col">
 
-                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="UserId" DataSourceID="SqlDataSource1">
+                                <asp:GridView ID="GridView1" runat="server" class="table table-striped table-bordered" AutoGenerateColumns="False" DataKeyNames="UserId" DataSourceID="SqlDataSource1">
                                     <Columns>
                                         <asp:BoundField DataField="UserId" HeaderText="UserId" InsertVisible="False" ReadOnly="True" SortExpression="UserId" />
                                         <asp:BoundField DataField="Username" HeaderText="Username" SortExpression="Username" />

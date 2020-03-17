@@ -133,13 +133,13 @@ namespace RENTAL
                     dr["PId"] = ds.Tables[0].Rows[0]["PId"].ToString();
                     dr["PName"] = ds.Tables[0].Rows[0]["PName"].ToString();
                     dr["PImage"] = ds.Tables[0].Rows[0]["PImage"].ToString();
-                    dr["month"] = Request.Cookies["selection"].Value; //Request.QueryString["month"];
-                    dr["PPrice"] = Session["price"].ToString();//Request.QueryString["price"];
-                    dr["quantity1"] = Request.Cookies["quantity"].Value;
-                    int quantity1 = Convert.ToInt16(Request.Cookies["quantity"].Value);
+                    dr["month"] = ds.Tables[0].Rows[0]["month"].ToString();//Request.QueryString["month"];
+                    dr["PPrice"] = ds.Tables[0].Rows[0]["PPrice"].ToString();//Request.QueryString["price"];
+                    dr["quantity1"] = ds.Tables[0].Rows[0]["quantity1"].ToString() ;
+                    int quantity1 = Convert.ToInt16(ds.Tables[0].Rows[0]["quantity1"].ToString());
 
-                    int price = Convert.ToInt16(Session["price"].ToString());
-                    int quantity = Convert.ToInt16(Request.Cookies["selection"].Value);
+                    int price = Convert.ToInt16(ds.Tables[0].Rows[0]["PPrice"].ToString());
+                    int quantity = Convert.ToInt16(ds.Tables[0].Rows[0]["month"].ToString());
 
                     int totalprice = price * quantity1;
                     dr["totalprice"] = totalprice;

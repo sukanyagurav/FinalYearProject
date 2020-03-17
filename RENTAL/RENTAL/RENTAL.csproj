@@ -125,10 +125,12 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Activation.aspx" />
+    <Content Include="Addnewadmin.aspx" />
     <Content Include="Addproduct.aspx" />
     <Content Include="AddtoCart.aspx" />
     <Content Include="Adminaddproducts.aspx" />
     <Content Include="AdminLogin.aspx" />
+    <Content Include="AdminQuery.aspx" />
     <Content Include="Bed1.aspx" />
     <Content Include="cart.aspx" />
     <Content Include="Appliance1.aspx" />
@@ -153,6 +155,7 @@
     <Content Include="bedroom\Eria_Single_Seater_Sofa.jpg" />
     <Content Include="bedroom\Erica_L_Shaped_Sofa.jpg" />
     <Content Include="Contact.aspx" />
+    <Content Include="ContactUs.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -172,6 +175,7 @@
     <Content Include="diningroom\Poise 2-Seater Dining Set.jpg" />
     <Content Include="diningroom\Poise 4-Seater Dining Set.jpg" />
     <Content Include="diningroom\Poise 6-Seater Dining Set.jpg" />
+    <Content Include="Extendproduct.aspx" />
     <Content Include="forgotpassword.aspx" />
     <Content Include="images\addproducts.jpg" />
     <Content Include="images\addtocart.jpg" />
@@ -201,11 +205,14 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Payment.aspx" />
+    <Content Include="Paymentgateway.aspx" />
     <Content Include="PlaceOrder.aspx" />
     <Content Include="PlaceOrderSuccessfully.aspx" />
     <Content Include="registration.aspx" />
     <Content Include="Remove user.aspx" />
     <Content Include="resetpassword.aspx" />
+    <Content Include="Send user gmail.aspx" />
     <Content Include="StyleSheet2.css" />
     <Content Include="usericon.png" />
     <Content Include="favicon.ico" />
@@ -268,6 +275,7 @@
     <Content Include="studyroom\Rowling Bookshelf %28S%29.jpg" />
     <Content Include="studyroom\Rowling Bookshelf Divider.jpg" />
     <Content Include="viewdetailsaspx.aspx" />
+    <Content Include="ViewProfile.aspx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="storage1.aspx" />
     <Content Include="Stockreport.aspx" />
@@ -276,8 +284,9 @@
     <Content Include="WebForm5.aspx" />
     <Content Include="WebForm6.aspx" />
     <Content Include="WebForm7.aspx" />
-    <Content Include="WebForm8.aspx" />
+    <Content Include="MonthlyReport.aspx" />
     <Content Include="wishlist.aspx" />
+    <Content Include="YearlyReport2.aspx" />
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -285,15 +294,19 @@
     <Content Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Content>
     <Content Include="css\bootstrap-grid.css.map" />
     <Content Include="css\bootstrap-grid.min.css.map" />
     <Content Include="css\bootstrap-reboot.css.map" />
     <Content Include="css\bootstrap-reboot.min.css.map" />
     <Content Include="css\bootstrap.css.map" />
     <Content Include="css\bootstrap.min.css.map" />
+    <Content Include="js\bootstrap.bundle.js.map" />
+    <Content Include="js\bootstrap.bundle.min.js.map" />
+    <Content Include="js\bootstrap.js.map" />
+    <Content Include="js\bootstrap.min.js.map" />
+    <Content Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
     <None Include="DataSet1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -302,10 +315,17 @@
     <Content Include="DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
-    <Content Include="js\bootstrap.bundle.js.map" />
-    <Content Include="js\bootstrap.bundle.min.js.map" />
-    <Content Include="js\bootstrap.js.map" />
-    <Content Include="js\bootstrap.min.js.map" />
+    <Content Include="DataSet2.xsc">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSet2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet2.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSet2.xss">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Login.aspx" />
     <Content Include="Office Furniture.aspx" />
@@ -353,6 +373,13 @@
     <Compile Include="Activation.aspx.designer.cs">
       <DependentUpon>Activation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Addnewadmin.aspx.cs">
+      <DependentUpon>Addnewadmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Addnewadmin.aspx.designer.cs">
+      <DependentUpon>Addnewadmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Addproduct.aspx.cs">
       <DependentUpon>Addproduct.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -380,6 +407,13 @@
     </Compile>
     <Compile Include="AdminLogin.aspx.designer.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminQuery.aspx.cs">
+      <DependentUpon>AdminQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminQuery.aspx.designer.cs">
+      <DependentUpon>AdminQuery.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bed1.aspx.cs">
       <DependentUpon>Bed1.aspx</DependentUpon>
@@ -425,6 +459,13 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ContactUs.aspx.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContactUs.aspx.designer.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CrystalReport1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -435,6 +476,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CrystalReport3.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Extendproduct.aspx.cs">
+      <DependentUpon>Extendproduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Extendproduct.aspx.designer.cs">
+      <DependentUpon>Extendproduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MonthlyReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthlyReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataSet1.Designer.cs">
@@ -531,6 +590,20 @@
     <Compile Include="Packages.aspx.designer.cs">
       <DependentUpon>Packages.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Payment.aspx.designer.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paymentgateway.aspx.cs">
+      <DependentUpon>Paymentgateway.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paymentgateway.aspx.designer.cs">
+      <DependentUpon>Paymentgateway.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PlaceOrder.aspx.cs">
       <DependentUpon>PlaceOrder.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -566,6 +639,13 @@
     </Compile>
     <Compile Include="resetpassword.aspx.designer.cs">
       <DependentUpon>resetpassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Send user gmail.aspx.cs">
+      <DependentUpon>Send user gmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Send user gmail.aspx.designer.cs">
+      <DependentUpon>Send user gmail.aspx</DependentUpon>
     </Compile>
     <Compile Include="SIGNUP.aspx.cs">
       <DependentUpon>SIGNUP.aspx</DependentUpon>
@@ -607,6 +687,13 @@
     </Compile>
     <Compile Include="viewdetailsaspx.aspx.designer.cs">
       <DependentUpon>viewdetailsaspx.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewProfile.aspx.cs">
+      <DependentUpon>ViewProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewProfile.aspx.designer.cs">
+      <DependentUpon>ViewProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -671,12 +758,12 @@
     <Compile Include="WebForm7.aspx.designer.cs">
       <DependentUpon>WebForm7.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm8.aspx.cs">
-      <DependentUpon>WebForm8.aspx</DependentUpon>
+    <Compile Include="MonthlyReport.aspx.cs">
+      <DependentUpon>MonthlyReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm8.aspx.designer.cs">
-      <DependentUpon>WebForm8.aspx</DependentUpon>
+    <Compile Include="MonthlyReport.aspx.designer.cs">
+      <DependentUpon>MonthlyReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="wishlist.aspx.cs">
       <DependentUpon>wishlist.aspx</DependentUpon>
@@ -684,6 +771,25 @@
     </Compile>
     <Compile Include="wishlist.aspx.designer.cs">
       <DependentUpon>wishlist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YearlyReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>YearlyReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="YearlyReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>YearlyReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="YearlyReport2.aspx.cs">
+      <DependentUpon>YearlyReport2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YearlyReport2.aspx.designer.cs">
+      <DependentUpon>YearlyReport2.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -713,9 +819,21 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport3.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="MonthlyReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MonthlyReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="stockdetails.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>stockdetails.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YearlyReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>YearlyReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YearlyReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>YearlyReport1.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

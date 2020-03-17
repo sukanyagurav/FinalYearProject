@@ -16,7 +16,7 @@ namespace RENTAL
 
         DataTable dt1 = new DataTable();
         string constr = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
-        static String rating;
+
         static string city;
         protected void Page_Load(object sender, EventArgs e)
         {

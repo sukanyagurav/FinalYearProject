@@ -222,6 +222,24 @@ namespace RENTAL
         protected global::System.Web.UI.WebControls.Label lbresult;
 
         /// <summary>
+        /// lbwishlist control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbwishlist;
+
+        /// <summary>
+        /// wishlist control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton wishlist;
+
+        /// <summary>
         /// txtreview control.
         /// </summary>
         /// <remarks>

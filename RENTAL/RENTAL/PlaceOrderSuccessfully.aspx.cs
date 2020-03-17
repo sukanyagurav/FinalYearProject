@@ -18,12 +18,98 @@ namespace RENTAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label2.Text = Request.QueryString["orderid"];
-           // Panel1.Visible = true;
-            Label11.Text = Label2.Text;
-            findorderdate(Label11.Text);
-            findaddress(Label11.Text);
-            showgrid(Label11.Text);
+            if (!IsPostBack)
+            {
+                DataTable dt;
+                dt = (DataTable)Session["Buyitems"];
+                int PId;
+                int quantity;
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    PId = Convert.ToInt16(row["PId"].ToString());
+                    quantity = Convert.ToInt16(row["quantity1"].ToString());
+                    //Response.Write(PId);
+                    updatestock(PId, quantity);
+                }
+                //           DataTable dt;
+                dt = (DataTable)Session["buyitems"];
+
+                DateTime ReturnDate;
+
+                for (int i = 0; i <= dt.Rows.Count - 1; i++)
+                {
+                    DateTime today = DateTime.Now;
+                    
+                    int month = Convert.ToInt32(dt.Rows[i]["month"]);
+                    ReturnDate = today.AddMonths(month);
+                    // Response.Write(ReturnDate);
+                    String updatepass = "insert into OrderDetails(orderid,sno,PId,PName,PPrice,Quantity,DateOfOrder,Month,username,ReturnDate) values('" + Request.QueryString["orderid"] + "','" + dt.Rows[i]["sno"] + "','" + dt.Rows[i]["PId"] + "','" + dt.Rows[i]["PName"] + "','" + dt.Rows[i]["PPrice"] + "','" + dt.Rows[i]["quantity1"] + "','" + today + "','" + dt.Rows[i]["month"] + "','" + Session["useremail"] + "','" + ReturnDate + "')";
+                    String mycon1 = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+                    SqlConnection s = new SqlConnection(mycon1);
+                    s.Open();
+                    SqlCommand cmd1 = new SqlCommand();
+                    cmd1.CommandText = updatepass;
+                    cmd1.Connection = s;
+                    cmd1.ExecuteNonQuery();
+                    s.Close();
+                    saveaddress();
+                }
+                Label2.Text = Request.QueryString["orderid"];
+                // Panel1.Visible = true;
+                Label11.Text = Label2.Text;
+                findorderdate(Label11.Text);
+                findaddress(Label11.Text);
+                showgrid(Label11.Text);
+            }
+        }
+        private void updatestock(int PId, int numbersold)
+        {//update the stock
+            int pquantity = 0;
+            int psold = 0;
+            String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+
+            String myquery = "select * from ProductRef where PId='" + PId + "'";
+            SqlConnection con = new SqlConnection(mycon);
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = myquery;
+            cmd.Connection = con;
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+
+                pquantity = Convert.ToInt16(ds.Tables[0].Rows[0]["PQuantity"].ToString());
+                psold = Convert.ToInt16(ds.Tables[0].Rows[0]["SoldOut"].ToString());
+
+            }
+            con.Close();
+            string q = "select CityId from City where CityName='" + Session["ddl"].ToString() + "'";
+            cmd = new SqlCommand(q, con);
+            da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            ds = new DataSet();
+            da.Fill(ds);
+            int cityId = Convert.ToInt32(ds.Tables[0].Rows[0]["cityId"].ToString());
+
+            String mycon1 = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+            int newsold;
+            if (pquantity != psold && (pquantity-psold) >= numbersold)
+            {
+                newsold = psold + numbersold;
+                String updatedata = "update ProductRef set SoldOut='" + newsold + "'where PId='" + PId + "'and CityId='"+cityId+"'";
+                SqlConnection con1 = new SqlConnection(mycon1);
+                con1.Open();
+                SqlCommand cmd1 = new SqlCommand();
+                cmd1.CommandText = updatedata;
+                cmd1.Connection = con1;
+                cmd1.ExecuteNonQuery();
+
+            }
+            
+
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -31,6 +117,20 @@ namespace RENTAL
 
             exportpdf();
         }
+        public void saveaddress()
+        {
+            //  int order = int.Parse(Label3.Text.ToString());
+            String updatepass = "insert into orderaddress(orderid,address,usercity,firstname,state,pincode) values('" + Request.QueryString["orderid"] + "','" + Session["add"] + "','" + Session["ddl"] + "','" + Session["name"] + "','" + Session["city"] + "','" + Session["pin"] + "')";
+            String mycon1 = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+            SqlConnection s = new SqlConnection(mycon1);
+            s.Open();
+            SqlCommand cmd1 = new SqlCommand();
+            cmd1.CommandText = updatepass;
+            cmd1.Connection = s;
+            cmd1.ExecuteNonQuery();
+            s.Close();
+        }
+
         private void exportpdf()
         {
             Response.ContentType = "application/pdf";
@@ -51,8 +151,10 @@ namespace RENTAL
         }
         private void findorderdate(String Orderid)
         {
+            string dateorder;
+            DateTime orderdate;
             String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
-
+           
             String myquery = "Select * from OrderDetails where orderid='" + Orderid + "'";
             SqlConnection con = new SqlConnection(mycon);
             SqlCommand cmd = new SqlCommand();
@@ -62,11 +164,12 @@ namespace RENTAL
             da.SelectCommand = cmd;
             DataSet ds = new DataSet();
             da.Fill(ds);
+           
             if (ds.Tables[0].Rows.Count > 0)
             {
-
-                Label12.Text = ds.Tables[0].Rows[0]["DateOfOrder"].ToString();
-
+                dateorder= ds.Tables[0].Rows[0]["DateOfOrder"].ToString();
+                orderdate = DateTime.Parse(dateorder);
+                Label12.Text = orderdate.ToString("dd/MM/yyyy");
             }
 
             con.Close();
@@ -86,19 +189,30 @@ namespace RENTAL
             da.Fill(ds);
             if (ds.Tables[0].Rows.Count > 0)
             {
-                Label14.Text= ds.Tables[0].Rows[0]["username"].ToString();
-                Label18.Text = ds.Tables[0].Rows[0]["useremail"].ToString();
+                Label14.Text= ds.Tables[0].Rows[0]["firstname"].ToString();
+              //  Label18.Text = ds.Tables[0].Rows[0]["useremail"].ToString();
                 Label19.Text = ds.Tables[0].Rows[0]["address"].ToString();
-                Label20.Text = ds.Tables[0].Rows[0]["mobileno"].ToString();
+                //Label20.Text = ds.Tables[0].Rows[0]["mobileno"].ToString();
             }
-
+            myquery = "select * from Users where Email='" + Session["useremail"].ToString() + "'";
+            cmd = new SqlCommand(myquery,con);
+             da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            ds = new DataSet();
+            da.Fill(ds);
+            if(ds.Tables[0].Rows.Count>0)
+            {
+                Label18.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                Label20.Text = ds.Tables[0].Rows[0]["Mobileno"].ToString();
+            }
             con.Close();
         }
         private void showgrid(String orderid)
         {
             DataTable dt = new DataTable();
             DataRow dr;
-
+           string  dateoforder;
+            string ReturnDate;
             dt.Columns.Add("sno");
           //  dt.Columns.Add("productid");
             dt.Columns.Add("PName");
@@ -106,6 +220,8 @@ namespace RENTAL
             dt.Columns.Add("quantity");
             dt.Columns.Add("PPrice");
             dt.Columns.Add("totalprice");
+            dt.Columns.Add("DateOfOrder");
+            dt.Columns.Add("ReturnDate");
             String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
 
             SqlConnection scon = new SqlConnection(mycon);
@@ -129,6 +245,14 @@ namespace RENTAL
                 dr["quantity"] = ds.Tables[0].Rows[i]["Quantity"].ToString();
                 dr["PPrice"] = ds.Tables[0].Rows[i]["PPrice"].ToString();
                 dr["month"] = ds.Tables[0].Rows[i]["Month"].ToString();
+                dateoforder = ds.Tables[0].Rows[i]["DateOfOrder"].ToString();
+                DateTime dO;
+                dO = DateTime.Parse(dateoforder);
+                dr["DateOfOrder"] =dO.ToString("dd/MM/yyyy");
+                ReturnDate = ds.Tables[0].Rows[i]["ReturnDate"].ToString();
+                DateTime dR;
+                dR = DateTime.Parse(ReturnDate);
+                dr["ReturnDate"] = dR.ToString("dd/MM/yyyy");
                 int price = Convert.ToInt16(ds.Tables[0].Rows[i]["PPrice"].ToString());
                 int quantity = Convert.ToInt16(ds.Tables[0].Rows[i]["Quantity"].ToString());
                 int totalprice = price * quantity;
@@ -141,6 +265,7 @@ namespace RENTAL
             GridView1.DataBind();
 
             Label4.Text = grandtotal.ToString();
+            Session["total"] = grandtotal.ToString();
         }
 
         public override void VerifyRenderingInServerForm(Control control)

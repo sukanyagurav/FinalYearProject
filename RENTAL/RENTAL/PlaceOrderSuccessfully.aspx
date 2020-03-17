@@ -86,6 +86,8 @@
                             <asp:BoundField DataField="totalprice" HeaderText="Total Price">
                             <ItemStyle HorizontalAlign="Center" />
                             </asp:BoundField>
+                            <asp:BoundField DataField="DateOfOrder" HeaderText="Date Of Order" />
+                            <asp:BoundField DataField="ReturnDate" HeaderText="Return Date" />
                         </Columns>
                     </asp:GridView>
                 </td>

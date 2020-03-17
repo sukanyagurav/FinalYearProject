@@ -31,28 +31,47 @@
     </asp:GridView>
     <br />
     <br />
+    <asp:Label ID="Label5" runat="server" Text="Enter Full Name"></asp:Label>
+    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+
+    <br />
+  
+
     <asp:Label ID="Label8" runat="server" Text="Address"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="TextBox2" runat="server" TextMode="MultiLine"></asp:TextBox>
     <br />
     <br />
     <br />
+    <asp:Label ID="Label6" runat="server" Text="Enter pincode"></asp:Label>
+    <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+    
+    
     <br />
     <br />
     <br />
     <asp:Label ID="Label9" runat="server" Text="City"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:TextBox ID="TextBox3" runat="server" ></asp:TextBox>
+    <asp:TextBox ID="TextBox5" runat="server" ReadOnly="True"></asp:TextBox>
+    
+    <asp:Label ID="Label7" runat="server" Text="Enter state"></asp:Label>
+    <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+
+
     <br />
     <br />
     <br />
+    <asp:Label ID="Label16" runat="server" Text="Payment Option"></asp:Label>
+    <br />
+    <asp:RadioButton ID="RadioButton1" runat="server" Checked="True" OnCheckedChanged="RadioButton1_CheckedChanged" Text="PayPal" />
     <br />
     <br />
-    <asp:Label ID="Label5" runat="server" Text="Mobile number"></asp:Label>
-    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+
+
     <br />
     <br />
     <br />
+   
     <asp:Button ID="Button1" runat="server" Text="Check Out" OnClick="Button1_Click" />
 
     <br />

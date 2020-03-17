@@ -4,13 +4,38 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+
     <title></title>
+ <script type="text/javascript">
+      $(document).ready(function () {
+          $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+      });
+   </script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-   
+   <style  type="text/css">
+       .pagination{
+           display: inline-block;
+             text-align: center;
+
+              color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+
+       }
+       .pagination.active {
+  background-color: #4CAF50;
+  color: white;
+}
+       .pagination :hover:not(.active) {background-color: #ddd;}
+   </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -157,27 +182,26 @@
                         </div>
                         <div class="row">
                             <div class="col">
+                                <asp:TextBox ID="txtsearch" runat="server"></asp:TextBox>
+                                <asp:Button ID="btnsearch" runat="server" Text="Search" OnClick="btnsearch_Click" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
                                 <hr/>
                             </div>
                         </div>
  
                         <div class="row">
                             <div class="col">
-                                <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="PId" DataSourceID="SqlDataSource1">
-                                    <Columns>
-                                        <asp:BoundField DataField="PId" HeaderText="PId" InsertVisible="False" ReadOnly="True" SortExpression="PId" />
-                                        <asp:BoundField DataField="PName" HeaderText="PName" SortExpression="PName" />
-                                        <asp:BoundField DataField="PPrice" HeaderText="PPrice" SortExpression="PPrice" />
-                                        <asp:BoundField DataField="PQty" HeaderText="PQty" SortExpression="PQty" />
-                                        <asp:BoundField DataField="PKeyword" HeaderText="PKeyword" SortExpression="PKeyword" />
-                                        <asp:BoundField DataField="PCategory" HeaderText="PCategory" SortExpression="PCategory" />
-                                        <asp:BoundField DataField="PImage" HeaderText="PImage" SortExpression="PImage" />
-                                        <asp:BoundField DataField="RefundableDeposit" HeaderText="RefundableDeposit" SortExpression="RefundableDeposit" />
-                                        <asp:BoundField DataField="available" HeaderText="available" SortExpression="available" />
-                                        <asp:BoundField DataField="soldout" HeaderText="soldout" SortExpression="soldout" />
-                                    </Columns>
+                                <asp:GridView ID="GridView1" runat="server" EmptyDataText="No Records Found" ShowHeaderWhenEmpty="True" AllowPaging="True" class="table table-striped table-bordered"  PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging">
+                                    <PagerStyle/>
+                                  
+
                                 </asp:GridView>
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString1 %>" SelectCommand="SELECT * FROM [Products]"></asp:SqlDataSource>
+                                
+                                <br />
+                               
                             </div>
                         </div>
  

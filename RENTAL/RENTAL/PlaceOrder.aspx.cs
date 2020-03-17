@@ -15,6 +15,7 @@ namespace RENTAL
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            TextBox5.Text = Session["CityName"].ToString();
             if (!IsPostBack)
             {
                 DataTable dt = new DataTable();
@@ -69,7 +70,7 @@ namespace RENTAL
                         Session["Buyitems"] = dt;
                         GridView1.FooterRow.Cells[5].Text = "Total Amount";
                         GridView1.FooterRow.Cells[6].Text = grandtotal().ToString();
-                        Response.Redirect("AddtoCart.aspx");
+                        //Response.Redirect("AddtoCart.aspx");
 
                     }
                     else
@@ -116,7 +117,7 @@ namespace RENTAL
                         Session["Buyitems"] = dt;
                         GridView1.FooterRow.Cells[5].Text = "Total Amount";
                         GridView1.FooterRow.Cells[6].Text = grandtotal().ToString();
-                        Response.Redirect("AddtoCart.aspx");
+                        //Response.Redirect("AddtoCart.aspx");
 
                     }
                 }
@@ -136,7 +137,7 @@ namespace RENTAL
                 }
                 
             }
-            Label4.Text = DateTime.Now.ToShortDateString();
+            Label4.Text = DateTime.Now.ToString("dd/MM/yyyy");
             findorderid();
         
         }
@@ -153,6 +154,7 @@ namespace RENTAL
 
                 i = i + 1;
             }
+            Session["total"] = gtotal;
             return gtotal;
         }
         public void findorderid()
@@ -173,45 +175,9 @@ namespace RENTAL
 
         }
 
-        public void saveaddress()
-        {
-          //  int order = int.Parse(Label3.Text.ToString());
-            String updatepass = "insert into orderaddress(orderid,mobileno,address,usercity,username) values('" + Label3.Text + "','" + TextBox1.Text + "','"+TextBox2.Text+"','"+TextBox3.Text+"','"+Session["useremail"]+"')";
-            String mycon1 =   ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
-            SqlConnection s = new SqlConnection(mycon1);
-            s.Open();
-            SqlCommand cmd1 = new SqlCommand();
-            cmd1.CommandText = updatepass;
-            cmd1.Connection = s;
-            cmd1.ExecuteNonQuery();
-            s.Close();
-        }
-
+     
         protected void Button1_Click(object sender, EventArgs e)
         {
-            DataTable dt;
-            dt = (DataTable)Session["buyitems"];
-
-            String ReturnDate;
-           
-            for (int i = 0; i <= dt.Rows.Count - 1; i++)
-            {
-                DateTime today = DateTime.Now;
-                string today1 = today.ToString("dd/MM/yyyy");
-                int month = Convert.ToInt32(dt.Rows[i]["month"]);
-                ReturnDate = today.AddMonths(month).ToString("dd/MM/yyyy");
-               // Response.Write(ReturnDate);
-                String updatepass = "insert into OrderDetails(orderid,sno,PId,PName,PPrice,Quantity,DateOfOrder,Month,username,ReturnDate) values('" + Label3.Text + "','" + dt.Rows[i]["sno"] + "','" + dt.Rows[i]["PId"] + "','" + dt.Rows[i]["PName"] + "','" + dt.Rows[i]["PPrice"] + "','" + dt.Rows[i]["quantity1"] + "','"+today1+"','"+ dt.Rows[i]["month"] + "','"+Session["useremail"]+"','"+ReturnDate+"')";
-                String mycon1 = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
-                SqlConnection s = new SqlConnection(mycon1);
-                s.Open();
-                SqlCommand cmd1 = new SqlCommand();
-                cmd1.CommandText = updatepass;
-                cmd1.Connection = s;
-                cmd1.ExecuteNonQuery();
-                s.Close();
-
-            }
             DataTable dt1;
             dt1 = (DataTable)Session["Buyitems"];
             int PId;
@@ -233,23 +199,22 @@ namespace RENTAL
                 }
                 if (orderconfirm == true)
                 {
-                    foreach (DataRow row in dt1.Rows)
-                    {
-                        PId = Convert.ToInt16(row["PId"].ToString());
-                        quantity = Convert.ToInt16(row["quantity1"].ToString());
-                        //Response.Write(PId);
-                        updatestock(PId, quantity);
-                    }
-                
+                    Session["name"] = TextBox1.Text;
+                    Session["add"] = TextBox2.Text;
+                    Session["pin"] = TextBox3.Text;
+                    Session["ddl"] = TextBox5.Text;
+                    Session["city"] = TextBox4.Text;
+                    Response.Redirect("Paymentgateway.aspx?orderid=" + Label3.Text.ToString());
+
+                    /* 
+                         Response.Redirect("PlaceOrderSuccessfully.aspx?orderid=" + Label3.Text.ToString());
+
+                     }
+                     */
                 }
 
+
             }
-            else
-            {
-               
-            }
-            saveaddress();
-               Response.Redirect("PlaceOrderSuccessfully.aspx?orderid="+Label3.Text.ToString());
         }
 
         private void checkavailability(int PId, int numbersold)
@@ -277,77 +242,31 @@ namespace RENTAL
             }
             con.Close();
 
-            if (productQuan != psold && psold >= numbersold)
+            if (productQuan != psold && (productQuan - psold) >= numbersold)
             {
                 orderconfirm = true;
+                
             }
             else
             {
                 orderconfirm = false;
-                if (psold < numbersold)
+                if (productQuan == psold)
                 {
-                    Label15.Text = "Sorry for the inconvience.Requested quantity is unavailable.Please update the quantity for selected item.";
+                    Label15.Text = " Sorry for the inconvience.The product you requested is Out of Stock.";
+
                 }
                 else
                 {
-                    Label15.Text = " Sorry for the inconvience.The product you requested is Out of Stock.";
-                }
-            }
-        }
-        private void updatestock(int PId, int numbersold)
-        {//update the stock
-            int pquantity = 0;
-            int psold = 0;
-            String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
-
-            String myquery = "select * from ProductRef where PId='" + PId + "'";
-            SqlConnection con = new SqlConnection(mycon);
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = myquery;
-            cmd.Connection = con;
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-
-                pquantity = Convert.ToInt16(ds.Tables[0].Rows[0]["PQuantity"].ToString());
-                psold = Convert.ToInt16(ds.Tables[0].Rows[0]["SoldOut"].ToString());
-
-            }
-            con.Close();
-            String mycon1 = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
-            int newsold;
-            if (pquantity != psold && psold >= numbersold)
-            {
-                newsold = psold + numbersold;
-                String updatedata = "update Products set SoldOut='" + newsold + "'where PId='" + PId + "'";
-                SqlConnection con1 = new SqlConnection(mycon1);
-                con1.Open();
-                SqlCommand cmd1 = new SqlCommand();
-                cmd1.CommandText = updatedata;
-                cmd1.Connection = con1;
-                cmd1.ExecuteNonQuery();
-
-            }
-            else
-            {
-                if (psold < numbersold)
-                {
                     Label15.Text = "Sorry for the inconvience.Requested quantity is unavailable.Please update the quantity for selected item.";
-                }
-                else
-                {
-                    Label15.Text = " Sorry for the inconvience.The product you requested is Out of Stock.";
+
                 }
             }
-
         }
-
-
-
-
+       
+        protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+           
+        }
     }
 
 }
