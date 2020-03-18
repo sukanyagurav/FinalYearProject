@@ -72,7 +72,33 @@ namespace RENTAL
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            String str = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+            SqlConnection con = new SqlConnection(str);
+            string myquery = "SELECT PCategory from Products where PKeyword like '%'+@PKeyword+'%' or PName like '%'+@PName+'%'";
+            SqlCommand cmd = new SqlCommand(myquery,con);
+            cmd.Parameters.AddWithValue("@PKeyword", search.Text);
+            cmd.Parameters.AddWithValue("@PName", search.Text);
+
+            SqlDataAdapter sda = new SqlDataAdapter();
+            sda.SelectCommand = cmd;
+            DataSet dt = new DataSet();
+            sda.Fill(dt);
+            string searchcat = dt.Tables[0].Rows[0]["PCategory"].ToString();
+            if (searchcat == "bedroom")
+            {
+                Response.Redirect("Bed.aspx?search=" +search.Text);
+            }
+            else if (searchcat == "livingroom")
+            {
+                Response.Redirect("Living room.aspx?search=" + search.Text);
+            }
+            else
+            {
+
+            }
         }
+
+
 
       protected void Button1_Click(object sender, EventArgs e)
         {

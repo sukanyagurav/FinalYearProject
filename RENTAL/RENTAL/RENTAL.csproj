@@ -214,6 +214,7 @@
     <Content Include="resetpassword.aspx" />
     <Content Include="Send user gmail.aspx" />
     <Content Include="StyleSheet2.css" />
+    <Content Include="useravailable.aspx" />
     <Content Include="usericon.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -414,6 +415,12 @@
     </Compile>
     <Compile Include="AdminQuery.aspx.designer.cs">
       <DependentUpon>AdminQuery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="available_user.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>available_user.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Bed1.aspx.cs">
       <DependentUpon>Bed1.aspx</DependentUpon>
@@ -681,6 +688,13 @@
     <Compile Include="Study room.aspx.designer.cs">
       <DependentUpon>Study room.aspx</DependentUpon>
     </Compile>
+    <Compile Include="useravailable.aspx.cs">
+      <DependentUpon>useravailable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="useravailable.aspx.designer.cs">
+      <DependentUpon>useravailable.aspx</DependentUpon>
+    </Compile>
     <Compile Include="viewdetailsaspx.aspx.cs">
       <DependentUpon>viewdetailsaspx.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -811,6 +825,10 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="available_user.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>available_user.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrystalReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>

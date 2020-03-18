@@ -498,39 +498,83 @@ namespace RENTAL
         protected void Wishlist_Click(object sender, ImageClickEventArgs e)
         {
             int pid = Convert.ToInt32(Session["productId"].ToString());
-
-            if (Session["useremail"] != null)
+            SqlConnection con = new SqlConnection(constr);
+            SqlCommand cmd = new SqlCommand();
+          
+          
+            if (Session["useremail"] != null )
             {
-                Session["wish"] = Session["productId"];
-                String query = "insert into wishlist(useremail,PId) values('" + Session["useremail"].ToString() + "'," + Session["wish"].ToString() + ")";
-                SqlConnection con = new SqlConnection(constr);
-                SqlCommand cmd = new SqlCommand(query);
-
-                con.Open();
+                string myquery2 = "Select * from wishlist where PId=" + pid + " and useremail='" + Session["useremail"] + "'";
                 cmd = new SqlCommand();
-                cmd.CommandText = query;
-                cmd.Connection = con;
-                cmd.ExecuteNonQuery();
-
-
-                string myquery1 = "Select * from wishlist where PId=" + pid + " and useremail='" + Session["useremail"] + "'";
-                 cmd = new SqlCommand();
-                cmd.CommandText = myquery1;
-                cmd.Connection = con;
-                SqlDataAdapter sda = new SqlDataAdapter();
-                sda.SelectCommand = cmd;
-                DataSet ds = new DataSet();
-                sda.Fill(ds);
-
-                if (ds.Tables[0].Rows.Count > 0)
+                SqlConnection con1= new SqlConnection(constr);
+                con1.Open();
+                cmd.CommandText = myquery2;
+                cmd.Connection = con1;
+                SqlDataAdapter sda1 = new SqlDataAdapter();
+                sda1.SelectCommand = cmd;
+                DataSet ds1 = new DataSet();
+                sda1.Fill(ds1);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
                 {
-                  
-                    wishlist.ImageUrl = "images/icontrue.png";
-                    
+                    if (ds1.Tables[0].Rows.Count > 0)
+                    {
+                        for (int i = 0; i <= ds1.Tables[0].Rows.Count - 1; i++)
+                        {
+                            int sr;
+                            int sr1;
+                            sr = Convert.ToInt32(ds1.Tables[0].Rows[i]["PId"].ToString());
+
+                            sr1 = Convert.ToInt32(Session["productId"].ToString());
+
+
+
+                            if (sr == sr1)
+                            {
+                                String mycon3 = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+                                SqlConnection con3 = new SqlConnection(mycon3);
+                                con3.Open();
+                                SqlCommand cmd3 = new SqlCommand("delete top(1)from wishlist where PId='" + pid + "'and useremail='" + Session["useremail"] + "'", con3);
+                                cmd3.ExecuteNonQuery();
+                                //Item has been deleted from savedcartdetail
+                                con.Close();
+
+                                wishlist.ImageUrl = "images/iconfalse.png";
+                            }
+                        }
+                    }
                 }
                 else
                 {
-                      wishlist.ImageUrl = "images/iconfalse.png";
+                    Session["wish"] = Session["productId"];
+                    String query = "insert into wishlist(useremail,PId) values('" + Session["useremail"].ToString() + "'," + Session["wish"].ToString() + ")";
+                    con = new SqlConnection(constr);
+                    con.Open();
+                    cmd = new SqlCommand();
+                    cmd.CommandText = query;
+                    cmd.Connection = con;
+                    cmd.ExecuteNonQuery();
+
+
+                    string myquery1 = "Select * from wishlist where PId=" + pid + " and useremail='" + Session["useremail"] + "'";
+                    cmd = new SqlCommand();
+                    cmd.CommandText = myquery1;
+                    cmd.Connection = con;
+                    SqlDataAdapter sda = new SqlDataAdapter();
+                    sda.SelectCommand = cmd;
+                    DataSet ds = new DataSet();
+                    sda.Fill(ds);
+
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+
+                        wishlist.ImageUrl = "images/icontrue.png";
+
+                    }
+                    else
+                    {
+                        wishlist.ImageUrl = "images/iconfalse.png";
+                    }
                 }
             }
             else

@@ -28,7 +28,7 @@ namespace RENTAL
             MailMessage message = new MailMessage();
             to = (txtEmail.Text).ToString();//user email address
             from = "sgurav2067@gmail.com";//sender email address
-            pass = "w@yw@rd@2067";//sender email address password
+            pass = "riverd@le$2067";//sender email address password
             messagebody = "your reset code is "+randomCode;
             message.To.Add(to);
             message.From = new MailAddress(from);
