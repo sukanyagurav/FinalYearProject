@@ -15,10 +15,13 @@
             </asp:ScriptManager>
             <br />
             <br />
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView1_RowDeleting" ShowFooter="True" Height="146px" Width="833px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+             <div class="container-fluid">
+                 <div class="card" >
+                 <div class="card-body"><center>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView1_RowDeleting" ShowFooter="True" Height="146px" Width="1000" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CellSpacing="30" GridLines="Horizontal" CellPadding="20" EmptyDataText="No Records Found" BorderStyle="Dashed">
                 <Columns>
                       <asp:BoundField DataField="sno" HeaderText="srno" />
-                    <asp:BoundField DataField="PId" HeaderText="ProductId" />
+                    <asp:BoundField DataField="PId" HeaderText="ProductId" Visible="False" />
 
                     <asp:BoundField DataField="PName" HeaderText="ProductName" />
                     <asp:ImageField DataImageUrlField="PImage" HeaderText="Product image" ItemStyle-Width="200" ItemStyle-Height="100">
@@ -41,21 +44,23 @@
                 <EditRowStyle Height="50px" />
                 <HeaderStyle Height="50px" />
             </asp:GridView>
-            <br />
-            <br />
+</center>
+                     
             <asp:LinkButton ID="LinkButton2" runat="server"></asp:LinkButton>
-            <br />
-            .<br />
-            <br />
-            <br />
-            <br />
-            <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click" Visible="false">Clear Cart</asp:LinkButton>
+            
+            <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">Clear Cart</asp:LinkButton>
             <br />
             <br />
-            <asp:Label ID="Label15" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="Label15" runat="server"></asp:Label>
             <br />
             <asp:Button ID="Button5" runat="server" Height="36px" OnClick="Button5_Click" Text="Place Order" Width="151px" />
             <br />
+                     </div>
+                                          </div>
+
+             </div>
+             
+          
           <asp:Label ID="checkuser" runat="server"></asp:Label>
             <asp:Panel ID="Panel1" runat="server" Height="267px" Width="434px" Style="display:none" BackColor="#FF66FF">
                 <br />

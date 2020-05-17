@@ -1,0 +1,96 @@
+﻿.wrapper {
+    width: 100%;
+    height: 15vh;
+    background-color: black;
+    display: inline-block;
+    font-size: 20px;
+    transition: .5s;
+    font-family: sans-serif;
+}
+.user_section {
+    margin-left: 50px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0px 0px 0px 0px;
+}
+.user_section image {
+    width: 30px;
+    padding-top: 5px;
+}
+
+.user_section label {
+    width: 30px;
+    padding-top: 5px;
+    color: white;
+}
+
+/*
+#nav {
+    width: 100%;
+    height: 80px;
+}
+#nav ul {
+    float: right;
+    margin: 30px;
+}
+    #nav ul li {
+        list-style: none;
+        display: inline-block;
+        }
+
+#nav ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 30px;
+    color: white;
+    text-align: justify;
+    
+}
+    #nav ul li a:hover {
+        background-color: yellow;
+    }
+
+#nav ul li ul {
+    display:none;
+}
+#nav ul li:hover ul {
+    display:block;
+}*/
+#nav {
+    width: 100%;
+    height: 80px;
+    margin: 0px;
+}
+    #nav ul {
+        padding: 0;
+        list-style: none;
+        float: right;
+       
+    }
+        #nav ul li {
+            text-align: center;
+            display: inline-block;
+            transition: 0.8s all;
+        }
+#nav ul li a{
+color:white;   
+    text-decoration:none;
+     padding:10px;
+   display:block;
+}
+#nav ul li a:hover{
+        color:yellow;
+}
+#nav ul li ul{
+    display:none;
+}
+            #nav ul li ul li {
+                display: block;
+            }
+
+#nav ul li:hover ul{
+    display:block;
+}
+body{
+    background-color:darkgrey;
+}

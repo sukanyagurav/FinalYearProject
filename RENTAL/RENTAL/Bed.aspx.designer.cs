@@ -33,33 +33,6 @@ namespace RENTAL
         protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
-        /// HyperLink1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
-
-        /// <summary>
-        /// LinkButton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
-
-        /// <summary>
-        /// LinkButton2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
-
-        /// <summary>
         /// CheckBoxList1 control.
         /// </summary>
         /// <remarks>
@@ -150,22 +123,13 @@ namespace RENTAL
         protected global::System.Web.UI.WebControls.Label namep;
 
         /// <summary>
-        /// price control.
+        /// Rating1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label price;
-
-        /// <summary>
-        /// ddlprice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ddlprice;
+        protected global::AjaxControlToolkit.Rating Rating1;
 
         /// <summary>
         /// ddl control.
@@ -186,13 +150,22 @@ namespace RENTAL
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
 
         /// <summary>
-        /// ImageButton2 control.
+        /// price control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
+        protected global::System.Web.UI.WebControls.Label price;
+
+        /// <summary>
+        /// refprice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label refprice;
 
         /// <summary>
         /// Label15 control.
@@ -204,22 +177,22 @@ namespace RENTAL
         protected global::System.Web.UI.WebControls.Label Label15;
 
         /// <summary>
-        /// Rating1 control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.Rating Rating1;
+        protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
-        /// lbresult control.
+        /// Button2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbresult;
+        protected global::System.Web.UI.WebControls.Button Button2;
 
         /// <summary>
         /// lbwishlist control.
@@ -231,13 +204,13 @@ namespace RENTAL
         protected global::System.Web.UI.WebControls.Label lbwishlist;
 
         /// <summary>
-        /// wishlist control.
+        /// lbresult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton wishlist;
+        protected global::System.Web.UI.WebControls.Label lbresult;
 
         /// <summary>
         /// txtreview control.
@@ -265,6 +238,60 @@ namespace RENTAL
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
+
+        /// <summary>
+        /// ImageButton2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
+
+        /// <summary>
+        /// ImageButton3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton3;
+
+        /// <summary>
+        /// ImageButton4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton4;
+
+        /// <summary>
+        /// Description control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Description;
+
+        /// <summary>
+        /// Dimension control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Dimension;
+
+        /// <summary>
+        /// Color control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Color;
 
         /// <summary>
         /// SqlDataSource3 control.

@@ -16,6 +16,17 @@ namespace RENTAL
         protected void Page_Load(object sender, EventArgs e)
         {
             TextBox5.Text = Session["CityName"].ToString();
+            String mycon5 = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+            SqlConnection scon5 = new SqlConnection(mycon5);
+            SqlCommand cmd5 = new SqlCommand();
+            string query5 = "select State from City where CityName='" + Session["CityName"].ToString() + "'";
+            cmd5.CommandText = query5;
+            cmd5.Connection = scon5;
+            SqlDataAdapter da5 = new SqlDataAdapter();
+            da5.SelectCommand = cmd5;
+            DataSet ds5 = new DataSet();
+            da5.Fill(ds5);
+            TextBox4.Text= ds5.Tables[0].Rows[0]["State"].ToString();
             if (!IsPostBack)
             {
                 DataTable dt = new DataTable();

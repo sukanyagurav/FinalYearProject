@@ -1,11 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Send user gmail.aspx.cs" Inherits="RENTAL.Send_user_gmail" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Send user gmail.aspx.cs" Inherits="RENTAL.Send_user_gmail" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-<script type="text/javascript">
+    <script>
       $(document).ready(function () {
           $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
       });
@@ -16,9 +15,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
    
-</head>
-<body>
-    <form id="form1" runat="server">
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4">
@@ -44,7 +41,4 @@
         </div>
 
      
-    </form>
- 
-</body>
-</html>
+   </asp:Content>

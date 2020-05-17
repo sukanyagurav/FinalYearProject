@@ -1,10 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Remove user.aspx.cs" Inherits="RENTAL.Remove_user" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Remove user.aspx.cs" Inherits="RENTAL.Remove_user" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
       <script type="text/javascript">
       $(document).ready(function () {
           $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
@@ -17,12 +16,10 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
    
  
-</head>
-<body>
- <form id="form1" runat="server">
+
  <div class="container-fluid">
       <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-6">
               <div class="card">
                   <div class="card-body">
                       <div class="row">
@@ -45,7 +42,7 @@
                      </div>
                   </div>
                    <div class="row">
-                     <div class="col-md-3">
+                     <div class="col">
                         <label>Member ID</label>
                         <div class="form-group">
                            <div class="input-group">
@@ -54,21 +51,24 @@
                            </div>
                         </div>
                      </div>
-                       <div class="col-md-4">
+                       <div class="col">
                         <label>User Name</label>
                         <div class="form-group">
                            <asp:TextBox CssClass="form-control" ID="TextBox2" runat="server" placeholder="Full Name" ReadOnly="True"></asp:TextBox>
                         </div>
                      </div>
-                        <div class="col-md-5">
+                        <div class="col">
                         <label>Account Status</label>
                         <div class="form-group">
                            <div class="input-group">
                               <asp:TextBox CssClass="form-control mr-1" ID="TextBox7" runat="server" placeholder="Account Status" ReadOnly="True"></asp:TextBox>
-                              <asp:LinkButton class="btn btn-success mr-1" ID="LinkButton1" runat="server" OnClick="LinkButton1_Click"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                              
+                               <asp:LinkButton class="btn btn-success mr-1" ID="LinkButton1" runat="server" OnClick="LinkButton1_Click"><i class="fas fa-check-circle"></i></asp:LinkButton>
                               <asp:LinkButton class="btn btn-warning mr-1" ID="LinkButton2" runat="server" OnClick="LinkButton2_Click"><i class="far fa-pause-circle"></i></asp:LinkButton>
-                              <asp:LinkButton class="btn btn-danger mr-1" ID="LinkButton3" runat="server" OnClick="LinkButton3_Click"><i class="fas fa-times-circle"></i></asp:LinkButton>
-                           </div>
+                             
+                                <asp:LinkButton class="btn btn-danger mr-1" ID="LinkButton3" runat="server" OnClick="LinkButton3_Click"><i class="fas fa-times-circle"></i></asp:LinkButton>
+                          </div>
+                                                  
                         </div>
                      </div>
                     </div>
@@ -94,7 +94,7 @@
                </div>
           </div>
               </div>
-          <div class="col-md-7">
+          <div class="col-md-6">
               <div class="card">
                   <div class="card-body">
                       <div class="row">
@@ -136,6 +136,4 @@
           
       </div>
   </div>
- </form>
-</body>
-</html>
+ </asp:Content>

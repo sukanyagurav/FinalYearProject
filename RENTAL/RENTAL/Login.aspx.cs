@@ -27,22 +27,23 @@ namespace RENTAL
                 string checkuser = "select count(*) from Users where Email='" + email.Text + "'";
                 SqlCommand cmd = new SqlCommand(checkuser, con);
                 int temp = Convert.ToInt32(cmd.ExecuteScalar().ToString());
-                con.Close();
-                if (temp == 1)
-                {
-                    con.Open();
-                    string checkpassword = "select Password from Users where Email='" + email.Text + "'";
-                    SqlCommand cmdpass = new SqlCommand(checkpassword, con);
-                    string password1 = cmdpass.ExecuteScalar().ToString().Replace(" ", "");
-              //  string password = DecodeFrom64(password1);
-                   string approve= "select Is_approved from Users where (Is_Approved=1 OR Is_Approved=0) AND Email='" + email.Text+"'";
-                    SqlCommand cmdapprove = new SqlCommand(approve, con);
-               string verify = cmdapprove.ExecuteScalar().ToString();
+         
+            con.Close();
+            if (temp == 1)
+            {
+                con.Open();
+                string checkpassword = "select Password from Users where Email='" + email.Text + "'";
+                SqlCommand cmdpass = new SqlCommand(checkpassword, con);
+                string password1 = cmdpass.ExecuteScalar().ToString().Replace(" ", "");
+
+                string approve = "select Is_approved from Users where (Is_Approved=1 OR Is_Approved=0) AND Email='" + email.Text + "'";
+                SqlCommand cmdapprove = new SqlCommand(approve, con);
+                string verify = cmdapprove.ExecuteScalar().ToString();
                 if (DecodeFrom64(password1) == txtpassword.Text)
-                    {
+                {
                     //Response.Write(verify);
-                       if (verify == "1")
-                        {
+                    if (verify == "1")
+                    {
                         //session created;
                         Session["useremail"] = email.Text;
                         //Response.Redirect("Home.aspx");
@@ -66,25 +67,59 @@ namespace RENTAL
                     else
                     {
                         verifyaccount.Visible = true;
-                        verifyaccount.Text="Please verify yout account first ";
-                    }
-                    }
-                    else
-                    {
-                        Label4.Visible = true;
-                        Label4.Text = "Password is not correct";
+                        verifyaccount.Text = "Please verify yout account first ";
                     }
                 }
                 else
                 {
-                    Label3.Visible = true;
-                    Label3.Text = "Email is not correct";
+                    Label4.Visible = true;
+                    Label4.Text = "Password is not correct";
                 }
-            
-           
-        }
+            }
+
+            else
+            {
+                con.Open();
+                string chkadmin = "select * from AdminLogin where Adminemail='" + email.Text + "'";
+                SqlCommand cmd1 = new SqlCommand(chkadmin, con);
+                int temp1 = Convert.ToInt32(cmd1.ExecuteScalar().ToString());
+                SqlDataAdapter sda = new SqlDataAdapter(cmd1);
+                DataSet ds = new DataSet();
+                sda.Fill(ds);
+                Response.Write(ds.Tables[0].Rows[0]["Adminemail"].ToString());
+                Response.Write(cmd.ExecuteScalar().ToString());
+                con.Close();
+                if (temp1 == 1)
+                {
+                    con.Open();
+                    string checkpassword = "select AdminPassword from AdminLogin where Adminemail='" + email.Text + "'";
+                    SqlCommand cmdpass = new SqlCommand(checkpassword, con);
+                    string password1 = cmdpass.ExecuteScalar().ToString().Replace(" ", "");
+                    if (password1 == txtpassword.Text)
+                    {
+                        cmd1 = new SqlCommand("Select AdminName from AdminLogin where Adminemail='" + email.Text + "'", con);
+                        string AdminName = cmd1.ExecuteScalar().ToString().Replace(" ", "");
 
 
+                        Session["admin"] = AdminName;
+                        Response.Redirect("AdminHome.aspx");
+                    }
+                    else
+                    {
+                        Response.Write("Admin password is incorrect");
+                    }
+
+
+                    if (ds.Tables[0].Rows[0]["Adminemail"].ToString() == email.Text.ToString())
+                    {
+                        Label3.Visible = true;
+                        Label3.Text = "Email is not correct";
+                    }
+
+
+                }
+            }
+            }
         //this function Convert to Decord your Password
         public string DecodeFrom64(string encodedData)
         {

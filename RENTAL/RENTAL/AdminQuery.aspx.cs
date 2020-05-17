@@ -18,7 +18,18 @@ namespace RENTAL
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            SqlConnection con = new SqlConnection(strcon);
+            SqlCommand cmd = new SqlCommand();
+            string str = "select QueryId,username,QueryDetails,usergmail,DateOfQuery,status from Query_details";
+            cmd.CommandText = str;
+            cmd.Connection = con;
+            SqlDataAdapter sda = new SqlDataAdapter();
+            sda.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            GridView1.DataSource = dt;
             GridView1.DataBind();
+
         }
 
         // Go button
@@ -143,6 +154,28 @@ namespace RENTAL
                 Response.Write("<script>alert('Invalid Member ID');</script>");
             }
 
+        }
+        protected void btnsearch_Click(object sender, EventArgs e)
+        {
+            string mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString();
+            SqlConnection con = new SqlConnection(mycon);
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            string query = "select QueryId,username,QueryDetails,usergmail,DateOfQuery,status from Query_details where username like('%" + txtsearch.Text + "%') or status like('%" + txtsearch.Text + "%')or DateOfQuery like('%" + txtsearch.Text + "%')  ";
+             cmd.CommandText = query;
+            cmd.Connection = con;
+            SqlDataAdapter sda = new SqlDataAdapter();
+            sda.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+
+        }
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            GridView1.DataBind();
         }
     }
 }

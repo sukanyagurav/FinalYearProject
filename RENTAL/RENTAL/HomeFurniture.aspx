@@ -1,78 +1,121 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="HomeFurniture.aspx.cs" Inherits="RENTAL.HomFurniture" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    <style>
 
-    .catwrapper3{
-         width:auto;
-         margin-top:120px;
-         display:flex;
-         justify-content:center;
-         text-align:center;
-         flex-wrap:wrap;
-     }
-        
-     .catwrapper3 .item{
-         width:180px;
-         height:100px;
-         margin:10px;
-         background:#fff;
-         padding:30px 20px 65px;
-         border: 1px solid black;
-         position:relative;
-
-     }
-     .catwrapper3 .item h3{
-         letter-spacing:2px;
-     }
-     .catwrapper3 .item img{
-         display:block;
-         margin:10px auto;
-
-     }
-    </style>
+     <link href="bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
     
-     </asp:Content>
+
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <hr />
-    <br />
-    <br />
-    <br />
-    <br />
-
- <div class="catwrapper3" style="box-sizing:border-box;margin:0; padding :0;">
-    <div class="item item1_1">
-        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">
-            <img src="Imag/bed.JPG"  height="100" width="100" /><br />
-            <h3>Bedroom</h3>
-        </asp:LinkButton>
-    </div>
-     <div class="item item1_2">
-         <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">
-            <img src="Imag/living.JPG"  height="100" width="100" /><br />
-            <h3>Living Room</h3>
-      </asp:LinkButton>
-    </div>
-     <div class="item item1_3">
-         <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">
-            <img src="Imag/dining.JPG"  height="100" width="100" />
-              <h3>Dining Room</h3>
-         </asp:LinkButton>
-     </div>
-     <div class="item item1_4">
-         <asp:LinkButton ID="LinkButton4" runat="server" OnClick="LinkButton4_Click">
-            <img src="Imag/study.JPG"  height="100" width="100" /><br />
-            <h3>Study Room</h3>
-        </asp:LinkButton>
-     </div>
-        <div class="item item1_5">
-            <asp:LinkButton ID="LinkButton5" runat="server" OnClick="LinkButton5_Click">
-            <img src="Imag/storage.JPG"  height="100" width="100" /><br />
-            <h3>Storage</h3>
-            </asp:LinkButton>
-        </div>
-
-</div>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
    
+    <script src="bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
 
+  <style>
+      .card{
+          box-shadow:0px 7px 10px rgba(0,0,0,0.5);
+          transition:0.5s ease-in-out;
+    min-height:100%;
+          }
+      .card:hover{
+          transform:translateY(20px);
+
+      }
+      .card:before{
+          content:"";
+          position:absolute;
+          top:0;
+          left:0;
+          display:block;
+          opacity:0;
+      }
+      .card:hover::before{
+          opacity:1;
+
+      }
+      .col{
+          display:table-cell;
+      }
+      
+  </style>
+    <br />
+    <br />
+    <br />
+    <br />
+    <hr />
+
+    <div class="container">
+        <div  class="row">
+            <div class="col-lg py-2" >
+                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">
+
+        <div class="card">
+            <center>  <asp:Image src="Imag/bed.JPG"  height="100" width="100" runat="server" /> 
+  </center>
+            <div class="card-body">
+                              <h3>Bedroom</h3>
+       
+                     </div>
+       </div>
+             </asp:LinkButton>
+</div>
+            <div class="col-lg py-2">
+  <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">
+ 
+                <div class="card">
+                     <center> <asp:Image src="Imag/living.JPG"  height="100" width="100" runat="server"/>         
+                   </center> <div class="card-body">
+                            <h3>Living Room</h3>
+    
+                        </div>
+            </div>
+                      </asp:LinkButton>
+              </div>          
+                   <div class="col-lg py-2">
+                               <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">
+   
+                          <div class="card">
+                            <center><asp:Image src="Imag/dining.JPG"  height="100" width="100" runat="server"/>
+                  </center><div class="card-body">
+                    <center>  <h3>Dining Room</h3></center>
+        
+                       </div>
+                              </div>
+         </asp:LinkButton>
+                              </div>
+                     <div class="col-lg py-2">
+                          <asp:LinkButton ID="LinkButton4" runat="server" OnClick="LinkButton4_Click">
+
+                         <div class="card">
+                           <center><asp:Image src="Imag/study.JPG"  height="100" width="100" runat="server"/>
+                             </center><div class="card-body">
+                                 
+                                    <h3>Study Room</h3>
+                   
+                             </div>
+                         </div>
+        </asp:LinkButton>
+
+                     </div>  
+            <div class="col-lg py-2">
+                        <asp:LinkButton ID="LinkButton5" runat="server" OnClick="LinkButton5_Click">
+
+                <div class="card">
+                    <center> <asp:Image src="Imag/storage.JPG"  height="100" width="100" runat="server"  />
+          </center>
+                    <div class="card-body">
+         <h3>Storage</h3>
+                  
+                        </div>
+                    </div>
+                            </asp:LinkButton>
+
+            </div>       
+            
+                       
+            </div>
+        </div>
+    
+
+   
 
 </asp:Content>

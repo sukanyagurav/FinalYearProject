@@ -22,6 +22,7 @@ namespace RENTAL
         {
 
             city = "Mumbai";
+
             if (!IsPostBack)
             {
 
@@ -48,19 +49,7 @@ namespace RENTAL
                 }
             }
 
-            if (Session["useremail1"] == null)
-            {
-
-                LinkButton1.Visible = false;
-            }
-            else
-            {
-
-                LinkButton1.Visible = true;
-
-
-            }
-
+        
 
 
             //crating session for addtocart
@@ -178,7 +167,13 @@ namespace RENTAL
             namep.Text = ds.Tables[0].Rows[0]["PName"].ToString();
             price.Text = ds.Tables[0].Rows[0]["PPrice"].ToString();
             pimage.ImageUrl = ds.Tables[0].Rows[0]["PImage"].ToString();
-
+            refprice.Text = ds.Tables[0].Rows[0]["RefundableDeposit"].ToString();
+            ImageButton2.ImageUrl= ds.Tables[0].Rows[0]["image1"].ToString();
+            ImageButton3.ImageUrl = ds.Tables[0].Rows[0]["image2"].ToString();
+            ImageButton4.ImageUrl = ds.Tables[0].Rows[0]["PImage"].ToString();
+            Description.Text= ds.Tables[0].Rows[0]["Description"].ToString();
+            Dimension.Text = ds.Tables[0].Rows[0]["Dimension"].ToString();
+            Color.Text = ds.Tables[0].Rows[0]["Color"].ToString();
             cmd = new SqlCommand();
             DataTable dt1 = this.GetData("SELECT ISNULL(AVG(Rating), 0) AverageRating, COUNT(Rating) RatingCount FROM tblrating  where PId='" + prodctId + "'");
             Rating1.CurrentRating = Convert.ToInt32(dt1.Rows[0]["AverageRating"]);
@@ -201,16 +196,16 @@ namespace RENTAL
                       if (ds.Tables[0].Rows.Count > 0)
                 {
                     
-                    wishlist.ImageUrl = "images/icontrue.png";
+                    Button2.Text = "Remove From Wishlist";
                                 }
                 else
                 {
-                                 wishlist.ImageUrl = "images/iconfalse.png";
+                    Button2.Text = "Add To Wishlist";
                 }
             }
             else
             {
-                   wishlist.ImageUrl = "images/iconfalse.png";
+                Button2.Text = "Add To Wishlist";
                 con.Close();
 
             }
@@ -252,13 +247,13 @@ namespace RENTAL
                 Label15.Text = "Sorry for the inconvience.The product you requested is Out of Stock.";
                 Label15.Visible = true;
 
-                ImageButton2.Enabled = false;
+                Button1.Enabled = false;
             }
             else
             {
 
                 Label15.Visible = false;
-                ImageButton2.Enabled = true;
+                Button1.Enabled = true;
 
             }
             Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
@@ -394,14 +389,7 @@ namespace RENTAL
 
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            Session.Remove("useremail1");
-
-            Session.Remove("useremail");
-            ///Session.Abandon();
-        }
-
+       
         protected void DataList1_ItemDataBound(object sender, DataListItemEventArgs e)
         {
             DropDownList drp = (DropDownList)this.Master.FindControl("ddl");
@@ -409,7 +397,7 @@ namespace RENTAL
             {
                 city = drp.SelectedValue.ToString();
             }
-            ImageButton btn = e.Item.FindControl("ImageButton1") as ImageButton;
+            Image btn = e.Item.FindControl("ImageButton1") as Image;
             Label lb1 = e.Item.FindControl("id") as Label;
 
             String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
@@ -450,13 +438,12 @@ namespace RENTAL
             if (stockdata == soldout)
             {
                 //lb.Text = "Out of Stock";
-                btn.Visible = true;
-                btn.ImageUrl = "images/soldout.jpg";
+              btn.Visible = true;
+                btn.ImageUrl = "images/out of stock.png";
             }
 
         }
-
-        protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+        protected void addbtn_Click(object sender, EventArgs e)
         {
 
             string s = Session["productId"].ToString();
@@ -495,18 +482,18 @@ namespace RENTAL
 
             Response.Redirect("AddtoCart.aspx?id=" + s + "&price=" + Session["price"]);
         }
-        protected void Wishlist_Click(object sender, ImageClickEventArgs e)
+        protected void wishbtn_Click(object sender, EventArgs e)
         {
             int pid = Convert.ToInt32(Session["productId"].ToString());
             SqlConnection con = new SqlConnection(constr);
             SqlCommand cmd = new SqlCommand();
-          
-          
-            if (Session["useremail"] != null )
+
+
+            if (Session["useremail"] != null)
             {
                 string myquery2 = "Select * from wishlist where PId=" + pid + " and useremail='" + Session["useremail"] + "'";
                 cmd = new SqlCommand();
-                SqlConnection con1= new SqlConnection(constr);
+                SqlConnection con1 = new SqlConnection(constr);
                 con1.Open();
                 cmd.CommandText = myquery2;
                 cmd.Connection = con1;
@@ -539,7 +526,7 @@ namespace RENTAL
                                 //Item has been deleted from savedcartdetail
                                 con.Close();
 
-                                wishlist.ImageUrl = "images/iconfalse.png";
+                                Button2.Text = "Add To Wishlist";
                             }
                         }
                     }
@@ -568,12 +555,12 @@ namespace RENTAL
                     if (ds.Tables[0].Rows.Count > 0)
                     {
 
-                        wishlist.ImageUrl = "images/icontrue.png";
+                        Button2.Text = "Remoe From Wishlist";
 
                     }
                     else
                     {
-                        wishlist.ImageUrl = "images/iconfalse.png";
+                        Button2.Text = "Add To Wishlist";
                     }
                 }
             }
@@ -585,8 +572,34 @@ namespace RENTAL
             }
 
             Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-      
-       
+
+
         }
+
+        protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+        {
+             pimage.ImageUrl = ImageButton2.ImageUrl;
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+
+        }
+        protected void ImageButton3_Click(object sender, ImageClickEventArgs e)
+        {
+             pimage.ImageUrl = ImageButton3.ImageUrl;
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+
+        }
+        protected void ImageButton4_Click(object sender, ImageClickEventArgs e)
+        {
+              pimage.ImageUrl = ImageButton4.ImageUrl;
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+
+        }
+
+
+
+
     }
 }

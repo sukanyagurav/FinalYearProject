@@ -1,24 +1,21 @@
-﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="RENTAL.Home" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="RENTAL.Home" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   
-
-  
+    <link href="bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+   
+    <script src="bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
+
+   <br />
     <br />
     <br />
-    <br />
+
      
     <style id="6">
-        .carousel-inner > .item {
-   height: 500px;
-}
-
+  
      .catwrapper{
          width:auto;
          margin-top:120px;
@@ -47,48 +44,44 @@
          margin:10px auto;
 
      }
+
+        .card:hover {
+            --webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+            --moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+            box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+        }
     </style>
-    
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-     <li data-target="#myCarousel" data-slide-to="3"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" >
-    <div class="item active">
-      <img src="Imag/download (1).jpg" alt="Amazon Echo" style="width:100%;" class="center-block"/>
+    <br />
+  <div id="container">
+      <div id="myslideshow" class="carousel slide" data-ride="carousel" data-interval="1000">
+           <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#myslideshow" data-slide-to="0" class="active"></li>
+    <li data-target="#myslideshow" data-slide-to="1"></li>
+    <li data-target="#myslideshow" data-slide-to="2"></li>
+  </ul>
+          <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="Imag/2.png"  class="d-block w-100">
     </div>
-
-    <div class="item">
-      <img src="Imag/2.png" alt="PS4"  style="width:100%;" />
+    <div class="carousel-item">
+      <img src="Imag/3.jpg" class="d-block w-100">
     </div>
-
-    <div class="item">
-      <img src="Imag/3.jpg" alt="Samsung"  style="width:100%;" />
-    </div>
-      <div class="item">
-      <img src="Imag/4.jpg" alt="Samsung" style="width:100%;"/>
+    <div class="carousel-item">
+      <img src="Imag/4.jpg" class="d-block w-100">
     </div>
   </div>
+      <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#myslideshow" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#myslideshow" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+      </div>
+  </div>
 
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-     <br />
-    <br />
-    <br />
+   
      <br />
     <br />
     <br /><!--categories-->
@@ -121,42 +114,47 @@
 
 </div>
     <hr />
+<center>    <h2>WHY YOU SHOULD RENT !</h2></center>
 <div class="container">
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 ">
+        
             <div class="card">
-                <asp:Image ID="Image1" runat="server" ImageUrl="image/study.jpg" />
+                 <asp:Image ID="Image1" runat="server" ImageUrl="homepageimg/1.jpg" CssClass="card-img-top" />
                 <div class="card-body">
-                    <div class="card-title">HAVE EVERYTHING, WITHOUT BUYING</div>
-                    <p class="card-text">
+                   <h3>
+                    HAVE EVERYTHING, WITHOUT BUYING</h3>
+                      <h4> <span>
+                                           Bed or sofa? It’s not a choice anymore. With our wallet-friendly packages, you can have that perfect home at a fraction of the cost and effort.
+         
 
-                       Bed or sofa? It’s not a choice anymore. With our wallet-friendly packages, you can have that perfect home at a fraction of the cost and effort.
-                    </p>
-                </div>
+              </span>
+                          </h4>
+                    </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 ">
              <div class="card">
-                <asp:Image ID="Image2" runat="server" ImageUrl="~/bedroom/belle_single_bed.jpg" />
-                <div class="card-body">
-                    <div class="card-title">CHANGE, AS YOUR NEEDS EVOLVE</div>
-                    <p class="card-text">
-
-                      
-Upgrade as you evolve. Relocate for free. Pause your subscription at will. Things you can never do if you buy furniture.     </p>
-                </div>
+                  <asp:Image ID="Image2" runat="server" ImageUrl="homepageimg/2.jpg"  CssClass="card-img-top"/>
+              
+                  <div class="card-body">
+                     <h3>                  CHANGE, AS YOUR NEEDS EVOLVE
+                 </h3>
+<h4><span>Upgrade as you evolve. Relocate for free. Pause your subscription at will. Things you can never do if you buy furniture.     </p>
+   </span>
+ </h4>            </div>
             </div>
         </div>
-        <div class="col-lg-4">
-             <div class="card">
-                <asp:Image ID="Image3" runat="server" ImageUrl="~/bedroom/belle_single_bed.jpg" />
-                <div class="card-body">
-                    <div class="card-title">HAVE EVERYTHING, WITHOUT BUYING</div>
-                    <p class="card-text">
-
-                       Bed or sofa? It’s not a choice anymore. With our wallet-friendly packages, you can have that perfect home at a fraction of the cost and effort.
-                    </p>
-                </div>
+        <div class="col-lg-4" >
+             <div class="card" >
+                 <asp:Image ID="Image3" runat="server" ImageUrl="homepageimg/3.jpg" CssClass="card-img-top"/>
+            
+                   <div class="card-body">
+                        
+                    <h3>SWAP AND UPGRADE</h3>
+                   <h4><span>
+                       Upgrading your home? Tired of the same look? Bored with the furniture? Our free swap ensures that your home constantly evolves with your needs. And tastes.
+                           </span></h4>                </div>
             </div>
         </div>
     </div>

@@ -1,10 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminQuery.aspx.cs" Inherits="RENTAL.AdminQuery" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="AdminQuery.aspx.cs" Inherits="RENTAL.AdminQuery" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
      <script type="text/javascript">
       $(document).ready(function () {
           $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
@@ -16,9 +14,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
    
-</head>
-<body>
-    <form id="form1" runat="server">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4">
@@ -104,27 +99,29 @@
                                     </center>
                                 </div>
                             </div>
+                             <div class="row">
+                            <div class="col-md-8">
+                                <asp:TextBox ID="txtsearch" runat="server"></asp:TextBox>
+                                <asp:Button ID="btnsearch" runat="server" Text="Search" OnClick="btnsearch_Click" />
+                            </div>
+                        </div>
                             <div class="row">
                                 <div class="col">
                                     <hr />
                                 </div>
                             </div>
-                            <div class="row">
-                               <div class="col">
-                                   <asp:GridView ID="GridView1" class="table table-striped table-bordered" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
-                                       <Columns>
-                                           <asp:BoundField DataField="QueryId" HeaderText="QueryId" InsertVisible="False" ReadOnly="True" SortExpression="QueryId" />
-                                           <asp:BoundField DataField="DateOfQuery" HeaderText="DateOfQuery" SortExpression="DateOfQuery" />
-                                           <asp:BoundField DataField="username" HeaderText="username" SortExpression="username" />
-                                           <asp:BoundField DataField="QueryDetails" HeaderText="QueryDetails" SortExpression="QueryDetails" />
-                                           <asp:BoundField DataField="status" HeaderText="status" SortExpression="status" />
-                                           <asp:BoundField DataField="usergmail" HeaderText="usergmail" SortExpression="usergmail" />
-                                       </Columns>
-                                   </asp:GridView>
-                                   <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString1 %>" SelectCommand="SELECT * FROM [Query_details] ORDER BY [QueryId] DESC"></asp:SqlDataSource>
+                             <div class="row">
+                            <div class="col">
+                                <asp:GridView ID="GridView1" runat="server" EmptyDataText="No Records Found" ShowHeaderWhenEmpty="True" AllowPaging="True" class="table table-striped table-bordered"  PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging">
+                                    <PagerStyle/>
+                                  
 
-                               </div>
+                                </asp:GridView>
+                                
+                                <br />
+                               
                             </div>
+                        </div>
                         </div>
                     </div>
 
@@ -132,6 +129,4 @@
                 </div>
             </div>
         </div>
-    </form>
-</body>
-</html>
+   </asp:Content>

@@ -15,9 +15,9 @@ namespace RENTAL
         {
             if (!IsPostBack)
             {
-                
+
                 //check if the session exists and select the correct value in the dropdownlist
-                if (Session["CityName"]!= null)
+                if (Session["CityName"] != null)
                 {
                     ddl.SelectedValue = Session["CityName"].ToString();
                     // ddl.Items.FindByValue(Session["CityName"].ToString()).Selected = true;
@@ -29,34 +29,82 @@ namespace RENTAL
                     //set the session with the default city
                     Session["CityName"] = ddl.SelectedValue;
                 }
-                
 
-               
+
+
             }
-           if (Session["useremail"] == null)
+            if (Session["useremail1"] == null)
             {
-                Image1.Visible = false;
-                Label1.Visible = false;
-               // Response.Redirect("Home.aspx");
+
+                LinkButton1.Visible = false;
             }
-           else
-                {
-                Image1.Visible = true;
-                Label1.Visible = true;
-                string str= ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+            else
+            {
+
+                LinkButton1.Visible = true;
+
+
+            }
+
+            if (Session["useremail"] == null)
+            {
+                Image2.Visible = false;
+                Label2.Visible = false;
+                // Response.Redirect("Home.aspx");
+            }
+            else
+            {
+                Image2.Visible = true;
+                Label2.Visible = true;
+                string str = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
                 SqlConnection con = new SqlConnection(str);
-                    SqlDataAdapter sda = new SqlDataAdapter("Select * from Users where Email= '" + Session["useremail"].ToString() + "' ", con);
-                    DataTable dt = new DataTable();
-                    sda.Fill(dt);
-                Label1.Text = dt.Rows[0]["Username"].ToString();
-               // Image2.ImageUrl = "images/usericon.png";
-                Image1.ImageUrl = "images/usericon.png";
+                SqlDataAdapter sda = new SqlDataAdapter("Select * from Users where Email= '" + Session["useremail"].ToString() + "' ", con);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                Label2.Text = dt.Rows[0]["Username"].ToString();
+                // Image2.ImageUrl = "images/usericon.png";
+                Image2.ImageUrl = "images/usericon.png";
                 // Label2.Text = dt.Rows[0]["First_Name"].ToString() + " " + dt.Rows[0]["Last_Name"].ToString();
                 //Label3.Text = dt.Rows[0]["Email_id"].ToString();
 
             }
+            if (Session["admin"] == null)
+            {
+                Image2.Visible = false;
+                Label2.Visible = false;
+                // Response.Redirect("Home.aspx");
+            }
+            else
+            {
+                Image2.Visible = true;
+                Label2.Visible = true;
+                string str = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+                SqlConnection con = new SqlConnection(str);
+                SqlDataAdapter sda = new SqlDataAdapter("Select * from AdminLogin where AdminName= '" + Session["admin"].ToString() + "'", con);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                Label2.Text = dt.Rows[0]["AdminName"].ToString();
+                // Image2.ImageUrl = "images/usericon.png";
+                Image2.ImageUrl = "images/usericon.png";
+                // Label2.Text = dt.Rows[0]["First_Name"].ToString() + " " + dt.Rows[0]["Last_Name"].ToString();
+                //Label3.Text = dt.Rows[0]["Email_id"].ToString();
 
             }
+        
+       
+
+    }
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session.Remove("useremail1");
+
+            Session.Remove("useremail");
+            ///Session.Abandon();
+        }
+        protected void AddtoCart(object sender, EventArgs e)
+        {
+            Response.Redirect("AddtoCart.aspx");
+        }
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
 

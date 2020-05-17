@@ -226,7 +226,6 @@ namespace RENTAL
                     //Item has been deleted from savedcartdetail
                     con.Close();
 
-
                     break;
 
                 }
@@ -409,7 +408,7 @@ namespace RENTAL
             cmd.CommandText = updatedata;
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
-            Response.Redirect("HomePage.aspx");
+            Response.Redirect("~/HomePage.aspx");
         }
 
         private void checkavailability(int PId, int numbersold)

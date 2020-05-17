@@ -1,11 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Adminaddproducts.aspx.cs" Inherits="RENTAL.Adminaddproducts" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Adminaddproducts.aspx.cs" Inherits="RENTAL.Adminaddproducts" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-
-    <title></title>
  <script type="text/javascript">
       $(document).ready(function () {
           $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
@@ -34,11 +31,8 @@
   color: white;
 }
        .pagination :hover:not(.active) {background-color: #ddd;}
-   </style>
-
-</head>
-<body>
-    <form id="form1" runat="server">
+  
+    </style>
        <div class="container-fluid">
            <div class="row">
            <div class="col-md-4">
@@ -70,13 +64,21 @@
                                 <label>Product Name</label>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Name"></asp:TextBox>
+                                        <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Product ID"></asp:TextBox>
                                         <asp:Button class="btn btn-primary" ID="Button1" runat="server" Text="Go" OnClick="Button1_Click" />
-                                  
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="TextBox1" style="color:Red; font-size:15px;" Font-Bold="True" Font-Size="Large"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
                             </div>
-                           <div class="col-md-8">
+                          <div class="col-md-8">
+                              <label>Product Name</label>
+                              <asp:TextBox ID="Name" runat="server" CssClass="form-control" placeholder="Description"></asp:TextBox>
+                          </div>
+                       </div>
+
+                       <div class="row">
+                           <div class="col-md-3">
+                              
                                <label>Product Image</label>
                                <div class="form-group">
                                     <div class="input-group">
@@ -85,10 +87,55 @@
                                              <asp:Label ID="Label4" runat="server"></asp:Label>
                                                 <br />
                                         </div>
+                                   
+                           </div>
+                          
+                           </div> 
+                           <div class="col-md-3">
+                               
+                               <label>Product Image 1</label>
+                               <div class="form-group">
+                                    <div class="input-group">
+                                            <asp:FileUpload ID="f2" runat="server" />
+                                                <br />
+                                             <asp:Label ID="Label2" runat="server"></asp:Label>
+                                                <br />
+                                        </div>
                                    </div>
 
                            </div>
+                           
+                             <div class="col-md-3">
+                                
+                               <label>Product Image</label>
+                               <div class="form-group">
+                                    <div class="input-group">
+                                            <asp:FileUpload ID="f3" runat="server" />
+                                                <br />
+                                             <asp:Label ID="Label3" runat="server"></asp:Label>
+                                                <br />
+                                        </div>
+                                   </div>
+
+                           
+                           </div>
+                         </div>
+                           
+                       
+                       <div class="row">
+                           <div class="col-md-6">
+                               <label>Description</label>
+                               <asp:TextBox ID="description" runat="server" CssClass="form-control" placeholder="Description" ></asp:TextBox>
+                           </div>
+                           <div class="col-md-3">
+                           <label>Dimension</label>
+                           <asp:TextBox ID="dimension" runat="server" CssClass="form-control" placeholder="Dimesnsion"></asp:TextBox>
                        </div>
+                           <div class="col-md-3">
+                               <label>Color</label>
+                               <asp:TextBox ID="color" runat="server" CssClass="form-control" placeholder="Dimesnsion" ></asp:TextBox>
+                           </div>
+                     </div>
                        <div class="row">
                            <div class="col-md-4">
                                <label>Product Quantity</label>
@@ -116,7 +163,7 @@
                            </div>
                        </div>
                        <div class="row">
-                           <div class="col-md-6">
+                           <div class="col">
                                <label>Product Keyword</label>
                                 <div class="form-group">
                                     <div class="input-group">
@@ -124,7 +171,7 @@
                                       </div>
                                 </div>
                            </div>
-                           <div class="col-md-3">
+                           <div class="col">
                                <label>Product Category</label>
                                 <div class="form-group">
                                     <div class="input-group">
@@ -142,7 +189,7 @@
                                     </div>
 
                            </div>
-                           <div class="col-md-3">
+                           <div class="col">
                                <label>Chooose City</label>
                                 <div class="form-group">
                                     <div class="input-group">
@@ -154,6 +201,17 @@
                                     </div>
 
                            </div>
+                       </div>
+                   </div>
+                   <div class="row">
+                       <div class="col-md-3">
+                           <asp:Image ID="Image1" runat="server" Height="200" Width="200" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       </div>&nbsp;&nbsp;&nbsp;
+                       <div class="col-md-3">
+                           <asp:Image ID="Image2" runat="server" Height="200" Width="200"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       </div>&nbsp;&nbsp;&nbsp;
+                       <div class="col-md-3">
+                           <asp:Image ID="Image3" runat="server" Height="200" Width="200" />
                        </div>
                    </div>
                    <div class="row">
@@ -181,7 +239,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-8">
                                 <asp:TextBox ID="txtsearch" runat="server"></asp:TextBox>
                                 <asp:Button ID="btnsearch" runat="server" Text="Search" OnClick="btnsearch_Click" />
                             </div>
@@ -210,6 +268,4 @@
             </div>
        </div>
      </div>
-    </form>
-</body>
-</html>
+  </asp:Content>

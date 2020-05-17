@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" EmptyDataText="No Records Found">
                 <Columns>
                     <asp:BoundField DataField="PName" HeaderText="Product Name">
                     <FooterStyle HorizontalAlign="Center" />
