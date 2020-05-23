@@ -17,7 +17,7 @@
     <script src='<%=ResolveUrl("~/crystalreportviewers13/js/crviewer/crv.js")%>' type="text/javascript"></script>
 
     </head>
-<body>
+<body style="background-color:gainsboro;">
     <form id="form1" runat="server">
            <div class="wrapper">
              <div id="nav">

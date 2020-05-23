@@ -18,24 +18,57 @@
              <div class="container-fluid">
                  <div class="card" >
                  <div class="card-body"><center>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView1_RowDeleting" ShowFooter="True" Height="146px" Width="1000" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CellSpacing="30" GridLines="Horizontal" CellPadding="20" EmptyDataText="No Records Found" BorderStyle="Dashed">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView1_RowDeleting" ShowFooter="True" Height="146px" Width="1000px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CellSpacing="30" GridLines="Horizontal" CellPadding="20" EmptyDataText="No Records Found" BorderStyle="Dashed" Font-Bold="True" Font-Names="Verdana" Font-Size="X-Large">
                 <Columns>
-                      <asp:BoundField DataField="sno" HeaderText="srno" />
-                    <asp:BoundField DataField="PId" HeaderText="ProductId" Visible="False" />
+                      <asp:BoundField DataField="sno" HeaderText="srno" >
+                      <HeaderStyle Font-Bold="True" Font-Names="Verdana" Font-Size="Medium" />
+                      <ItemStyle Font-Names="Verdana" Font-Size="Medium" />
+                      </asp:BoundField>
+                    <asp:BoundField DataField="PId" HeaderText="ProductId" Visible="False" >
 
-                    <asp:BoundField DataField="PName" HeaderText="ProductName" />
+                      <ItemStyle Font-Names="Verdana" Font-Size="Medium" />
+                      </asp:BoundField>
+
+                    <asp:BoundField DataField="PName" HeaderText="ProductName" >
+                      <HeaderStyle Font-Bold="True" Font-Names="Verdana" Font-Size="Medium" />
+                      <ItemStyle Font-Bold="False" Font-Names="Verdana" Font-Size="Medium" />
+                      </asp:BoundField>
                     <asp:ImageField DataImageUrlField="PImage" HeaderText="Product image" ItemStyle-Width="200" ItemStyle-Height="100">
+                        <HeaderStyle Font-Bold="True" Font-Names="Verdana" Font-Size="Medium" />
 <ItemStyle Height="100px" Width="200px"></ItemStyle>
                     </asp:ImageField>
-                     <asp:BoundField DataField="month" HeaderText="Month" />
-                    <asp:BoundField DataField="PPrice" HeaderText="Price" />
-                    <asp:BoundField DataField="totalprice" HeaderText="Total price" />
-                     <asp:BoundField DataField="quantity1" HeaderText="Quantity" SortExpression="quantity1" />
+                     <asp:BoundField DataField="month" HeaderText="Month" >
+                      <HeaderStyle Font-Bold="True" Font-Names="Verdana" Font-Size="Medium" />
+                      <ItemStyle Font-Names="Verdana" Font-Size="Medium" />
+                      </asp:BoundField>
+                    <asp:BoundField DataField="PPrice" HeaderText="Price" >
+                      <HeaderStyle Font-Bold="True" Font-Names="Verdana" Font-Size="Medium" />
+                      <ItemStyle Font-Names="Verdana" Font-Size="Medium" />
+                      </asp:BoundField>
+                    <asp:BoundField DataField="totalprice" HeaderText="Total price" >
+                      <HeaderStyle Font-Bold="True" Font-Names="Verdana" Font-Size="X-Large" />
+                      <ItemStyle  Font-Names="Verdana" Font-Size="Medium"  />
+                      </asp:BoundField>
+                     <asp:BoundField DataField="quantity1" HeaderText="Quantity" SortExpression="quantity1" >
                  
-                    <asp:CommandField DeleteText="Remove" ShowDeleteButton="True" />
+                      <HeaderStyle Font-Bold="True" Font-Names="Verdana" Font-Size="Medium" />
+                      <ItemStyle Font-Names="Verdana" Font-Size="Medium" />
+                      </asp:BoundField>
+                 
+                    <asp:CommandField DeleteText="Remove" ShowDeleteButton="True" >
                   
                      
-                      <asp:CommandField SelectText="Modify" ShowSelectButton="True" />
+                      <ControlStyle Font-Bold="True" Font-Names="Verdana" Font-Size="Medium" />
+                      </asp:CommandField>
+                  
+                     
+                      <asp:CommandField SelectText="Modify" ShowSelectButton="True" >
+                  
+                     
+                     
+                     
+                      <ControlStyle Font-Bold="True" Font-Names="Verdana" Font-Size="Medium" />
+                      </asp:CommandField>
                   
                      
                      

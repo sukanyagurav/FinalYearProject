@@ -14,9 +14,24 @@ namespace RENTAL
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            string constr = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+            SqlConnection con = new SqlConnection(constr);
+            SqlCommand cmd = new SqlCommand("select * from advertisement;", con);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            sda.Fill(ds);
+            Image4.ImageUrl = ds.Tables[0].Rows[0]["imagesource"].ToString();
+            Image5.ImageUrl = ds.Tables[0].Rows[1]["imagesource"].ToString();
+            Image6.ImageUrl = ds.Tables[0].Rows[2]["imagesource"].ToString();
+
             if (!Page.IsPostBack)
             {
                 ActivateMyAccount();
+            }
+            else
+            {
+                
+
             }
         }
         private void ActivateMyAccount()
@@ -53,4 +68,5 @@ namespace RENTAL
             }
         }
     }
+   
 }

@@ -9,12 +9,12 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Net;
 using System.Net.Mail;
-
+using System.IO;
 namespace RENTAL
 {
     public partial class SIGNUP : System.Web.UI.Page
     {
-       
+        string ActivationUrl;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -24,7 +24,7 @@ namespace RENTAL
         {
 
             MailMessage msg,msg1;
-           string ActivationUrl = string.Empty;
+           ActivationUrl = string.Empty;
             string emailId = string.Empty;
             Boolean chk = false;
             int userId = 0;
@@ -77,12 +77,13 @@ namespace RENTAL
                     msg1 = new MailMessage();
                     SmtpClient smtp1 = new SmtpClient();
                     msg1.Subject = "Hello " + uname.Text + "  Thanks for Register at Renture";
-                    msg1.Body = "Hi, Thanks For Your Registration at Renture, We will Provide You The Latest Update. Thanks";
+                    msg1.IsBodyHtml = true;
+                    msg1.Body = cratebody();
                     string toaddress = uemail.Text;
                     msg1.To.Add(toaddress);
-                    string fromaddress = "Renture <sgurav2067@gmail.com>";
+                    string fromaddress = "Renture <rentureteam@gmail.com>";
                     msg1.From = new MailAddress(fromaddress);
-                    smtp1.Credentials = new NetworkCredential("sgurav2067@gmail.com", "w@yw@rd@2067");
+                    smtp1.Credentials = new NetworkCredential("rentureteam@gmail.com", "RENTURE@22");
                     smtp1.Port = 587;
                     smtp1.Host = "smtp.gmail.com";
                     smtp1.EnableSsl = true;
@@ -93,30 +94,28 @@ namespace RENTAL
                     msg = new MailMessage();
                     SmtpClient smtp = new SmtpClient();
                     emailId = uemail.Text.Trim();
+                    msg.Subject = "Confirmation email for account activation";
+                    msg.IsBodyHtml = true;
+                    ActivationUrl = Server.HtmlEncode("https://localhost:44350/Home.aspx?UserId=" + FetchUserId(emailId) + "&EmailId=" + emailId);
+                    msg.Body = confirmgmail();
                     //sender email address
-                    msg.From = new MailAddress("sgurav2067@gmail.com");
+                    string fromaddress1 = "Renture <rentureteam@gmail.com>";
+
+                    msg.From = new MailAddress(fromaddress1);
                     //Receiver email address
                     msg.To.Add(emailId);
-                    msg.Subject = "Confirmation email for account activation";
                     //For testing replace the local host path with your lost host path and while making online replace with your website domain name
-                    ActivationUrl = Server.HtmlEncode("https://localhost:44350/Home.aspx?UserId=" + FetchUserId(emailId) + "&EmailId=" + emailId);
-
-                    msg.Body = "Hi " + uname.Text.Trim() + "!\n" +
-                          "Thanks for showing interest and registring in" +
-                          " Please <a href='" + ActivationUrl + "'>click here to activate</a>  your account and enjoy our services. \nThanks!";
-                    msg.IsBodyHtml = true;
-                    smtp.Credentials = new NetworkCredential("sgurav2067@gmail.com", "riverd@le$2067");
+                   
+                   
+                      
+                    smtp.Credentials = new NetworkCredential("rentureteam@gmail.com", "RENTURE@22");
                     smtp.Port = 587;
                     smtp.Host = "smtp.gmail.com";
                     smtp.EnableSsl = true;
                     smtp.Send(msg);
                     clear_controls();
-                    if (chk == false)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "alert('Confirmation Link to activate your account has been sent to your email address');", true);
-                        //  ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
-                    }
-                 }
+                    Response.Redirect("gmailconformation.aspx");
+                }
             }
             catch (Exception ex)
             {
@@ -130,9 +129,33 @@ namespace RENTAL
                 /*con.Close();
                 cmd.Dispose();*/
             }
+          
         }
-        //this function Convert to Encord your Password 
-        public static string EncodePasswordToBase64(string password)
+        public string cratebody()
+        {
+        string body=string.Empty;
+            using (StreamReader reader = new StreamReader(Server.MapPath("~/registrataiongmail.html")))
+            {
+                body = reader.ReadToEnd();
+
+            }
+            body = body.Replace("{name}", uname.Text.Trim());
+            return body;
+        }
+        public string confirmgmail()
+        {
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader(Server.MapPath("~/conformationgmail.html")))
+            {
+                body = reader.ReadToEnd();
+
+            }
+            body = body.Replace("{name}", uname.Text.Trim());
+            body = body.Replace("{ActivationUrl}", ActivationUrl);
+            return body;
+        }
+            //this function Convert to Encord your Password 
+            public static string EncodePasswordToBase64(string password)
         {
             try
             {

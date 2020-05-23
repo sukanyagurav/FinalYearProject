@@ -71,15 +71,16 @@
             text-align: center;
             display: inline-block;
             transition: 0.8s all;
+            color: Yellow;
         }
 #nav ul li a{
-color:white;   
+color:Yellow;   
     text-decoration:none;
      padding:10px;
    display:block;
 }
 #nav ul li a:hover{
-        color:yellow;
+        color:White;
 }
 #nav ul li ul{
     display:none;

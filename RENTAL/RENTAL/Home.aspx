@@ -62,14 +62,14 @@
   </ul>
           <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="Imag/2.png"  class="d-block w-100">
-    </div>
+       <asp:Image ID="Image4" runat="server" class="d-block w-100"/>
+        </div>
     <div class="carousel-item">
-      <img src="Imag/3.jpg" class="d-block w-100">
-    </div>
+        <asp:Image ID="Image5" runat="server" class="d-block w-100" />
+        </div>
     <div class="carousel-item">
-      <img src="Imag/4.jpg" class="d-block w-100">
-    </div>
+        <asp:Image ID="Image6" runat="server" class="d-block w-100" />
+      </div>
   </div>
       <!-- Left and right controls -->
   <a class="carousel-control-prev" href="#myslideshow" data-slide="prev">

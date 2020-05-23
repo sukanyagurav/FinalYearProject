@@ -35,35 +35,36 @@ namespace RENTAL
             }
             if (Session["useremail1"] == null)
             {
-
-                LinkButton1.Visible = false;
+                logout.Visible = false;
+           //     LinkButton1.Visible = false;
             }
             else
             {
-
-                LinkButton1.Visible = true;
-
+                Button1.Visible = false;
+                logout.Visible = true;
+         //       LinkButton1.Visible = true;
+                
 
             }
 
             if (Session["useremail"] == null)
             {
-                Image2.Visible = false;
-                Label2.Visible = false;
+                Image1.Visible = false;
+                Label1.Visible = false;
                 // Response.Redirect("Home.aspx");
             }
             else
             {
-                Image2.Visible = true;
-                Label2.Visible = true;
+                Image1.Visible = true;
+                Label1.Visible = true;
                 string str = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
                 SqlConnection con = new SqlConnection(str);
                 SqlDataAdapter sda = new SqlDataAdapter("Select * from Users where Email= '" + Session["useremail"].ToString() + "' ", con);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                Label2.Text = dt.Rows[0]["Username"].ToString();
+                Label1.Text = dt.Rows[0]["Username"].ToString();
                 // Image2.ImageUrl = "images/usericon.png";
-                Image2.ImageUrl = "images/usericon.png";
+                Image1.ImageUrl = "images/usericon.png";
                 // Label2.Text = dt.Rows[0]["First_Name"].ToString() + " " + dt.Rows[0]["Last_Name"].ToString();
                 //Label3.Text = dt.Rows[0]["Email_id"].ToString();
 
@@ -94,7 +95,7 @@ namespace RENTAL
        
 
     }
-        protected void LinkButton1_Click(object sender, EventArgs e)
+        protected void logout_Click(object sender, EventArgs e)
         {
             Session.Remove("useremail1");
 

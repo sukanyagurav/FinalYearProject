@@ -133,7 +133,6 @@
     <Content Include="AdminHome.aspx" />
     <Content Include="AdminLogin.aspx" />
     <Content Include="AdminQuery.aspx" />
-    <Content Include="Bed1.aspx" />
     <Content Include="bootstrap-4.3.1\.babelrc.js" />
     <Content Include="bootstrap-4.3.1\build\banner.js" />
     <Content Include="bootstrap-4.3.1\build\build-plugins.js" />
@@ -377,6 +376,7 @@
     <Content Include="bedroom\belle_single_bed.jpg" />
     <Content Include="bedroom\Eria_Single_Seater_Sofa.jpg" />
     <Content Include="bedroom\Erica_L_Shaped_Sofa.jpg" />
+    <Content Include="conformationgmail.html" />
     <Content Include="Contact.aspx" />
     <Content Include="ContactUs.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -406,6 +406,7 @@
     <Content Include="Extendproduct.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="forgotpassword.aspx" />
+    <Content Include="gmailconformation.aspx" />
     <Content Include="homepageimg\1.jpg" />
     <Content Include="homepageimg\2.jpg" />
     <Content Include="homepageimg\3.jpg" />
@@ -429,6 +430,7 @@
     <Content Include="images\WaitingStar.gif" />
     <Content Include="image\logo.JPG" />
     <Content Include="Imag\Cart.JPG" />
+    <Content Include="Imag\background.jpg" />
     <Content Include="itextsharp.dll" />
     <Content Include="js\alert.js" />
     <Content Include="js\bootstrap.bundle.js" />
@@ -463,10 +465,12 @@
     <Content Include="Paymentgateway.aspx" />
     <Content Include="PlaceOrder.aspx" />
     <Content Include="PlaceOrderSuccessfully.aspx" />
+    <Content Include="registrataiongmail.html" />
     <Content Include="registration.aspx" />
     <Content Include="Remove user.aspx" />
     <Content Include="resetpassword.aspx" />
     <Content Include="Send user gmail.aspx" />
+    <Content Include="sso-f17v2-bgimg.jpg" />
     <Content Include="StyleSheet2.css" />
     <Content Include="useravailable.aspx" />
     <Content Include="usericon.png" />
@@ -531,19 +535,10 @@
     <Content Include="viewdetailsaspx.aspx" />
     <Content Include="ViewProfile.aspx" />
     <Content Include="ViewReport.aspx" />
-    <Content Include="WebForm1.aspx" />
     <Content Include="storage1.aspx" />
     <Content Include="Stockreport.aspx" />
-    <Content Include="WebForm11.aspx" />
-    <Content Include="WebForm12.aspx" />
-    <Content Include="WebForm2.aspx" />
-    <Content Include="WebForm4.aspx" />
-    <Content Include="WebForm5.aspx" />
-    <Content Include="WebForm6.aspx" />
-    <Content Include="WebForm7.aspx" />
+    <Content Include="Wishlist.aspx" />
     <Content Include="MonthlyReport.aspx" />
-    <Content Include="wishlist.aspx" />
-    <Content Include="Wishlist1.aspx" />
     <Content Include="YearlyReport2.aspx" />
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -949,13 +944,6 @@
       <DependentUpon>available_user.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Bed1.aspx.cs">
-      <DependentUpon>Bed1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bed1.aspx.designer.cs">
-      <DependentUpon>Bed1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="cart.aspx.cs">
       <DependentUpon>cart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1023,6 +1011,13 @@
     </Compile>
     <Compile Include="Extendproduct.aspx.designer.cs">
       <DependentUpon>Extendproduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gmailconformation.aspx.cs">
+      <DependentUpon>gmailconformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gmailconformation.aspx.designer.cs">
+      <DependentUpon>gmailconformation.aspx</DependentUpon>
     </Compile>
     <Compile Include="MonthlyReport.cs">
       <AutoGen>True</AutoGen>
@@ -1250,13 +1245,6 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="storage1.aspx.cs">
       <DependentUpon>storage1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1271,54 +1259,12 @@
     <Compile Include="Stockreport.aspx.designer.cs">
       <DependentUpon>Stockreport.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm11.aspx.cs">
-      <DependentUpon>WebForm11.aspx</DependentUpon>
+    <Compile Include="Wishlist.aspx.cs">
+      <DependentUpon>Wishlist.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm11.aspx.designer.cs">
-      <DependentUpon>WebForm11.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm12.aspx.cs">
-      <DependentUpon>WebForm12.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm12.aspx.designer.cs">
-      <DependentUpon>WebForm12.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm2.aspx.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm2.aspx.designer.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm4.aspx.cs">
-      <DependentUpon>WebForm4.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm4.aspx.designer.cs">
-      <DependentUpon>WebForm4.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm5.aspx.cs">
-      <DependentUpon>WebForm5.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm5.aspx.designer.cs">
-      <DependentUpon>WebForm5.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm6.aspx.cs">
-      <DependentUpon>WebForm6.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm6.aspx.designer.cs">
-      <DependentUpon>WebForm6.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm7.aspx.cs">
-      <DependentUpon>WebForm7.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm7.aspx.designer.cs">
-      <DependentUpon>WebForm7.aspx</DependentUpon>
+    <Compile Include="Wishlist.aspx.designer.cs">
+      <DependentUpon>Wishlist.aspx</DependentUpon>
     </Compile>
     <Compile Include="MonthlyReport.aspx.cs">
       <DependentUpon>MonthlyReport.aspx</DependentUpon>
@@ -1326,20 +1272,6 @@
     </Compile>
     <Compile Include="MonthlyReport.aspx.designer.cs">
       <DependentUpon>MonthlyReport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="wishlist.aspx.cs">
-      <DependentUpon>wishlist.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="wishlist.aspx.designer.cs">
-      <DependentUpon>wishlist.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Wishlist1.aspx.cs">
-      <DependentUpon>Wishlist1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Wishlist1.aspx.designer.cs">
-      <DependentUpon>Wishlist1.aspx</DependentUpon>
     </Compile>
     <Compile Include="YearlyReport.cs">
       <AutoGen>True</AutoGen>

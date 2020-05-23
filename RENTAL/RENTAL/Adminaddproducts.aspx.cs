@@ -97,43 +97,43 @@ namespace RENTAL
                 {
                     if (ddl.SelectedValue.ToLower().ToString() == "bedroom")
                     {
-                        f1.SaveAs(Request.PhysicalApplicationPath + ("./bedroom/") +TextBox1.Text + ".jpg");
+                        f1.SaveAs(Request.PhysicalApplicationPath + ("./bedroom/") + Name.Text + ".jpg");
                         imagelink = "bedroom/" + Name.Text + ".jpg";
                         imagesaved = true;
                     }
                     if (ddl.SelectedValue.ToLower().ToString() == "livingroom")
                     {
-                        f1.SaveAs(Request.PhysicalApplicationPath + ("./livingroom/") + TextBox1.Text + ".jpg");
+                        f1.SaveAs(Request.PhysicalApplicationPath + ("./livingroom/") + Name.Text + ".jpg");
                         imagelink = "livingroom/" + Name.Text + ".jpg";
                         imagesaved = true;
                     }
                     if (ddl.SelectedValue.ToLower().ToString() == "studyroom")
                     {
-                        f1.SaveAs(Request.PhysicalApplicationPath + ("./studyroom/") + TextBox1.Text + ".jpg");
+                        f1.SaveAs(Request.PhysicalApplicationPath + ("./studyroom/") + Name.Text + ".jpg");
                         imagelink = "studyroom/" + Name.Text + ".jpg";
                         imagesaved = true;
                     }
                     if (ddl.SelectedValue.ToLower().ToString() == "diningroom")
                     {
-                        f1.SaveAs(Request.PhysicalApplicationPath + ("./diningroom/") + TextBox1.Text + ".jpg");
+                        f1.SaveAs(Request.PhysicalApplicationPath + ("./diningroom/") + Name.Text + ".jpg");
                         imagelink = "diningroom/" + Name.Text + ".jpg";
                         imagesaved = true;
                     }
                     if (ddl.SelectedValue.ToLower().ToString() == "storage")
                     {
-                        f1.SaveAs(Request.PhysicalApplicationPath + ("./storage/") +TextBox1.Text + ".jpg");
+                        f1.SaveAs(Request.PhysicalApplicationPath + ("./storage/") + Name.Text + ".jpg");
                         imagelink = "storage/" + Name.Text + ".jpg";
                         imagesaved = true;
                     }
                     if (ddl.SelectedValue.ToString() == "Appliance")
                     {
-                        f1.SaveAs(Request.PhysicalApplicationPath + ("./Appliance/") + TextBox1.Text + ".jpg");
+                        f1.SaveAs(Request.PhysicalApplicationPath + ("./Appliance/") + Name.Text + ".jpg");
                         imagelink = "Appliance/" + Name.Text + ".jpg";
                         imagesaved = true;
                     }
                     if (ddl.SelectedValue.ToString() == "OfficeFurniture")
                     {
-                        f1.SaveAs(Request.PhysicalApplicationPath + ("./OfficeFurniture/") + TextBox1.Text + ".jpg");
+                        f1.SaveAs(Request.PhysicalApplicationPath + ("./OfficeFurniture/") + Name.Text + ".jpg");
                         imagelink = "OfficeFurniture/" + Name.Text + ".jpg";
                         imagesaved = true;
                     }
@@ -328,43 +328,43 @@ namespace RENTAL
                 {
                     if (ddl.SelectedValue.ToLower().ToString() == "bedroom")
                     {
-                        f1.SaveAs(Request.PhysicalApplicationPath + ("./bedroom/") + TextBox1.Text + ".jpg");
+                        f1.SaveAs(Request.PhysicalApplicationPath + ("./bedroom/") + Name.Text + ".jpg");
                         imagelink = "bedroom/" + Name.Text + ".jpg";
                         imagesaved = true;
                     }
                     if (ddl.SelectedValue.ToLower().ToString() == "livingroom")
                     {
-                        f1.SaveAs(Request.PhysicalApplicationPath + ("./livingroom/") + TextBox1.Text + ".jpg");
+                        f1.SaveAs(Request.PhysicalApplicationPath + ("./livingroom/") + Name.Text + ".jpg");
                         imagelink = "livingroom/" + Name.Text + ".jpg";
                         imagesaved = true;
                     }
                     if (ddl.SelectedValue.ToLower().ToString() == "studyroom")
                     {
-                        f1.SaveAs(Request.PhysicalApplicationPath + ("./studyroom/") + TextBox1.Text + ".jpg");
+                        f1.SaveAs(Request.PhysicalApplicationPath + ("./studyroom/") + Name.Text + ".jpg");
                         imagelink = "studyroom/" + Name.Text + ".jpg";
                         imagesaved = true;
                     }
                     if (ddl.SelectedValue.ToLower().ToString() == "diningroom")
                     {
-                        f1.SaveAs(Request.PhysicalApplicationPath + ("./diningroom/") + TextBox1.Text + ".jpg");
+                        f1.SaveAs(Request.PhysicalApplicationPath + ("./diningroom/") + Name.Text + ".jpg");
                         imagelink = "diningroom/" + Name.Text + ".jpg";
                         imagesaved = true;
                     }
                     if (ddl.SelectedValue.ToLower().ToString() == "storage")
                     {
-                        f1.SaveAs(Request.PhysicalApplicationPath + ("./storage/") + TextBox1.Text + ".jpg");
+                        f1.SaveAs(Request.PhysicalApplicationPath + ("./storage/") + Name.Text + ".jpg");
                         imagelink = "storage/" + Name.Text + ".jpg";
                         imagesaved = true;
                     }
                     if (ddl.SelectedValue.ToString() == "Appliance")
                     {
-                        f1.SaveAs(Request.PhysicalApplicationPath + ("./Appliance/") + TextBox1.Text + ".jpg");
+                        f1.SaveAs(Request.PhysicalApplicationPath + ("./Appliance/") + Name.Text + ".jpg");
                         imagelink = "Appliance/" + Name.Text + ".jpg";
                         imagesaved = true;
                     }
                     if (ddl.SelectedValue.ToString() == "OfficeFurniture")
                     {
-                        f1.SaveAs(Request.PhysicalApplicationPath + ("./OfficeFurniture/") + TextBox1.Text + ".jpg");
+                        f1.SaveAs(Request.PhysicalApplicationPath + ("./OfficeFurniture/") + Name.Text + ".jpg");
                         imagelink = "OfficeFurniture/" + Name.Text + ".jpg";
                         imagesaved = true;
                     }

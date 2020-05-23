@@ -10,12 +10,16 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <style>
+      .demo{
+          color:yellow;
+      }
+  </style>  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
   
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body  style="background-color:gainsboro;">
     <form id="form1" runat="server">
            <div class="wrapper">
              <div id="nav">
@@ -23,14 +27,14 @@
              
                 <img src="images/logo1.JPG" height="100" width="200"/>
                 
-                   <ul>
-                        <li><a href="Home.aspx">Home</a></li>
+                   <ul style="color:yellow;">
+                        <li><a href="Home.aspx" class="demo">Home</a></li>
                        <li><a href="AdminHome.aspx">Admin Home</a></li>
                    <li><a href="Adminaddproducts.aspx">Add Products</a></li>
                    <li><a href="AdminQuery.aspx" >Admin Query</a></li>
                    <li><a href="Send user gmail.aspx">Send mail</a></li>
                    <li><a href="Remove user.aspx">Remove User</a></li>
-                  <li><a href="#">View Reports</a>
+                <li><a href="#">View Reports</a>
                       <ul>
                           <li><a href="MonthlyReport.aspx">Monthly Report</a></li>
                           <li><a href="YearlyReport2.aspx">Yearly Report</a></li>
