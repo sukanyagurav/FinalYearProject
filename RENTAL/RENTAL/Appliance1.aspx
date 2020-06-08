@@ -14,7 +14,7 @@
      <hr />
     <style>
          .cssdatalist{
-             height:365px;
+             height:380px;
              width:355px;
           box-shadow:0px 7px 10px rgba(0,0,0,0.5);
           transition:0.5s ease-in-out;
@@ -195,10 +195,9 @@ font-size:14px;
                 <ItemTemplate>
                <div class="cssdatalist">
            <div class="imagecss">
-                    <asp:Label
-                        ID="Label1" runat="server" Text='<%# Eval("PId") %>' Visible="false" ></asp:Label>
+                   <asp:Label ID="id" runat="server" Text='<%# Eval("PId") %>' Visible="false" ></asp:Label>
                <asp:Image ID ="image2" runat="server" ImageUrl ='<%# Eval("PImage") %>'  class="img-responsive"/>
-            <asp:Image ID="Image3" Enabled="false" runat="server" Visible="false" CssClass="overlay"  Width="100" Height="100"/>
+            <asp:Image ID="ImageButton1" Enabled="false" runat="server" Visible="false" CssClass="overlay"  Width="100" Height="100"/>
                    <asp:Button ID="Button1" runat="server" Text="Quickview" OnClick="ShowPopup" CommandName="id" CommandArgument='<%# Eval("PId") %>'  CssClass="quickview" />
                 </div>
                                <div class="nameprice">

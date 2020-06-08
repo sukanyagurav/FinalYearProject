@@ -145,7 +145,7 @@ namespace RENTAL
             dt.Columns.Add("totalprice");
             dt.Columns.Add("PImage");
             dt.Columns.Add("quantity1");
-            
+            dt.Columns.Add("RefundableDeposit");
 
             String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
             SqlConnection scon = new SqlConnection(mycon);
@@ -168,15 +168,17 @@ namespace RENTAL
                     dr["PId"] = ds.Tables[0].Rows[0]["PId"].ToString();
                     dr["PName"] = ds.Tables[0].Rows[0]["PName"].ToString();
                     dr["PImage"] = ds.Tables[0].Rows[0]["PImage"].ToString();
+                    dr["RefundableDeposit"] = ds.Tables[0].Rows[0]["RefundableDeposit"].ToString();
                     dr["month"] = ds.Tables[0].Rows[0]["month"].ToString();//Request.QueryString["month"];
                     dr["PPrice"] = ds.Tables[0].Rows[0]["PPrice"].ToString();//Request.QueryString["price"];
                     dr["quantity1"] = ds.Tables[0].Rows[0]["quantity1"].ToString() ;
                     int quantity1 = Convert.ToInt16(ds.Tables[0].Rows[0]["quantity1"].ToString());
-
+                     int ref1 = Convert.ToInt16(ds.Tables[0].Rows[0]["RefundableDeposit"].ToString());
+                   
                     int price = Convert.ToInt16(ds.Tables[0].Rows[0]["PPrice"].ToString());
                     int quantity = Convert.ToInt16(ds.Tables[0].Rows[0]["month"].ToString());
 
-                    int totalprice = price * quantity1;
+                    float totalprice = (price * quantity1)+ref1;
                     dr["totalprice"] = totalprice;
                     dt.Rows.Add(dr);
                     i = i + 1;

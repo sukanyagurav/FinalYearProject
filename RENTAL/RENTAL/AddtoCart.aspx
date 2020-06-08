@@ -41,6 +41,10 @@
                       <HeaderStyle Font-Bold="True" Font-Names="Verdana" Font-Size="Medium" />
                       <ItemStyle Font-Names="Verdana" Font-Size="Medium" />
                       </asp:BoundField>
+                    <asp:BoundField DataField="RefundableDeposit" HeaderText="Refundable Deposit">
+                   <HeaderStyle Font-Bold="True" Font-Names="Verdana" Font-Size="Medium" />
+                      <ItemStyle Font-Names="Verdana" Font-Size="Medium" />
+                                    </asp:BoundField>
                     <asp:BoundField DataField="PPrice" HeaderText="Price" >
                       <HeaderStyle Font-Bold="True" Font-Names="Verdana" Font-Size="Medium" />
                       <ItemStyle Font-Names="Verdana" Font-Size="Medium" />
@@ -71,6 +75,9 @@
                       </asp:CommandField>
                   
                      
+                     
+                     
+                      
                      
                      
                 </Columns>
@@ -132,7 +139,12 @@
                     <asp:ListItem>3</asp:ListItem>
                     <asp:ListItem>4</asp:ListItem>
                 </asp:DropDownList>
-              <br />
+                         <br />
+                <br />
+                        <asp:Label ID="Label16" runat="server" Text="Refundable Deposit"></asp:Label>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Label ID="refdeposit" runat="server"></asp:Label>
+                        <br />
                 <br />
                 <asp:Label ID="Label11" runat="server" Text="Total Price"></asp:Label>
                 &nbsp;&nbsp;&nbsp;&nbsp;

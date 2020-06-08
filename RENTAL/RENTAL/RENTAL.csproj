@@ -461,6 +461,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Package.aspx" />
     <Content Include="Payment.aspx" />
     <Content Include="Paymentgateway.aspx" />
     <Content Include="PlaceOrder.aspx" />
@@ -1112,6 +1113,13 @@
       <DependentUpon>Office Furniture.aspx</DependentUpon>
     </Compile>
     <Compile Include="Orders.cs" />
+    <Compile Include="Package.aspx.cs">
+      <DependentUpon>Package.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Package.aspx.designer.cs">
+      <DependentUpon>Package.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Packages.aspx.cs">
       <DependentUpon>Packages.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

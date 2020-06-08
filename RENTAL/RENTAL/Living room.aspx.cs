@@ -554,7 +554,7 @@ namespace RENTAL
                         if (ds.Tables[0].Rows.Count > 0)
                         {
 
-                            Button2.Text = "Remoe From Wishlist";
+                            Button2.Text = "Remove From Wishlist";
 
                         }
                         else

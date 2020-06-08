@@ -34,7 +34,7 @@
                 <img src="images/logo1.JPG" height="100" width="200"/>
                 <ul>
                    <li><a href="Home.aspx">Home</a></li>
-                   <li><a href="Packages.aspx">Packages</a></li>
+                   <li><a href="Package.aspx">Packages</a></li>
                    <li><a href="HomeFurniture.aspx" >Home Furniture</a></li>
                    <li><a href="Office Furniture.aspx">Office Furniture</a></li>
                    <li><a href="Appliance1.aspx">Appliance</a></li>

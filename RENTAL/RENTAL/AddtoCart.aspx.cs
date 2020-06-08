@@ -43,7 +43,7 @@ namespace RENTAL
                 dt.Columns.Add("totalprice");
                 dt.Columns.Add("PImage");
                 dt.Columns.Add("quantity1");
-              
+                dt.Columns.Add("RefundableDeposit");
                 if (Request.QueryString["id"] != null)
                 {
                     if (Session["Buyitems"] == null)
@@ -66,16 +66,18 @@ namespace RENTAL
                         dr["PId"] = ds.Tables[0].Rows[0]["PId"].ToString();
                         dr["PName"] = ds.Tables[0].Rows[0]["PName"].ToString();
                         dr["PImage"] = ds.Tables[0].Rows[0]["PImage"].ToString();
+                        dr["RefundableDeposit"] = ds.Tables[0].Rows[0]["RefundableDeposit"].ToString();
                         dr["month"] = Request.Cookies["selection"].Value; //Request.QueryString["month"];
                         dr["PPrice"] = Session["price"].ToString(); //Request.QueryString["price"];
                         dr["quantity1"] = Request.Cookies["quantity"].Value;
-                        
-                        int price = Convert.ToInt16(Session["price"].ToString());
+                      
+                        Double price = Convert.ToDouble(Session["price"].ToString());
                         int quantity = Convert.ToInt16(Request.Cookies["selection"].Value);
                         int quantity1 = Convert.ToInt16(Request.Cookies["quantity"].Value);
-                        int totalprice = price * quantity1;
+                      Double refundabledeposit = Convert.ToDouble(ds.Tables[0].Rows[0]["RefundableDeposit"].ToString());
+                        Double totalprice =(price * quantity1)+refundabledeposit;
                         dr["totalprice"] = totalprice;
-                        savecartdetail(1, ds.Tables[0].Rows[0]["PId"].ToString(), ds.Tables[0].Rows[0]["PName"].ToString(), Request.Cookies["selection"].Value.ToString(), Session["price"].ToString(), totalprice.ToString(), ds.Tables[0].Rows[0]["PImage"].ToString(), Request.Cookies["quantity"].Value);
+                        savecartdetail(1, ds.Tables[0].Rows[0]["PId"].ToString(), ds.Tables[0].Rows[0]["PName"].ToString(), Request.Cookies["selection"].Value.ToString(), Session["price"].ToString(), totalprice.ToString(), ds.Tables[0].Rows[0]["PImage"].ToString(), Request.Cookies["quantity"].Value,Session["useremail"].ToString(), ds.Tables[0].Rows[0]["RefundableDeposit"].ToString());
                         dt.Rows.Add(dr);
                         GridView1.DataSource = dt;
                         GridView1.DataBind();
@@ -113,18 +115,21 @@ namespace RENTAL
                         dr["PId"] = ds.Tables[0].Rows[0]["PId"].ToString();
                         dr["PName"] = ds.Tables[0].Rows[0]["PName"].ToString();
                         dr["PImage"] = ds.Tables[0].Rows[0]["PImage"].ToString();
+                        dr["RefundableDeposit"] = ds.Tables[0].Rows[0]["RefundableDeposit"].ToString();
                         dr["month"] = Request.Cookies["selection"].Value; //Request.QueryString["month"];
                         dr["PPrice"] = Session["price"].ToString();//Request.QueryString["price"];
                         dr["quantity1"] = Request.Cookies["quantity"].Value;
-                        
+                        dr["RefundableDeposit"] = ds.Tables[0].Rows[0]["RefundableDeposit"].ToString();
+                        Double refundabledeposit = Convert.ToDouble(ds.Tables[0].Rows[0]["RefundableDeposit"].ToString());
+
                         int quantity1 = Convert.ToInt16(Request.Cookies["quantity"].Value);
 
-                        int price = Convert.ToInt16(Session["price"].ToString());
+                        Double price = Convert.ToDouble(Session["price"].ToString());
                         int quantity = Convert.ToInt16(Request.Cookies["selection"].Value);
 
-                        int totalprice = price * quantity1;
+                        Double totalprice = (price * quantity1) + refundabledeposit;
                         dr["totalprice"] = totalprice;
-                        savecartdetail(1, ds.Tables[0].Rows[0]["PId"].ToString(), ds.Tables[0].Rows[0]["PName"].ToString(), Request.Cookies["selection"].Value.ToString(), Session["price"].ToString(), totalprice.ToString(), ds.Tables[0].Rows[0]["PImage"].ToString(), Request.Cookies["quantity"].Value);
+                        savecartdetail(1, ds.Tables[0].Rows[0]["PId"].ToString(), ds.Tables[0].Rows[0]["PName"].ToString(), Request.Cookies["selection"].Value.ToString(), Session["price"].ToString(), totalprice.ToString(), ds.Tables[0].Rows[0]["PImage"].ToString(), Request.Cookies["quantity"].Value, Session["useremail"].ToString(), ds.Tables[0].Rows[0]["RefundableDeposit"].ToString());
 
                         dt.Rows.Add(dr);
                         GridView1.DataSource = dt;
@@ -158,11 +163,12 @@ namespace RENTAL
 
         }
 
-        private void savecartdetail(int sno, String PId, String PName, String month, String PPrice, String totalprice, String PImage, string quantity1)
+        private void savecartdetail(int sno, String PId, String PName, String month, String PPrice, String totalprice, String PImage, string quantity1, String useremail,String RefundableDeposit)
         {
             if (Session["useremail1"] != null)
             {
-                String query = "insert into SavedCartDetail(sno,PId,PName,month,PPrice,totalprice,PImage,quantity1,useremail) values(" + sno + ",'" + PId + "','" + PName + "','" + month + "','" + PPrice + "','" + totalprice + "','" + PImage + "','" + quantity1 + "','" + Session["useremail1"].ToString() + "')";
+             
+                String query = "insert into SavedCartDetail(sno,PId,PName,month,PPrice,totalprice,PImage,quantity1,useremail,RefundableDeposit) values(" + sno + ",'" + PId + "','" + PName + "','" + month + "','" + PPrice + "','" + totalprice + "','" + PImage + "','" + quantity1 + "','" + useremail + "','"+ RefundableDeposit + "')";
                 String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
 
                 SqlConnection con = new SqlConnection(mycon);
@@ -255,7 +261,8 @@ namespace RENTAL
             Label12.Text = GridView1.SelectedRow.Cells[5].Text;
             Label13.Text = GridView1.SelectedRow.Cells[6].Text;
             DropDownList2.SelectedValue = GridView1.SelectedRow.Cells[7].Text;
-             ModalPopupExtender1.Show();
+           refdeposit.Text= GridView1.SelectedRow.Cells[5].Text;
+            ModalPopupExtender1.Show();
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
