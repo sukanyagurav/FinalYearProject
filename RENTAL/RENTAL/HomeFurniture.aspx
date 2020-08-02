@@ -7,8 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-   
-    <script src="bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
+   <script src="bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
 
   <style>
       .card{

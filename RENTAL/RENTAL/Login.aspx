@@ -11,6 +11,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  
+    <link href="logincss.css" rel="stylesheet" />
 <style>
     .lblemail{
         font-family:Verdana;
@@ -22,6 +23,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+
 </style>
      
 </head>
@@ -52,8 +55,7 @@
         <div class="card-body" style="background-color:#FFDEAD;">
             <div class="row">
                 <div class="col">
-                    <center>
-<img src="images/usericon.png" height="100" width="100" />
+                    <center><h3>Login</h3>
 
                     </center>
                 </div>
@@ -67,7 +69,7 @@
                 <div class="col">
                     <asp:Label id="Label3" runat="server" CssClass="lblemail">Enter Email address</asp:Label>
                    <br />  <div class="input-group">
-                           <asp:TextBox CssClass="form-control" ID="email" runat="server" placeholder="Email ID"></asp:TextBox>
+                           <asp:TextBox CssClass="textbox" ID="email" runat="server" placeholder="Email ID" BorderStyle="None"></asp:TextBox>
                       <br />
                           <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="email"></asp:RequiredFieldValidator>
                                         <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>

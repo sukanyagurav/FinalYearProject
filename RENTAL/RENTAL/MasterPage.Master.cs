@@ -100,6 +100,7 @@ namespace RENTAL
             Session.Remove("useremail1");
 
             Session.Remove("useremail");
+            Button1.Visible = true;
             ///Session.Abandon();
         }
         protected void AddtoCart(object sender, EventArgs e)
@@ -121,7 +122,20 @@ namespace RENTAL
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            String str = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+            Session["searchcat"] = search.Text;
+            string q = "select CityId from City where CityName='" + Session["CityName"] + "'";
+            string str = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+            SqlConnection con = new SqlConnection(str);
+            SqlCommand cmd = new SqlCommand(q, con);
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            Session["cityId"] = Convert.ToInt32(ds.Tables[0].Rows[0]["cityId"].ToString());
+
+            Response.Redirect("search.aspx?search=" + Session["searchcat"].ToString());
+          
+            /*String str = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
             SqlConnection con = new SqlConnection(str);
             string myquery = "SELECT PCategory from Products where PKeyword like '%'+@PKeyword+'%' or PName like '%'+@PName+'%'";
             SqlCommand cmd = new SqlCommand(myquery,con);
@@ -133,18 +147,18 @@ namespace RENTAL
             DataSet dt = new DataSet();
             sda.Fill(dt);
             string searchcat = dt.Tables[0].Rows[0]["PCategory"].ToString();
-            if (searchcat == "bedroom")
+            if (searchcat == "Bedroom")
             {
                 Response.Redirect("Bed.aspx?search=" +search.Text);
             }
-            else if (searchcat == "livingroom")
+            else if (searchcat == "Living Room")
             {
                 Response.Redirect("Living room.aspx?search=" + search.Text);
             }
-            else
+            else if(searchcat==)
             {
 
-            }
+            }*/
         }
 
 
@@ -152,13 +166,15 @@ namespace RENTAL
       protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Cookies.Add(new HttpCookie("returnUrl", Request.Url.PathAndQuery));
-            Response.Redirect("Login.aspx");
+            Response.Redirect("Login1.aspx");
         }
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("wishlist.aspx");
         }
+
+      
 
 
 

@@ -376,6 +376,11 @@
     <Content Include="bedroom\belle_single_bed.jpg" />
     <Content Include="bedroom\Eria_Single_Seater_Sofa.jpg" />
     <Content Include="bedroom\Erica_L_Shaped_Sofa.jpg" />
+    <Content Include="City\Banglore.jpg" />
+    <Content Include="City\Chennai.png" />
+    <Content Include="City\Pune.png" />
+    <Content Include="City\Mumbai.png" />
+    <Content Include="City\Delhi.png" />
     <Content Include="conformationgmail.html" />
     <Content Include="Contact.aspx" />
     <Content Include="ContactUs.aspx" />
@@ -396,20 +401,21 @@
     <Content Include="css\owl.carousel.css" />
     <Content Include="custom_master.css" />
     <Content Include="Default.aspx" />
+    <Content Include="demo.aspx" />
     <Content Include="demo.css" />
+    <Content Include="demo2.aspx" />
     <Content Include="Dining room.aspx" />
     <Content Include="diningroom\Caramel 4-Seater Coffee Table %28Blue%29.jpg" />
     <Content Include="diningroom\Moonshine Bar Unit.jpg" />
     <Content Include="diningroom\Poise 2-Seater Dining Set.jpg" />
     <Content Include="diningroom\Poise 4-Seater Dining Set.jpg" />
     <Content Include="diningroom\Poise 6-Seater Dining Set.jpg" />
+    <Content Include="examplehome.aspx" />
+    <Content Include="examplelogin.aspx" />
     <Content Include="Extendproduct.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="forgotpassword.aspx" />
     <Content Include="gmailconformation.aspx" />
-    <Content Include="homepageimg\1.jpg" />
-    <Content Include="homepageimg\2.jpg" />
-    <Content Include="homepageimg\3.jpg" />
     <Content Include="images\addart.JPG" />
     <Content Include="images\addproducts.jpg" />
     <Content Include="images\addtocart.jpg" />
@@ -451,6 +457,7 @@
     <Content Include="js\toast.js" />
     <Content Include="js\tooltip.js" />
     <Content Include="js\util.js" />
+    <Content Include="logincss.css" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
@@ -461,6 +468,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="OrderConfirmation.html" />
     <Content Include="Package.aspx" />
     <Content Include="Payment.aspx" />
     <Content Include="Paymentgateway.aspx" />
@@ -470,6 +478,7 @@
     <Content Include="registration.aspx" />
     <Content Include="Remove user.aspx" />
     <Content Include="resetpassword.aspx" />
+    <Content Include="search.aspx" />
     <Content Include="Send user gmail.aspx" />
     <Content Include="sso-f17v2-bgimg.jpg" />
     <Content Include="StyleSheet2.css" />
@@ -538,6 +547,7 @@
     <Content Include="ViewReport.aspx" />
     <Content Include="storage1.aspx" />
     <Content Include="Stockreport.aspx" />
+    <Content Include="Login1.aspx" />
     <Content Include="Wishlist.aspx" />
     <Content Include="MonthlyReport.aspx" />
     <Content Include="YearlyReport2.aspx" />
@@ -836,10 +846,11 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="loginmaster.Master" />
+    <Content Include="MasterPage1.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Login.aspx" />
     <Content Include="Office Furniture.aspx" />
-    <Content Include="Packages.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -1006,6 +1017,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="demo.aspx.cs">
+      <DependentUpon>demo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="demo.aspx.designer.cs">
+      <DependentUpon>demo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="demo2.aspx.cs">
+      <DependentUpon>demo2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="demo2.aspx.designer.cs">
+      <DependentUpon>demo2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="examplehome.aspx.cs">
+      <DependentUpon>examplehome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examplehome.aspx.designer.cs">
+      <DependentUpon>examplehome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="examplelogin.aspx.cs">
+      <DependentUpon>examplelogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examplelogin.aspx.designer.cs">
+      <DependentUpon>examplelogin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Extendproduct.aspx.cs">
       <DependentUpon>Extendproduct.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1019,6 +1058,20 @@
     </Compile>
     <Compile Include="gmailconformation.aspx.designer.cs">
       <DependentUpon>gmailconformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="loginmaster.Master.cs">
+      <DependentUpon>loginmaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="loginmaster.Master.designer.cs">
+      <DependentUpon>loginmaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage1.Master.cs">
+      <DependentUpon>MasterPage1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage1.Master.designer.cs">
+      <DependentUpon>MasterPage1.Master</DependentUpon>
     </Compile>
     <Compile Include="MonthlyReport.cs">
       <AutoGen>True</AutoGen>
@@ -1120,13 +1173,6 @@
     <Compile Include="Package.aspx.designer.cs">
       <DependentUpon>Package.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Packages.aspx.cs">
-      <DependentUpon>Packages.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Packages.aspx.designer.cs">
-      <DependentUpon>Packages.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Payment.aspx.cs">
       <DependentUpon>Payment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1176,6 +1222,13 @@
     </Compile>
     <Compile Include="resetpassword.aspx.designer.cs">
       <DependentUpon>resetpassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
     </Compile>
     <Compile Include="Send user gmail.aspx.cs">
       <DependentUpon>Send user gmail.aspx</DependentUpon>
@@ -1267,6 +1320,13 @@
     <Compile Include="Stockreport.aspx.designer.cs">
       <DependentUpon>Stockreport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login1.aspx.cs">
+      <DependentUpon>Login1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login1.aspx.designer.cs">
+      <DependentUpon>Login1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Wishlist.aspx.cs">
       <DependentUpon>Wishlist.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1303,6 +1363,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="homepageimg\" />
+    <Folder Include="LOGIN\" />
     <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>

@@ -11,7 +11,9 @@ using System.IO;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
 using System.Configuration;
-
+using System.Net;
+using System.Net.Mail;
+using System.Text;
 namespace RENTAL
 {
     public partial class WebForm9 : System.Web.UI.Page
@@ -236,6 +238,10 @@ namespace RENTAL
             int totalrows = ds.Tables[0].Rows.Count;
             int i = 0;
             int grandtotal = 0;
+            MailMessage msg1;
+        
+            string emailId = string.Empty;
+            Boolean chk = false;
             while (i < totalrows)
             {
                 dr = dt.NewRow();
@@ -263,11 +269,65 @@ namespace RENTAL
             }
             GridView1.DataSource = dt;
             GridView1.DataBind();
+            SendHTMLMail();
+        }
+        public void SendHTMLMail()
+        {
+            MailMessage msg1 = new MailMessage();
+            SmtpClient smtp1 = new SmtpClient();
+            msg1.Subject = "Order Confirmation";
+            msg1.IsBodyHtml = true;
+            msg1.Body += firstbody();
+            msg1.Body += GetGridviewData(GridView1);
+            msg1.Body += lastbody();
 
-            Label4.Text = grandtotal.ToString();
-            Session["total"] = grandtotal.ToString();
+            string toaddress = Session["useremail"].ToString();
+            msg1.To.Add(toaddress);
+            string fromaddress = "Renture <rentureteam@gmail.com>";
+            msg1.From = new MailAddress(fromaddress);
+            smtp1.Credentials = new NetworkCredential("rentureteam@gmail.com", "RENTURE@22");
+            smtp1.Port = 587;
+            smtp1.Host = "smtp.gmail.com";
+            smtp1.EnableSsl = true;
+            smtp1.Send(msg1);
         }
 
+
+        public string firstbody()
+        {
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader(Server.MapPath("~/OrderConfirmation.html")))
+            {
+                body = reader.ReadToEnd();
+
+            }
+            body = body.Replace("{name}", Label14.Text.Trim());
+            body= body.Replace("{OrderDate}", Label12.Text.Trim());
+            body = body.Replace("{OrderNo}", Label2.Text.Trim());
+
+            return body;
+        }
+        public string lastbody()
+        {
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader(Server.MapPath("~/OrderConfirmation.html")))
+            {
+                body = reader.ReadToEnd();
+
+            }
+            body += "Thanks for Shopping with Renture, we appriate it.";
+
+            return body;
+        }
+        // This Method is used to render gridview control
+        public string GetGridviewData(GridView gv)
+        {
+            StringBuilder strBuilder = new StringBuilder();
+            StringWriter strWriter = new StringWriter(strBuilder);
+            HtmlTextWriter htw = new HtmlTextWriter(strWriter);
+            gv.RenderControl(htw);
+            return strBuilder.ToString();
+        }
         public override void VerifyRenderingInServerForm(Control control)
         {
             /* Verifies that the control is rendered */

@@ -21,9 +21,25 @@
         .fa-heart-o{
             color: black;
         }
+       
+       
     </style>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
  <link href="custom_master.css" rel="stylesheet" />
+       <script type="text/javascript">  
+       $(window).bind("load", function () {  
+           var footer = $("#footer");  
+           var pos = footer.position();  
+           var height = $(window).height();  
+           height = height - pos.top;  
+           height = height - footer.height();  
+           if (height > 0) {  
+               footer.css({  
+                   'margin-top': height + 'px'  
+               });  
+           }  
+       });  
+</script>  
 </head>
 <body>
       <form id="form1" runat="server" class="auto-style1">
@@ -54,27 +70,42 @@
    
                 <asp:TextBox ID="search" runat="server" CssClass="wrapper3" Height="40px" Width="500px" AutoPostBack="True"></asp:TextBox>
                 <asp:Button ID="Button2" runat="server" Text="Search" CssClass="wrapper1" Height="40px" Width="150px" OnClick="Button2_Click"/>
-                <asp:DropDownList ID="ddl" runat="server" Height="40px" Width="150px" DataSourceID="SqlDataSource1" DataTextField="CityName" DataValueField="CityName" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="true">
+                <asp:DropDownList ID="ddl" runat="server" Height="40px" Width="150px" DataSourceID="SqlDataSource1" DataTextField="CityName" DataValueField="CityName" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="true" Font-Names="Verdana" Font-Size="Large">
                 </asp:DropDownList>
                
                  <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:FURNITUREConnectionString %>" SelectCommand="SELECT [CityName] FROM [City]"></asp:SqlDataSource>
-                 <asp:Button ID="Button1" runat="server" Text="LogIn" OnClick="Button1_Click" Height="40px" Width="150px"/>
-               <asp:Button ID="logout" runat="server" Text="Log Out" OnClick="logout_Click" Height="40px" Width="150px" Visible="false"/>
+                 <asp:Button ID="Button1" runat="server" Text="LogIn" OnClick="Button1_Click"  Height="40px" Width="150px" Font-Names="Verdana" Font-Size="Large"/>
+               <asp:Button ID="logout" runat="server" Text="Log Out" OnClick="logout_Click" Height="40px" Width="150px" Visible="false" Font-Names="Verdana" Font-Size="Large"/>
 
+
+             
                 <a href="AddtoCart.aspx" style="Height:40px; Width:150px";><i class="fa fa-shopping-cart fa-3x"></i> </a>
                     <a href="Wishlist.aspx" style="Height:40px; Width:150px";><i class="fa fa-heart-o fa-3x"></i></a>
                    </div>
+          
 
-       
       <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-
+          <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                
 
 
 
             </asp:ContentPlaceHolder>
-        </div>    
-        
+        </div> 
+           <br />
+    <br />
+    <br />
+          <div class="footer" style="bottom:0px">
+         <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h3>Contact with us</h3>
+                            <br />
+                         <h4>  <i class="fa fa-envelope" aria-hidden="true"></i> rentureteam@gmail.com</h4>
+                        </div>
+                    </div>
+                </div> 
+              </div>
     </form>
      
     </body>

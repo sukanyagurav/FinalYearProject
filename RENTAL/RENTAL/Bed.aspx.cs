@@ -477,11 +477,18 @@ namespace RENTAL
             c1.Value = pquantity;
             Response.Cookies.Add(c1);
 
+            if (Session["useremail"] != null)
+            {
 
 
-
-            Response.Redirect("AddtoCart.aspx?id=" + s + "&price=" + Session["price"]);
-        }
+                Response.Redirect("AddtoCart.aspx?id=" + s + "&price=" + Session["price"]);
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+            
+            }
         protected void wishbtn_Click(object sender, EventArgs e)
         {
             int pid = Convert.ToInt32(Session["productId"].ToString());

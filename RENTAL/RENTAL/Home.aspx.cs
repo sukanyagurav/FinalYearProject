@@ -52,8 +52,7 @@ namespace RENTAL
                         con.Open();
                     }
                     cmd.ExecuteNonQuery();
-                   // Response.Write("You account has been activated. You can <a href='https://localhost:44350/Login.aspx'>Login</a> now! ");
-                }
+               }
 
             }
             catch (Exception ex)

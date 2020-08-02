@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-   
+   <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>  
     <script src="bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
 
    <br />
@@ -44,7 +44,9 @@
          margin:10px auto;
 
      }
-
+     .card{
+    min-height:100%;
+          }
         .card:hover {
             --webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
             --moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
@@ -120,7 +122,7 @@
         <div class="col-lg-4 ">
         
             <div class="card">
-                 <asp:Image ID="Image1" runat="server" ImageUrl="homepageimg/1.jpg" CssClass="card-img-top" />
+                 <asp:Image ID="Image1" runat="server" ImageUrl="homepageimg/11.jpg" CssClass="card-img-top" />
                 <div class="card-body">
                    <h3>
                     HAVE EVERYTHING, WITHOUT BUYING</h3>
@@ -135,7 +137,7 @@
         </div>
         <div class="col-lg-4 ">
              <div class="card">
-                  <asp:Image ID="Image2" runat="server" ImageUrl="homepageimg/2.jpg"  CssClass="card-img-top"/>
+                  <asp:Image ID="Image2" runat="server" ImageUrl="homepageimg/22.jpg"  CssClass="card-img-top"/>
               
                   <div class="card-body">
                      <h3>                  CHANGE, AS YOUR NEEDS EVOLVE
@@ -147,7 +149,7 @@
         </div>
         <div class="col-lg-4" >
              <div class="card" >
-                 <asp:Image ID="Image3" runat="server" ImageUrl="homepageimg/3.jpg" CssClass="card-img-top"/>
+                 <asp:Image ID="Image3" runat="server" ImageUrl="homepageimg/33.jpg" CssClass="card-img-top"/>
             
                    <div class="card-body">
                         
