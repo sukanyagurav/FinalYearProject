@@ -1,0 +1,238 @@
+﻿
+.wrapper {
+    width: 100%;
+    height: 15vh;
+    background-color: black;
+    display: inline-block;
+    font-size: 20px;
+    transition: .5s;
+    font-family: sans-serif;
+ 
+}
+
+.menu {
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+}
+
+    .menu ul {
+        float: right;
+        margin: 30px;
+    }
+
+        .menu ul li {
+            list-style: none;
+            display: inline-block;
+            transition: 0.8s all;
+        }
+
+            .menu ul li:hover {
+                background-color: yellow;
+            }
+
+            .menu ul li a {
+                text-decoration: none;
+                color: black;
+                padding: 30px;
+                color: white;
+                text-align: justify;
+            }
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #eeeeee;
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+.wrapper2 {
+    float: right;
+    font-family: Verdana;
+}
+
+.div1 {
+    background-color: grey;
+}
+
+.wrapper3 {
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    box-sizing: border-box;
+    transition: .5s;
+    font-family: sans-serif;
+}
+
+    .wrapper3[type=text] {
+        font-family: sans-serif;
+        padding: 0 25px;
+        border-radius: 25px 0 0 25px;
+    }
+
+.wrapper1 {
+    left: -5px;
+    font-family: sans-serif;
+    cursor: pointer;
+    background: #ffc107;
+    color: #fff;
+    position: relative;
+    border-radius: 0 25px 25px 0;
+}
+
+.wrapper1 {
+    background: #ff5722;
+}
+
+::placeholder {
+    color: blue;
+    opacity: 1;
+}
+
+.btn {
+    Height: 40px;
+    Width: 150px;
+    left: -5px;
+    font-family: sans-serif;
+    cursor: pointer;
+    position: relative;
+    font-weight: bold;
+}
+/*datalist*/
+.cssdatalist {
+    height: 500px;
+    width: 500px;
+    display: inline-block;
+    font-size: 14px;
+    font-family: Open Sans;
+    margin: 55px;
+    float: right;
+}
+
+
+
+
+.imagecss {
+ 
+     border: 1px solid #ffbb77;
+    position: relative;
+    overflow: hidden;
+}
+
+  .imagecss image {
+        width: 100%;
+        height:auto;
+       
+    }
+ .quickview {
+    width: 100%;
+    position: absolute;
+    padding: 10px 0;
+    text-align: center;
+    background-color: rgba(255,120,0,0.9);
+    top: -100%;
+    left: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    -webkit-transition: 300ms;
+    -moz-transition: 300ms;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.imagecss:hover .quickview {
+    top: 45%;
+    opacity: 1;
+}
+
+.nameprice {
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    font-weight: normal;
+    font-family: "Verdana";
+    font-weight: bold;
+    font-size: 22px;
+    color: rgba(255,120,0,0.9);
+}
+
+.name {
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    font-weight: Bold;
+    font-family:"Verdana";
+}
+
+.price label{
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    font-weight: normal;
+    color: #ff7800;
+}
+
+.nameprice h3 {
+    margin: 0;
+    padding-bottom: 5px;
+       color: #303030;
+    font-weight: normal;
+    font-family: "Verdana";
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(255,120,0,0.9);
+}
+.overlay {
+    top: 0;
+    width: 100%;
+  height:auto;
+    position: absolute;
+    padding: 10px 0;
+    position: absolute;
+    left: 0;
+   
+}
+.nameprice span {
+    font-weight: normal;
+    font-family: "Verdana";
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(255,120,0,0.9);
+}
+.user_section {
+    margin-left: 50px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0px 0px 0px 0px;
+}
+
+    .user_section image {
+        width: 30px;
+        padding-top: 5px;
+    }
+
+    .user_section label {
+        width: 30px;
+        padding-top: 5px;
+        color: white;
+    }
+
+
+.button {
+    width: 85px;
+    height: 33px;
+    font: bold 17px segoe ui;
+    float: right;
+}
+
+.modal {
+    text-align: center;
+}
+
+.modalBackground {
+    background-color: Black;
+    filter: alpha(opacity=40);
+    opacity: 0.4;
+}

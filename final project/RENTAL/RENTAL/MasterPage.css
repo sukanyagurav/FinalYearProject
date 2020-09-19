@@ -1,0 +1,243 @@
+﻿*{
+    margin: 0 139px 244px 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.wrapper {
+    width: 100%;
+    height: 15vh;
+    background-color: black;
+    display: inline-block;
+    font-size: 20px;
+    transition: .5s;
+    font-family: sans-serif;
+}
+
+.menu {
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+}
+
+    .menu ul {
+        float: right;
+        margin: 30px;
+    }
+
+        .menu ul li {
+            list-style: none;
+            display: inline-block;
+            transition: 0.8s all;
+        }
+
+            .menu ul li:hover {
+                background-color: yellow;
+            }
+
+            .menu ul li a {
+                text-decoration: none;
+                color: black;
+                padding: 30px;
+                color: white;
+                text-align: justify;
+            }
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #eeeeee;
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+.wrapper2 {
+    float: right;
+}
+
+.div1 {
+    background-color: grey;
+}
+
+.wrapper3 {
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    box-sizing: border-box;
+    transition: .5s;
+    font-family: sans-serif;
+}
+
+.wrapper3[type=text] {
+        font-family: sans-serif;
+        padding: 0 25px;
+        border-radius: 25px 0 0 25px;
+    }
+
+.wrapper1 {
+    left: -5px;
+    font-family: sans-serif;
+    cursor: pointer;
+    background: #ffc107;
+    color: #fff;
+    position: relative;
+    border-radius: 0 25px 25px 0;
+}
+
+.wrapper1 {
+    background: #ff5722;
+}
+
+/*::placeholder {
+    color: blue;
+    opacity: 1;
+}*/
+
+.btn {
+    Height: 40px;
+    Width: 150px;
+    left: -5px;
+    font-family: sans-serif;
+    cursor: pointer;
+    position: relative;
+    font-weight: bold;
+}
+/*datalist*/
+.datalist {
+    width: 240px;
+    height: auto;
+    display: inline-block;
+    font-size: 14px;
+    font-family: Open Sans;
+    margin: 55px;
+    float: right;
+    /*box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+*/
+}
+
+
+
+.imagecss {
+  /*  width: 300px;
+    height: auto;
+    */display: inline-block;
+    border: 1px solid #ffbb77;
+    position: relative;
+    overflow: hidden;
+}
+
+    .imagecss img {
+        width: 100%;
+        height: auto;
+    }
+
+.quickview {
+    width: 100%;
+    position: absolute;
+    padding: 10px 0;
+    text-align: center;
+    background-color: rgba(255,120,0,0.9);
+    top: -100%;
+    left: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    -webkit-transition: 300ms;
+    -moz-transition: 300ms;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.imagecss:hover .quickview {
+    top: 45%;
+    opacity: 1;
+}
+
+.nameprice {
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    font-weight: normal;
+}
+
+.name {
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    font-weight: normal;
+}
+
+.price {
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    font-weight: normal;
+    color: #ff7800;
+}
+
+.nameprice h3 {
+    margin: 0;
+    padding-bottom: 5px;
+    font-size: 16px;
+    color: #303030;
+}
+
+.datalist3 {
+    float: right;
+}
+/*.modal {
+    text-align: center;
+}*/
+.user_section {
+    margin-left: 50px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0px 0px 0px 0px;
+}
+
+    .user_section image {
+        width: 30px;
+        padding-top: 5px;
+    }
+
+    .user_section label {
+        width: 30px;
+        padding-top: 5px;
+        color: white;
+    }
+
+.div {
+    margin: auto;
+    padding: 30px;
+    height: 140px;
+    border: 1px solid #ccc;
+    width: 500px;
+    background-color: #f1f1f1;
+    text-align: center;
+    font: 14px segoe ui;
+}
+
+.button {
+    width: 85px;
+    height: 33px;
+    font: bold 17px segoe ui;
+    float: right;
+}
+
+
+.user_section:hover {
+    background: #267FBB;
+    color: #fff;
+}
+
+
+
+.modal {
+    text-align: center;
+}
+
+.modalBackground {
+    background-color: Black;
+    filter: alpha(opacity=40);
+    opacity: 0.4;
+}

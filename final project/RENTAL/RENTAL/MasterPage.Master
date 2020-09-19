@@ -1,0 +1,121 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="RENTAL.MasterPage" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="title" runat="server">
+    </asp:ContentPlaceHolder>
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        .auto-style1 {
+            height: 106px;
+        }
+        .span{
+            height:40px;
+            width:100px;
+
+        }
+        .fa-shopping-cart{
+            color: black;
+        }
+        .fa-heart-o{
+            color: black;
+        }
+        .acart{
+             padding: 0px 4px 0px 0px;
+          z-index:3;
+             font-family: Verdana;
+             font-size: 20px;
+              opacity: 1.0;
+             position: absolute;  
+             color:red;
+             font-weight: bold; 
+        }
+       
+    </style>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <link href="custom_master.css" rel="stylesheet" />
+       <script type="text/javascript">  
+       $(window).bind("load", function () {  
+           var footer = $("#footer");  
+           var pos = footer.position();  
+           var height = $(window).height();  
+           height = height - pos.top;  
+           height = height - footer.height();  
+           if (height > 0) {  
+               footer.css({  
+                   'margin-top': height + 'px'  
+               });  
+           }  
+       });  
+</script>  
+</head>
+<body>
+      <form id="form1" runat="server" class="auto-style1">
+         
+           
+       <div class="wrapper">
+            <div class="menu">
+                <img src="images/logo1.JPG" height="100" width="200"/>
+                <ul>
+                   <li><a href="Home.aspx">Home</a></li>
+                   <li><a href="Package.aspx">Packages</a></li>
+                   <li><a href="HomeFurniture.aspx" >Home Furniture</a></li>
+                   <li><a href="Office Furniture.aspx">Office Furniture</a></li>
+                   <li><a href="Appliance1.aspx">Appliance</a></li>
+                   <li><a href="Addproduct.aspx" hidden="hidden">Add products</a></li>
+                    <li>  <asp:Image ID="Image2" runat="server" CssClass="user_section" Visible="false" />
+                        <asp:Label ID="Label2" runat="server" Text="Label" CssClass="user_section" Visible="false" Font-Bold="True" ForeColor="White"></asp:Label>                     
+                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/ViewProfile.aspx">        
+                            <asp:Image ID="Image1" runat="server" CssClass="user_section" Visible="false" />
+          <asp:Label ID="Label1" runat="server" Text="Label" CssClass="user_section" Visible="false" Font-Bold="True" ForeColor="White"></asp:Label>
+                                     </asp:HyperLink>
+                    </li>
+                </ul>
+        </div> 
+            </div>
+   
+            <div class="wrapper2">   
+   
+                <asp:TextBox ID="search" runat="server" CssClass="wrapper3" Height="40px" Width="500px" AutoPostBack="True"></asp:TextBox>
+                <asp:Button ID="Button2" runat="server" Text="Search" CssClass="wrapper1" Height="40px" Width="150px" OnClick="Button2_Click"/>
+                <asp:DropDownList ID="ddl" runat="server" Height="40px" Width="150px" DataSourceID="SqlDataSource1" DataTextField="CityName" DataValueField="CityName" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="true" Font-Names="Verdana" Font-Size="Large">
+                </asp:DropDownList>
+               
+                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:FURNITUREConnectionString %>" SelectCommand="SELECT [CityName] FROM [City]"></asp:SqlDataSource>
+                 <asp:Button ID="Button1" runat="server" Text="LogIn" OnClick="Button1_Click"  Height="40px" Width="150px" Font-Names="Verdana" Font-Size="Large"/>
+               <asp:Button ID="logout" runat="server" Text="Log Out" OnClick="logout_Click" Height="40px" Width="150px" Visible="false" Font-Names="Verdana" Font-Size="Large"/>
+
+                
+            
+                <a href="AddtoCart.aspx" style="Height:40px; Width:150px";><asp:Label ID="Label3" runat="server" CssClass="acart"></asp:Label><i class="fa fa-shopping-cart fa-3x"> </i> </a>
+                    <a href="Wishlist.aspx" style="Height:40px; Width:150px";><i class="fa fa-heart-o fa-3x"></i></a>
+                   </div>
+          
+
+      <div>
+          <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                
+
+
+
+            </asp:ContentPlaceHolder>
+        </div> 
+           <br />
+    <br />
+    <br />
+          <div class="footer" style="bottom:0px">
+         <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h3>Contact with us</h3>
+                            <br />
+                         <h4>  <i class="fa fa-envelope" aria-hidden="true"></i> rentureteam@gmail.com</h4>
+                        </div>
+                    </div>
+                </div> 
+              </div>
+    </form>
+     
+    </body>
+</html>

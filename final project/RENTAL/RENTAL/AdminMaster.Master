@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="RENTAL.AdminMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+      <link href="Admincss.css" rel="stylesheet" />
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+  <style>
+      .demo{
+          color:yellow;
+      }
+  </style>  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body  style="background-color:gainsboro;">
+    <form id="form1" runat="server">
+           <div class="wrapper">
+             <div id="nav">
+
+             
+                <img src="images/logo1.JPG" height="100" width="200"/>
+                
+                   <ul style="color:yellow;">
+                        <li><a href="Home.aspx" class="demo">Home</a></li>
+                       <li><a href="AdminHome.aspx">Admin Home</a></li>
+                   <li><a href="Adminaddproducts.aspx">Add Products</a></li>
+                   <li><a href="AdminQuery.aspx" >Admin Query</a></li>
+                   <li><a href="Send user gmail.aspx">Send mail</a></li>
+                   <li><a href="Remove user.aspx">Remove User</a></li>
+                <li><a href="#">View Reports</a>
+                      <ul>
+                          <li><a href="MonthlyReport.aspx">Monthly Report</a></li>
+                          <li><a href="YearlyReport2.aspx">Yearly Report</a></li>
+                          <li><a href="useravailable.aspx">User available</a></li>
+                      <li><a href="Stockreport.aspx">Stock Report</a></li>
+                      </ul>
+                  </li>
+                       <li>  <asp:Image ID="Image2" runat="server" CssClass="user_section" />
+                        <asp:Label ID="Label2" runat="server" Text="Label" CssClass="user_section" Font-Bold="True" ForeColor="White"></asp:Label>                     
+                  </li>
+                   </ul>
+                 </div>
+            
+           </div> 
+   
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+     
+    </form>
+</body>
+</html>
