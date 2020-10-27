@@ -88,7 +88,7 @@ G:\suku html\RENTAL\RENTAL\bin\Newtonsoft.Json.xml
 G:\suku html\RENTAL\RENTAL\bin\Antlr3.Runtime.pdb
 G:\suku html\RENTAL\RENTAL\bin\Microsoft.AspNet.FriendlyUrls.xml
 G:\suku html\RENTAL\RENTAL\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-G:\suku html\RENTAL\RENTAL\obj\Debug\RENTAL.csprojAssemblyReference.cache
 G:\suku html\RENTAL\RENTAL\obj\Debug\RENTAL.csproj.CopyComplete
 G:\suku html\RENTAL\RENTAL\obj\Debug\RENTAL.dll
 G:\suku html\RENTAL\RENTAL\obj\Debug\RENTAL.pdb
+G:\suku html\RENTAL\RENTAL\obj\Debug\RENTAL.csprojAssemblyReference.cache

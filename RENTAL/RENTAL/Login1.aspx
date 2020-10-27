@@ -113,6 +113,15 @@
                          <asp:Label ID="verifyaccount" runat="server" Text="Label" Visible="False"></asp:Label>
             		</div>
 					
+					<div class="flex-sb-m w-full p-t-3 p-b-32">
+						
+						<div>
+							<a href="WebForm2.aspx" class="txt1">
+							  New User?
+							</a>
+						</div>
+					</div>
+
 					<div class="text-center p-t-46 p-b-20">
 						<span class="txt2">
 							or sign up using

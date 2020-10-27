@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web;
 using System.Web.UI;
+
 namespace RENTAL
 {
 
@@ -91,10 +92,21 @@ namespace RENTAL
                 //Label3.Text = dt.Rows[0]["Email_id"].ToString();
 
             }
-        
-       
+            DataTable dt1 = new DataTable();
+            dt1 = (DataTable)Session["Buyitems"];
+            if (dt1 != null)
+            {
 
-    }
+                Label3.Text = dt1.Rows.Count.ToString();
+            }
+            else
+            {
+                Label3.Text = "0";
+
+            }
+
+
+        }
         protected void logout_Click(object sender, EventArgs e)
         {
             Session.Remove("useremail1");

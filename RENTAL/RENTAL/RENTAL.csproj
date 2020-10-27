@@ -470,6 +470,7 @@
     </Content>
     <Content Include="OrderConfirmation.html" />
     <Content Include="Package.aspx" />
+    <Content Include="Package1.aspx" />
     <Content Include="Payment.aspx" />
     <Content Include="Paymentgateway.aspx" />
     <Content Include="PlaceOrder.aspx" />
@@ -548,6 +549,7 @@
     <Content Include="storage1.aspx" />
     <Content Include="Stockreport.aspx" />
     <Content Include="Login1.aspx" />
+    <Content Include="WebForm2.aspx" />
     <Content Include="Wishlist.aspx" />
     <Content Include="MonthlyReport.aspx" />
     <Content Include="YearlyReport2.aspx" />
@@ -1173,6 +1175,13 @@
     <Compile Include="Package.aspx.designer.cs">
       <DependentUpon>Package.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Package1.aspx.cs">
+      <DependentUpon>Package1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Package1.aspx.designer.cs">
+      <DependentUpon>Package1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Payment.aspx.cs">
       <DependentUpon>Payment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1326,6 +1335,13 @@
     </Compile>
     <Compile Include="Login1.aspx.designer.cs">
       <DependentUpon>Login1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Wishlist.aspx.cs">
       <DependentUpon>Wishlist.aspx</DependentUpon>

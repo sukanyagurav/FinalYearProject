@@ -29,6 +29,7 @@ namespace RENTAL
                 cmd.ExecuteNonQuery();
                 con.Close();
                 Label3.Visible = true;
+                Response.Redirect("Login1.aspx");
                 Label3.Text=("reset successfully");
 
             }

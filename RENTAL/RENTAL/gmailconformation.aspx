@@ -24,7 +24,7 @@
         
     </style>
 </head>
-<body style="background-image: url(background.jpg);">
+<body style="background-color: #666666;">
     <form id="form1" runat="server">
           <div class="container centered" style="vertical-align: middle;" >
   
@@ -32,7 +32,7 @@
             <div class="col-md-6 ">
                 <center>
                     <div class="card centered">
-                        <div class="card-body"  style="background-color:#FFDEAD;">
+                        <div class="card-body"  style="background-color:white;">
                           <div class="row">
                               <div class="col">
                                    <br />

@@ -79,7 +79,7 @@ namespace RENTAL
                     break;
             }
 
-            crystal.ExportToHttpResponse(formatType, Response, true, "G:/suku html/RENTAL/RENTAL/Report");
+            crystal.ExportToHttpResponse(formatType, Response, true, "G:/suku html/RENTAL/RENTAL/MonthlyReport.rpt");
             Response.End();
         }
     }

@@ -24,15 +24,6 @@ namespace RENTAL
         protected global::System.Web.UI.WebControls.Label Label7;
 
         /// <summary>
-        /// Label3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-
-        /// <summary>
         /// CheckBoxList1 control.
         /// </summary>
         /// <remarks>
@@ -105,13 +96,13 @@ namespace RENTAL
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// Label9 control.
+        /// id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label9;
+        protected global::System.Web.UI.WebControls.Label id;
 
         /// <summary>
         /// namep control.
@@ -231,13 +222,13 @@ namespace RENTAL
         protected global::System.Web.UI.WebControls.Button btnsubmit;
 
         /// <summary>
-        /// Label10 control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label10;
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
         /// ImageButton2 control.
@@ -247,15 +238,6 @@ namespace RENTAL
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
-
-        /// <summary>
-        /// ImageButton3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton3;
 
         /// <summary>
         /// ImageButton4 control.

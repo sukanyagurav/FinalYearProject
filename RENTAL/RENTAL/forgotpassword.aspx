@@ -30,7 +30,7 @@ height:400px;
          border-bottom:5px solid #fff;
         
          font-size:19px;
-         color:#fff; 
+         color:black; 
          border:none;
     height:40px;
          outline:none;
@@ -70,7 +70,7 @@ height:400px;
 
 
 </head>
-<body style="background-image: url(background.jpg);">
+<body style="background-image: url(Imag/3.jpg); background-repeat:no-repeat;height: 500px;background-position: center;background-repeat: no-repeat;  background-size: cover;  position: relative;">
     <script type="text/javascript">
         $(".txtb").on("focus", function () {
             $(this).addClass("focus");
@@ -89,13 +89,16 @@ height:400px;
     <div class="row">
         <div class="col-md-6 mx-auto">
     <div class="card centered">
-        <div class="card-body" style="background-color:#FFDEAD;">
+        <div class="card-body" style="background-color:#D6CFC7; opacity:1;">
 
         <div class="row">
             <div class="col">
                 <label class="lblemail">Enter email address</label>
-                        <asp:TextBox ID="txtEmail" runat="server" placeholder="Email address" CssClass="txtb"></asp:TextBox><br /><asp:Label ID="Label3" runat="server" Visible="false"></asp:Label>
-            <asp:Button ID="Button2" runat="server" Text="send" OnClick="Button2_Click" />
+                        <asp:TextBox ID="txtEmail" runat="server" placeholder="Email address" CssClass="txtb" validationgroup="save"></asp:TextBox><br /><asp:Label ID="Label3" runat="server" Visible="false"></asp:Label>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please enter a email address" ControlToValidate="txtEmail" ></asp:RequiredFieldValidator>
+            <br />
+                
+                <asp:Button ID="Button2" runat="server" Text="send" OnClick="Button2_Click" validationgroup="save"/>
             </div>
             </div>
 
@@ -104,14 +107,16 @@ height:400px;
             <div class="row codesend">
                 <div class="col">
             <label class="lblemail">Enter OTP</label>
-            <asp:TextBox ID="txtVerifyCode" runat="server" placeholder="OTP" CssClass="txtb"></asp:TextBox>
-            <asp:Label ID="Label4" runat="server" Visible="false"></asp:Label>
+            <asp:TextBox ID="txtVerifyCode" runat="server" placeholder="OTP" CssClass="txtb" validationgroup="save1'"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please enter a valid otp" ControlToValidate="txtVerifyCode" ></asp:RequiredFieldValidator>
+               <asp:Label ID="Label4" runat="server" Visible="false"></asp:Label>
+                 
             </div>
             </div>
                     <br />
            <div class="row">
                <div class="col">
-            <asp:Button ID="Button1" runat="server" Text="Verify code" OnClick="Button1_Click" />
+            <asp:Button ID="Button1" runat="server" Text="Verify code" validationgroup="save1" OnClick="Button1_Click" />
             </div>
            </div>
         </div>

@@ -47,68 +47,67 @@
             <div class="col-lg py-2" >
                 <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">
 
-        <div class="card">
-            <center>  <asp:Image src="Imag/bed.JPG"  height="100" width="100" runat="server" /> 
-  </center>
-            <div class="card-body">
-                              <h3>Bedroom</h3>
-       
-                     </div>
-       </div>
-             </asp:LinkButton>
-</div>
+          <div class="card">
+                   <br />
+                  <center>  <asp:Image src="Imag/bed.JPG"  height="100" width="100" runat="server" /> 
+                  </center>
+                  <div class="card-body">
+                     <h3>Bedroom</h3>
+                  </div>
+             </div>
+            </asp:LinkButton> 
+         </div>
             <div class="col-lg py-2">
-  <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">
- 
-                <div class="card">
+                 <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">
+                 <div class="card">
+                     <br />
                      <center> <asp:Image src="Imag/living.JPG"  height="100" width="100" runat="server"/>         
-                   </center> <div class="card-body">
+                     </center>
+                     <div class="card-body">
                             <h3>Living Room</h3>
-    
-                        </div>
-            </div>
-                      </asp:LinkButton>
-              </div>          
+                     </div>
+                  </div>
+              </asp:LinkButton>
+          </div>          
                    <div class="col-lg py-2">
                                <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">
-   
-                          <div class="card">
-                            <center><asp:Image src="Imag/dining.JPG"  height="100" width="100" runat="server"/>
-                  </center><div class="card-body">
-                    <center>  <h3>Dining Room</h3></center>
-        
-                       </div>
-                              </div>
-         </asp:LinkButton>
-                              </div>
+                           <div class="card">
+                               <br />
+                               <center><asp:Image src="Imag/dining.JPG"  height="100" width="100" runat="server"/>
+                               </center>
+                               <div class="card-body">
+                                   <center>  <h3>Dining Room</h3></center>
+                               </div>
+                          </div>
+                                </asp:LinkButton>
+                 </div>
                      <div class="col-lg py-2">
                           <asp:LinkButton ID="LinkButton4" runat="server" OnClick="LinkButton4_Click">
 
                          <div class="card">
-                           <center><asp:Image src="Imag/study.JPG"  height="100" width="100" runat="server"/>
-                             </center><div class="card-body">
-                                 
-                                    <h3>Study Room</h3>
-                   
+                                <br />
+                             <center><asp:Image src="Imag/study.JPG"  height="100" width="100" runat="server"/>
+                             </center>
+                             <div class="card-body">
+                                   <h3>Study Room</h3>
                              </div>
                          </div>
-        </asp:LinkButton>
-
+                        </asp:LinkButton>
                      </div>  
+
             <div class="col-lg py-2">
                         <asp:LinkButton ID="LinkButton5" runat="server" OnClick="LinkButton5_Click">
 
                 <div class="card">
+                    <br />
                     <center> <asp:Image src="Imag/storage.JPG"  height="100" width="100" runat="server"  />
-          </center>
+                    </center>
                     <div class="card-body">
-         <h3>Storage</h3>
-                  
-                        </div>
-                    </div>
-                            </asp:LinkButton>
-
-            </div>       
+                             <h3>Storage</h3>
+                   </div>
+               </div>
+             </asp:LinkButton>
+           </div>       
             
                        
             </div>

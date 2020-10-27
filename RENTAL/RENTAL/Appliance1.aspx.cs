@@ -11,8 +11,6 @@ namespace RENTAL
 {
     public partial class Appliance1 : System.Web.UI.Page
     {
-
-
         DataTable dt1 = new DataTable();
         string constr = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
         //static String rating;
@@ -20,14 +18,14 @@ namespace RENTAL
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            city = "Mumbai";
+            city = "Mumbai";//Default city if user doesnot select the city
 
             if (!IsPostBack)
             {
 
             }
             else
-            {
+            {   //checking checkbox is checked or not
                 bool checkBoxEnabled = false;
                 for (int i = 0; i < CheckBoxList1.Items.Count; i++)
                 {
@@ -52,7 +50,7 @@ namespace RENTAL
 
 
             //crating session for addtocart
-            DataTable dt = new DataTable();
+          /*  DataTable dt = new DataTable();
             dt = (DataTable)Session["Buyitems"];
             if (dt != null)
             {
@@ -63,7 +61,7 @@ namespace RENTAL
             {
                 Label3.Text = "0";
 
-            }
+            }*/
             //wishlist
             /* if (Session["wish"] != null && Session["useremail"] != null)
              {
@@ -90,38 +88,61 @@ namespace RENTAL
         }
         //rating
         public void btnsubmit_Click(object sender, EventArgs e)
-        {
+        {//checking review
             int pid = Convert.ToInt32(Session["productId"].ToString());
 
             Button btn = (Button)sender;
             string info = btn.CommandArgument;
-
             string info1 = btn.CommandName;
+            //checking session
             if (Session["useremail"] != null)
             {
-                SqlConnection con = new SqlConnection(constr);
-                SqlCommand cmd = new SqlCommand("insert into tblrating values (@ratingvalue,@review,@PId,@UserName)");
-                SqlDataAdapter sda = new SqlDataAdapter();
-                cmd.CommandType = CommandType.Text;
-                cmd.Parameters.AddWithValue("@ratingvalue", Rating1.CurrentRating.ToString());
-                cmd.Parameters.AddWithValue("@review", txtreview.Text);
-                cmd.Parameters.AddWithValue("@PId", pid);
-                cmd.Parameters.AddWithValue("@Username", Session["useremail"]);
+                SqlCommand cmd1 = new SqlCommand();
+                string myquery2 = "Select * from OrderDetails where PId=" + pid + " and username='" + Session["useremail"] + "'";
+                cmd1 = new SqlCommand();
+                SqlConnection con1 = new SqlConnection(constr);
+                con1.Open();
+                cmd1.CommandText = myquery2;
+                cmd1.Connection = con1;
+                SqlDataAdapter sda1 = new SqlDataAdapter();
+                sda1.SelectCommand = cmd1;
+                DataSet ds1 = new DataSet();
+                sda1.Fill(ds1);
+                SqlDataReader reader = cmd1.ExecuteReader();
+                //checking if the user is buy that particular product if yes then insert their review 
+                if (reader.HasRows)
+                {
+                    SqlConnection con = new SqlConnection(constr);
+                    SqlCommand cmd = new SqlCommand("insert into tblrating values (@ratingvalue,@review,@PId,@UserName)");
+                    SqlDataAdapter sda = new SqlDataAdapter();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@ratingvalue", Rating1.CurrentRating.ToString());
+                    cmd.Parameters.AddWithValue("@review", txtreview.Text);
+                    cmd.Parameters.AddWithValue("@PId", pid);
+                    cmd.Parameters.AddWithValue("@Username", Session["useremail"]);
 
-                cmd.Connection = con;
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
-                //    Response.Redirect(Request.Url.AbsoluteUri);
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    //    Response.Redirect(Request.Url.AbsoluteUri);
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
+                }
+                else
+                { //USER IS NOT BOUGHT THIS ITEM.
+                    Label1.Text = "You are not bought this item , you cannot review it.";
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+                }
             }
             else
-            {
-                //Label1.Text = "Login to your account";
+            {    //TELL USER TO LOGIN
+                Response.Redirect("Login1.aspx");
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
             }
+
         }
 
 
@@ -168,7 +189,7 @@ namespace RENTAL
             pimage.ImageUrl = ds.Tables[0].Rows[0]["PImage"].ToString();
             refprice.Text = ds.Tables[0].Rows[0]["RefundableDeposit"].ToString();
             ImageButton2.ImageUrl = ds.Tables[0].Rows[0]["image1"].ToString();
-            ImageButton3.ImageUrl = ds.Tables[0].Rows[0]["image2"].ToString();
+            //  ImageButton3.ImageUrl = ds.Tables[0].Rows[0]["image2"].ToString();
             ImageButton4.ImageUrl = ds.Tables[0].Rows[0]["PImage"].ToString();
             Description.Text = ds.Tables[0].Rows[0]["Description"].ToString();
             Dimension.Text = ds.Tables[0].Rows[0]["Dimension"].ToString();
@@ -178,23 +199,20 @@ namespace RENTAL
             Rating1.CurrentRating = Convert.ToInt32(dt1.Rows[0]["AverageRating"]);
             lbresult.Text = string.Format("{0} Users have rated. Average Rating {1}", dt1.Rows[0]["RatingCount"], dt1.Rows[0]["AverageRating"]);
 
-
             if (Session["useremail"] != null)
-            {
+            { //WISHLIST PRODUCT
                 string myquery1 = "Select * from wishlist where PId=" + prodctId + " and useremail='" + Session["useremail"] + "'";
                 con = new SqlConnection(mycon);
-
+                DataSet ds1 = new DataSet();
                 cmd = new SqlCommand();
                 cmd.CommandText = myquery1;
                 cmd.Connection = con;
                 sda = new SqlDataAdapter();
                 sda.SelectCommand = cmd;
-                ds = new DataSet();
-                sda.Fill(ds);
-
-                if (ds.Tables[0].Rows.Count > 0)
+                // ds = new DataSet();
+                sda.Fill(ds1);
+                if (ds1.Tables[0].Rows.Count > 0)
                 {
-
                     Button2.Text = "Remove From Wishlist";
                 }
                 else
@@ -206,13 +224,12 @@ namespace RENTAL
             {
                 Button2.Text = "Add To Wishlist";
                 con.Close();
-
             }
-
             Session["getdata"] = ds;
             Session["price"] = price.Text;
             int productQuan = 0;
             int psold = 0;
+            //CHECKING PRODUCT IS AVAILABLE OR NOT
             DropDownList drp = (DropDownList)this.Master.FindControl("ddl");
             if (drp.SelectedValue != null)
             {
@@ -234,23 +251,21 @@ namespace RENTAL
             ds = new DataSet();
             da.Fill(ds);
             if (ds.Tables[0].Rows.Count > 0)
-            {
+            { //GETTING VALUES OF QUANTITY AND SOLD ITEMS
 
                 productQuan = Convert.ToInt32(ds.Tables[0].Rows[0]["PQuantity"].ToString());
-
                 psold = Convert.ToInt16(ds.Tables[0].Rows[0]["SoldOut"].ToString());
 
             }
             if (productQuan == psold)
-            {
+            {//IF QUANTITY IS SAME AS SOLD ITEMS THEN SHOW THIS MESSAGE
                 Label15.Text = "Sorry for the inconvience.The product you requested is Out of Stock.";
                 Label15.Visible = true;
-
                 Button1.Enabled = false;
             }
             else
             {
-
+                //THE ADD TO CART BUTTON WILL GET ENABLE
                 Label15.Visible = false;
                 Button1.Enabled = true;
 
@@ -267,14 +282,11 @@ namespace RENTAL
             string str = price.Text;
             HttpCookie c = new HttpCookie("selection");
             c.Value = ddl.SelectedValue.ToString();
-            Session["price"] = str;
+            // Session["price"] = str;
             Response.Cookies.Add(c);
-
             if (ddl.SelectedValue == "3")
             {
-
-
-                price.Text = (Convert.ToInt32(str) - 200).ToString();
+                price.Text = (Convert.ToInt32(ds.Tables[0].Rows[0]["PPrice"]) + 600).ToString();
                 // Session["selectmonth"] = ddl.SelectedValue.ToString();
                 Session["price"] = price.Text;
 
@@ -282,33 +294,27 @@ namespace RENTAL
 
             else if (ddl.SelectedValue == "6")
             {
-                price.Text = " 1100";
+                price.Text = (Convert.ToInt32(ds.Tables[0].Rows[0]["PPrice"]) + 300).ToString();
                 // Session["selectmonth"] = ddl.SelectedValue.ToString();
                 Session["price"] = price.Text;
 
             }
             else if (ddl.SelectedValue == "12")
             {
-
-                price.Text = " 1000";
+                price.Text = (Convert.ToInt32(ds.Tables[0].Rows[0]["PPrice"]) + 200).ToString();
                 // Session["selectmonth"] = ddl.SelectedValue.ToString();
                 Session["price"] = price.Text;
             }
             else if (ddl.SelectedValue == "18")
             {
-
-                price.Text = " 1000";
+                price.Text = dsprice;
                 // Session["selectmonth"] = ddl.SelectedValue.ToString();
                 Session["price"] = price.Text;
-
             }
             else
             {
                 price.Text = dsprice;
-
                 Session["price"] = price.Text;
-
-
             }
 
             Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
@@ -317,13 +323,14 @@ namespace RENTAL
         //checkchanged datalist
         protected void checked_changed(object sender, EventArgs e)
         {
-
+            //CHECKBOX CHECKED CHANGED 
             DropDownList drp = (DropDownList)this.Master.FindControl("ddl");
             if (drp.SelectedValue != null)
             {
                 city = drp.SelectedValue.ToString();
             }
             string chkbox = "";
+            // CHANGING DATALIST WITH MULTIPLE CHECKBOX ITEM
             for (int i = 0; i < CheckBoxList1.Items.Count; i++)
             {
                 if (CheckBoxList1.Items[i].Selected)
@@ -339,11 +346,9 @@ namespace RENTAL
                     }
                     Label2.Visible = true;
                     Label2.Text = chkbox;
-
                     String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
                     SqlConnection con = new SqlConnection(mycon);
                     SqlCommand cmd = new SqlCommand();
-
                     string cityNameQuery = "select CityId from City where CityName='" + city + "'";
                     cmd.CommandText = cityNameQuery;
                     cmd.Connection = con;
@@ -351,12 +356,10 @@ namespace RENTAL
                     DataSet ds = new DataSet();
                     da.Fill(ds);
                     int cityId = Convert.ToInt32(ds.Tables[0].Rows[0]["CityId"]);
-
                     string query = "select * from Products p, ProductRef r where p.PCategory in (" + Label2.Text + ") and p.PId=r.PId and r.CityId='" + cityId + "'";
                     cmd = new SqlCommand(query, con);
                     con.Open();
                     SqlDataAdapter sda = new SqlDataAdapter(cmd);
-
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
                     DataList1.Visible = false;
@@ -367,19 +370,16 @@ namespace RENTAL
                     con.Close();
 
                 }
-
+                //DISPLAYING DEFAULT DATALIST
                 else if (chkbox == "")
                 {
                     DataList1.Visible = true;
                     DataList1.DataBind();
                     DataList2.Visible = false;
                 }
-
             }
-
-
         }
-
+        //SAVING THE QUANTITY IN COOKIE
         protected void ddlquantity(object sender, EventArgs e)
         {
             HttpCookie c1 = new HttpCookie("quantity");
@@ -398,12 +398,9 @@ namespace RENTAL
             }
             Image btn = e.Item.FindControl("ImageButton1") as Image;
             Label lb1 = e.Item.FindControl("id") as Label;
-
             String mycon = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
             SqlConnection con = new SqlConnection(mycon);
             SqlCommand cmd = new SqlCommand();
-
-
             string cityNameQuery = "select CityId from City where CityName='" + city + "'";
             cmd.CommandText = cityNameQuery;
             cmd.Connection = con;
@@ -411,20 +408,11 @@ namespace RENTAL
             DataSet ds = new DataSet();
             da.Fill(ds);
             int cityId = Convert.ToInt32(ds.Tables[0].Rows[0]["CityId"]);
-
-
-
             String myquery = "select * from ProductRef where PId='" + lb1.Text + "' and CityId='" + cityId + "'";
-
             cmd.CommandText = myquery;
             da = new SqlDataAdapter(cmd);
             ds = new DataSet();
-
             da.Fill(ds);
-
-
-
-
             int stockdata = 0;
             int soldout = 0;
             if (ds.Tables[0].Rows.Count > 0)
@@ -444,7 +432,6 @@ namespace RENTAL
         }
         protected void addbtn_Click(object sender, EventArgs e)
         {
-
             string s = Session["productId"].ToString();
             string selectedval;
             if (ddl.SelectedValue != null)
@@ -455,9 +442,6 @@ namespace RENTAL
             {
                 selectedval = "24";
             }
-
-
-
             HttpCookie c = new HttpCookie("selection");
             c.Value = selectedval;
             Response.Cookies.Add(c);
@@ -471,23 +455,26 @@ namespace RENTAL
             {
                 pquantity = "1";
             }
-
             HttpCookie c1 = new HttpCookie("quantity");
             c1.Value = pquantity;
             Response.Cookies.Add(c1);
 
-
-
-
-            Response.Redirect("AddtoCart.aspx?id=" + s + "&price=" + Session["price"]);
+            if (Session["useremail"] != null)
+            { //GO TO ADD TO CART
+                Response.Redirect("AddtoCart.aspx?id=" + s + "&price=" + Session["price"]);
+            }
+            else
+            {//USER LOGIN
+                Response.Redirect("Login1.aspx");
+            }
         }
         protected void wishbtn_Click(object sender, EventArgs e)
-        {
+        {//WISHLIST
             int pid = Convert.ToInt32(Session["productId"].ToString());
             SqlConnection con = new SqlConnection(constr);
             SqlCommand cmd = new SqlCommand();
 
-
+            //CHECKING THE USER WISHLIST ITEM
             if (Session["useremail"] != null)
             {
                 string myquery2 = "Select * from wishlist where PId=" + pid + " and useremail='" + Session["useremail"] + "'";
@@ -510,11 +497,7 @@ namespace RENTAL
                             int sr;
                             int sr1;
                             sr = Convert.ToInt32(ds1.Tables[0].Rows[i]["PId"].ToString());
-
                             sr1 = Convert.ToInt32(Session["productId"].ToString());
-
-
-
                             if (sr == sr1)
                             {
                                 String mycon3 = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
@@ -524,7 +507,6 @@ namespace RENTAL
                                 cmd3.ExecuteNonQuery();
                                 //Item has been deleted from savedcartdetail
                                 con.Close();
-
                                 Button2.Text = "Add To Wishlist";
                             }
                         }
@@ -540,8 +522,6 @@ namespace RENTAL
                     cmd.CommandText = query;
                     cmd.Connection = con;
                     cmd.ExecuteNonQuery();
-
-
                     string myquery1 = "Select * from wishlist where PId=" + pid + " and useremail='" + Session["useremail"] + "'";
                     cmd = new SqlCommand();
                     cmd.CommandText = myquery1;
@@ -550,55 +530,34 @@ namespace RENTAL
                     sda.SelectCommand = cmd;
                     DataSet ds = new DataSet();
                     sda.Fill(ds);
-
                     if (ds.Tables[0].Rows.Count > 0)
-                    {
-
+                    {//REMOVE THE ITEM FROM WISHLIST
                         Button2.Text = "Remove From Wishlist";
-
                     }
                     else
-                    {
+                    {//ADD INTO WISHLIST
                         Button2.Text = "Add To Wishlist";
                     }
                 }
             }
             else
             {
-                lbwishlist.Text = "Login to yout account";
+                Response.Redirect("Login1.aspx");
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-
             }
-
             Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-
-
         }
 
         protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
-        {
+        {//SHOWING PARTICULAR IMAGE
             pimage.ImageUrl = ImageButton2.ImageUrl;
             Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-
-
         }
-        protected void ImageButton3_Click(object sender, ImageClickEventArgs e)
-        {
-            pimage.ImageUrl = ImageButton3.ImageUrl;
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
-
-        }
         protected void ImageButton4_Click(object sender, ImageClickEventArgs e)
-        {
+        {//SHOWING PARTICULAR IMAGE
             pimage.ImageUrl = ImageButton4.ImageUrl;
             Page.ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-
-
         }
-
-
-
-
     }
 }
